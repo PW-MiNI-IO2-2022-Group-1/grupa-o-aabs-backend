@@ -14,9 +14,10 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/person/{id}")
-    public Person getPerson(@PathVariable("id") String id) {
-        return personService.getPersonById(Long.parseLong(id));
+    // This annotation makes Spring Boot map URL /person/{name} (GET request) to this function
+    @GetMapping("/person/{name}")
+    public List<Person> getPerson(@PathVariable("name") String name) {
+        return personService.getPeopleByName(name);
     }
 
     @GetMapping("/person/all")
