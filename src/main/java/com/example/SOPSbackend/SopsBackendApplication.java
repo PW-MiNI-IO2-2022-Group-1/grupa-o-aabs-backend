@@ -24,4 +24,3 @@ public class SopsBackendApplication {
 		return String.format("Goodbye %s...", name);
 	}
 }
-            
