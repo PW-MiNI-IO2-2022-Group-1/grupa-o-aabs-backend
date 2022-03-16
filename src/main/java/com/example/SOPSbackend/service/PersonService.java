@@ -32,7 +32,7 @@ public class PersonService {
     }
 
     public List<Person> getPeopleByName(String name) {
-        return personRepository.getPeopleByName(name)
+        return personRepository.getPeopleByFirstNameIgnoreCase(name)
                                .stream().collect(Collectors.toList());
     }
 }

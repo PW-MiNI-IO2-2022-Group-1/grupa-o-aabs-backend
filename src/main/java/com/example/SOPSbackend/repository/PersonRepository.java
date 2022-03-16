@@ -10,6 +10,5 @@ import java.util.Collection;
 // Spring boot automatically generates an implementation
 // it also generates many simple functions such as findAll or findById
 public interface PersonRepository extends JpaRepository<Person, Long> {
-    @Query(value = "SELECT * FROM people p WHERE LOWER(p.first_name) = LOWER(:name)", nativeQuery = true)
-    Collection<Person> getPeopleByName(@Param("name") String name);
+    Collection<Person> getPeopleByFirstNameIgnoreCase(@Param("name") String name);
 }
