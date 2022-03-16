@@ -1,7 +1,7 @@
 package com.example.SOPSbackend.security;
 
-import com.example.SOPSbackend.repository.DoctorRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -19,18 +19,23 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final DoctorRepository doctorRepository;
+
     private final ObjectMapper objectMapper;
+    private final UserEntityService userService;
     private final RestAuthenticationFailureHandler failureHandler;
     private final RestAuthenticationSuccessHandler successHandler;
+    private final String tokenSecret;
 
-    public SecurityConfig(DoctorRepository doctorRepository, ObjectMapper objectMapper,
+    public SecurityConfig(ObjectMapper objectMapper,
+                          UserEntityService userService,
                           RestAuthenticationFailureHandler failureHandler,
-                          RestAuthenticationSuccessHandler successHandler) {
-        this.doctorRepository = doctorRepository;
+                          RestAuthenticationSuccessHandler successHandler,
+                          @Value("${jwt.secret}") String tokenSecret) {
         this.objectMapper = objectMapper;
+        this.userService = userService;
         this.failureHandler = failureHandler;
         this.successHandler = successHandler;
+        this.tokenSecret = tokenSecret;
     }
 
     @Override
@@ -38,28 +43,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
             .authorizeRequests()
-            .antMatchers("/").permitAll()
+            .antMatchers("/goodbye").permitAll()
             .anyRequest().authenticated()
         .and()
+            .formLogin().loginPage("/doctor/login").permitAll().and()
+            .logout().permitAll().and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .addFilter(authenticationFilter())
+            .addFilter(jwtAuthorizationFilter())
             .exceptionHandling()
             .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        UserEntityService userEntityService = new UserEntityService(doctorRepository);
-        provider.setUserDetailsService(userEntityService);
+        provider.setUserDetailsService(userService);
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
+    }
+
+    @Bean
+    public JwtAuthorizationFilter jwtAuthorizationFilter() throws Exception {
+        return new JwtAuthorizationFilter(authenticationManager(), userService, tokenSecret);
     }
 
     @Bean
@@ -70,6 +82,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public JsonObjectAuthenticationFilter authenticationFilter() throws Exception {
         var authenticationFilter = new JsonObjectAuthenticationFilter(objectMapper);
+        authenticationFilter.setFilterProcessesUrl("/doctor/login");
+        authenticationFilter.setUsernameParameter("email");
         authenticationFilter.setAuthenticationSuccessHandler(successHandler);
         authenticationFilter.setAuthenticationFailureHandler(failureHandler);
         authenticationFilter.setAuthenticationManager(super.authenticationManager());

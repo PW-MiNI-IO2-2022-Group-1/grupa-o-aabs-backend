@@ -4,9 +4,11 @@ import com.example.SOPSbackend.repository.DoctorRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserEntityService implements UserDetailsService {
-    private DoctorRepository doctorRepository;
+    private final DoctorRepository doctorRepository;
 
     public UserEntityService(DoctorRepository doctorRepository) {
         this.doctorRepository = doctorRepository;
@@ -14,8 +16,8 @@ public class UserEntityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return doctorRepository.findDoctorByEmail(username)
+        return doctorRepository.findDoctorByEmailIgnoreCase(username)
                 .map(UserEntityDetails::new)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found exception"));
     }
 }

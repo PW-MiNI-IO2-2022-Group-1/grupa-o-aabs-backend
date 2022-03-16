@@ -5,14 +5,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 public class UserEntityDetails implements UserDetails {
-    private String email;
-    private String password;
-    private Role role;
+    private final String email;
+    private final String password;
+    private final Role role;
 
     public UserEntityDetails(Doctor doctor) {
         this.email = doctor.getEmail();
@@ -23,7 +23,7 @@ public class UserEntityDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         var grantedAuthority = new SimpleGrantedAuthority(role.getRoleToString());
-        return new HashSet<GrantedAuthority>(Arrays.asList(grantedAuthority));
+        return new HashSet<GrantedAuthority>(List.of(grantedAuthority));
     }
 
     @Override

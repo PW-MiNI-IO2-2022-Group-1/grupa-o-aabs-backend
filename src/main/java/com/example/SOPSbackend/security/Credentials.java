@@ -1,9 +1,9 @@
-package com.example.SOPSbackend.model;
+package com.example.SOPSbackend.security;
 
 import lombok.Getter;
 
 @Getter
 public class Credentials {
-    private String username;
+    private String email;
     private String password;
 }

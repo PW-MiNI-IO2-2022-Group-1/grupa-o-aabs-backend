@@ -1,6 +1,5 @@
 package com.example.SOPSbackend.security;
 
-import com.example.SOPSbackend.model.Credentials;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,20 +20,25 @@ public class JsonObjectAuthenticationFilter extends UsernamePasswordAuthenticati
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         try {
-            BufferedReader reader = request.getReader();
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            Credentials authRequest = objectMapper.readValue(sb.toString(), Credentials.class);
+            Credentials credentials = readCredentialsFromRequest(request);
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                    authRequest.getUsername(), authRequest.getPassword()
+                    credentials.getEmail(), credentials.getPassword()
             );
             setDetails(request, token);
             return this.getAuthenticationManager().authenticate(token);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
+    }
+
+    private Credentials readCredentialsFromRequest(HttpServletRequest request) throws IOException {
+       BufferedReader reader = request.getReader();
+       StringBuilder sb = new StringBuilder();
+       String line = reader.readLine();
+       while (line != null) {
+           sb.append(line);
+           line = reader.readLine();
+       }
+       return objectMapper.readValue(sb.toString(), Credentials.class);
     }
 }

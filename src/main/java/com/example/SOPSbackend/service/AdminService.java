@@ -9,8 +9,8 @@ import javax.transaction.Transactional;
 
 @Service
 public class AdminService {
-    private DoctorRepository doctorRepository;
-    private PasswordEncoder encoder;
+    private final DoctorRepository doctorRepository;
+    private final PasswordEncoder encoder;
 
     public AdminService(DoctorRepository doctorRepository, PasswordEncoder encoder) {
         this.doctorRepository = doctorRepository;
@@ -19,7 +19,7 @@ public class AdminService {
 
     @Transactional
     public Doctor addDoctor(Doctor doctor) {
-        if(doctorRepository.findDoctorByEmail(doctor.getEmail()).isPresent()) {
+        if(doctorRepository.findDoctorByEmailIgnoreCase(doctor.getEmail()).isPresent()) {
             throw new RuntimeException("Account already exists");
         }
         var hashedPass = encoder.encode(doctor.getPassword());

@@ -3,3 +3,5 @@ spring.datasource.username=admin
 spring.datasource.password=<password>
 spring.jpa.hibernate.ddl_auto=update
 spring.jpa.database.platform=org.hibernate.dialect.MySQL5Dialect
+jwt.secret=<tokenSecret>
+jwt.expiration_time=3600000
