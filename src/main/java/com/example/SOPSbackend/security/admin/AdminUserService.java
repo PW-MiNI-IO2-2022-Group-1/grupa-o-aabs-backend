@@ -1,23 +1,25 @@
-package com.example.SOPSbackend.security;
+package com.example.SOPSbackend.security.admin;
 
-import com.example.SOPSbackend.repository.DoctorRepository;
+import com.example.SOPSbackend.repository.AdminRepository;
+import com.example.SOPSbackend.security.UserEntityDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DoctorUserService implements UserDetailsService {
-    private final DoctorRepository doctorRepository;
+public class AdminUserService implements UserDetailsService {
+    private final AdminRepository adminRepository;
 
-    public DoctorUserService(DoctorRepository doctorRepository) {
-        this.doctorRepository = doctorRepository;
+    public AdminUserService(AdminRepository doctorRepository) {
+        this.adminRepository = doctorRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return doctorRepository.findDoctorByEmailIgnoreCase(username)
+        return adminRepository.findAdminByEmailIgnoreCase(username)
                 .map(UserEntityDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found exception"));
     }
 }
+

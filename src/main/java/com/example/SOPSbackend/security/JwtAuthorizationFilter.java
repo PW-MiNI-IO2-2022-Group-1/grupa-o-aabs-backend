@@ -2,6 +2,7 @@ package com.example.SOPSbackend.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,16 +43,30 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(TOKEN_HEADER);
-        if (token != null) {
-            var decodedToken = JWT.require(Algorithm.HMAC256(tokenSecret))
+
+        if(token == null)
+            return null;
+
+        UserDetails userDetails = verifyTokenAndLoadUser(token);
+        if(userDetails != null)
+            return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null,
+                                                               userDetails.getAuthorities());
+        else
+            return null;
+    }
+
+    private UserDetails verifyTokenAndLoadUser(String token) {
+        try {
+            DecodedJWT decodedToken = JWT.require(Algorithm.HMAC256(tokenSecret))
                                          .build()
                                          .verify(token);
-            var username = decodedToken.getSubject();
-            if (username != null) {
-                UserDetails userDetails = userService.loadUserByUsername(username);
-                return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null,
-                        userDetails.getAuthorities());
-            }
+
+            String username = decodedToken.getSubject();
+            if (username != null)
+                return userService.loadUserByUsername(username);
+
+        } catch(Exception e) {
+            return null;
         }
         return null;
     }

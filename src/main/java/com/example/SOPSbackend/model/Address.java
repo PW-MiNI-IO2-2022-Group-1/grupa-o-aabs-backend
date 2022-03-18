@@ -10,20 +10,24 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Doctor {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String city;
 
     @Column(nullable = false)
-    private String lastName;
+    private String zipCode;
 
     @Column(nullable = false)
-    private String email;
+    private String street;
 
     @Column(nullable = false)
-    private String password;
+    private String houseNumber;
+
+    @Column()
+    private String localNumber;
 }
+

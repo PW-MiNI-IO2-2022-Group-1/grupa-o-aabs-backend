@@ -1,4 +1,4 @@
-package com.example.SOPSbackend.response;
+package com.example.SOPSbackend.response.auth;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

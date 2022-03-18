@@ -27,7 +27,9 @@ public class JsonObjectAuthenticationFilter extends UsernamePasswordAuthenticati
             setDetails(request, token);
             return this.getAuthenticationManager().authenticate(token);
         } catch (IOException e) {
-            throw new IllegalArgumentException(e.getMessage());
+            // how to route it to 401 unauthorized?
+            var malformedToken = new UsernamePasswordAuthenticationToken(null, null);
+            return this.getAuthenticationManager().authenticate(malformedToken);
         }
     }
 

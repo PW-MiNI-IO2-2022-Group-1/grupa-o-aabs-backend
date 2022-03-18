@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Doctor {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,8 +22,14 @@ public class Doctor {
     private String lastName;
 
     @Column(nullable = false)
+    private String pesel;
+
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Address address;
 }

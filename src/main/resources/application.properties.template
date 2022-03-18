@@ -5,3 +5,5 @@ spring.jpa.hibernate.ddl_auto=update
 spring.jpa.database.platform=org.hibernate.dialect.MySQL5Dialect
 jwt.secret=<tokenSecret>
 jwt.expiration_time=3600000
+admin.email=<email>
+admin.password=<password>

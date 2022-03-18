@@ -1,7 +1,9 @@
 package com.example.SOPSbackend.security;
 
 public enum Role {
-    DOCTOR ("ROLE_DOCTOR");
+    ADMIN ("ROLE_ADMIN"),
+    DOCTOR ("ROLE_DOCTOR"),
+    PATIENT("ROLE_PATIENT");
 
     private final String roleToString;
 

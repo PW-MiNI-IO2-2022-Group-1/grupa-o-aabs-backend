@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Doctor {
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

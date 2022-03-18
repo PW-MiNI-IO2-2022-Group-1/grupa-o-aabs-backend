@@ -1,6 +1,7 @@
-package com.example.SOPSbackend.response;
+package com.example.SOPSbackend.response.auth;
 
 import com.example.SOPSbackend.model.Doctor;
+import com.example.SOPSbackend.response.DoctorResponse;
 import lombok.Getter;
 import lombok.Setter;
 
