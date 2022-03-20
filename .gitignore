@@ -17,7 +17,7 @@
 build/
 
 # Secrets
-src/main/resources/application.properties
+# src/main/resources/application.properties # nie.
 
 # Ignore Gradle GUI config
 gradle-app.setting
