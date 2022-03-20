@@ -54,6 +54,7 @@ public class DoctorAppSecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilter(doctorAuthorizationFilter())
             .exceptionHandling()
             .authenticationEntryPoint(new CustomUnauthorizedEntryPoint());
+        http.cors();
     }
 
     @Override
