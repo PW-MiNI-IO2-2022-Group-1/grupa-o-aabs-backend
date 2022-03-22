@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.response.auth;
 
-import com.example.SOPSbackend.security.UserEntityDetails;
+import com.example.SOPSbackend.security.BasicUserDetails;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class AuthResponseBuilder {
         this.objectMapper = objectMapper;
     }
 
-    public void buildResponseIntoStream(OutputStream stream, String token, UserEntityDetails user) throws Exception{
+    public void buildResponseIntoStream(OutputStream stream, String token, BasicUserDetails user) throws Exception{
         if(user.isAdmin()) {
             var response = new SuccessfulAdminAuthResponse(token, user.asAdmin());
             objectMapper.writeValue(stream, response);

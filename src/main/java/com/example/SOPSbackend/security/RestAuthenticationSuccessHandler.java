@@ -32,7 +32,7 @@ public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHa
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        UserEntityDetails principal = (UserEntityDetails) authentication.getPrincipal();
+        BasicUserDetails principal = (BasicUserDetails) authentication.getPrincipal();
 
         String token = JWT.create()
                 .withSubject(principal.getUsername())

@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.security;
 
 import com.example.SOPSbackend.model.Admin;
+import com.example.SOPSbackend.model.BasicUser;
 import com.example.SOPSbackend.model.Doctor;
 import com.example.SOPSbackend.model.Patient;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,32 +12,18 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-public class UserEntityDetails implements UserDetails {
+public class BasicUserDetails implements UserDetails {
     private final String email;
     private final String password;
     private final Role role;
 
     private final Object databaseObject;
 
-    public UserEntityDetails(Doctor doctor) {
-        this.email = doctor.getEmail();
-        this.password = doctor.getPassword();
-        this.role = Role.DOCTOR;
-        databaseObject = doctor;
-    }
-
-    public UserEntityDetails(Admin admin) {
-        this.email = admin.getEmail();
-        this.password = admin.getPassword();
-        this.role = Role.ADMIN;
-        databaseObject = admin;
-    }
-
-    public UserEntityDetails(Patient patient) {
-        this.email = patient.getEmail();
-        this.password = patient.getPassword();
-        this.role = Role.PATIENT;
-        databaseObject = patient;
+    public BasicUserDetails(BasicUser user) {
+        email = user.getEmail();
+        password = user.getPassword();
+        role = user.getRole();
+        databaseObject = user;
     }
 
     public Role getRole() {

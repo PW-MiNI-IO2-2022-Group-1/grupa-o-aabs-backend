@@ -26,7 +26,7 @@ public class MasterAccountConfig implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        if(adminRepository.findAdminByEmailIgnoreCase("test@test.com").isEmpty()) {
+        if(adminRepository.findByEmailIgnoreCase("test@test.com").isEmpty()) {
             Admin admin = new Admin();
             admin.setFirstName("Admin");
             admin.setLastName("Admin");

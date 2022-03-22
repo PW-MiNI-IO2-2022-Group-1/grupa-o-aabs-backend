@@ -19,7 +19,7 @@ public class AdminService {
 
     @Transactional
     public Doctor addDoctor(Doctor doctor) {
-        if(doctorRepository.findDoctorByEmailIgnoreCase(doctor.getEmail()).isPresent()) {
+        if(doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent()) {
             throw new RuntimeException("Account already exists");
         }
         var hashedPass = encoder.encode(doctor.getPassword());
