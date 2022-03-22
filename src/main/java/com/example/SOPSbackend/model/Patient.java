@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.model;
 
 import com.example.SOPSbackend.security.Role;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import javax.persistence.OneToOne;
 @Setter
 @Entity
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patient extends BasicUser {
     @Column(nullable = false)
     private String pesel;

@@ -1,6 +1,9 @@
 package com.example.SOPSbackend.model;
 
 import com.example.SOPSbackend.security.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +12,11 @@ import javax.persistence.*;
 @MappedSuperclass
 @Getter
 @Setter
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Admin.class, name = "admin"),
+        @JsonSubTypes.Type(value = Doctor.class, name = "doctor"),
+        @JsonSubTypes.Type(value = Patient.class, name = "patient")
+})
 public class BasicUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +32,15 @@ public class BasicUser {
     private String email;
 
     @Column(nullable = false)
+    @Getter(AccessLevel.NONE)
     private String password;
 
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+    @JsonIgnore
     public Role getRole() {
         return null;
     }

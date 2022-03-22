@@ -2,7 +2,8 @@ package com.example.SOPSbackend.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.example.SOPSbackend.response.auth.AuthResponseBuilder;
+import com.example.SOPSbackend.response.SuccessfulAuthResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -18,15 +19,15 @@ import java.util.Date;
 public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     private final int expirationTime;
     private final String secret;
-    private AuthResponseBuilder authResponseBuilder;
+    private ObjectMapper objectMapper;
 
 
     public RestAuthenticationSuccessHandler(@Value("${jwt.secret}") String secret,
                                             @Value("${jwt.expiration_time}") int expirationTime,
-                                            AuthResponseBuilder authResponseBuilder) {
+                                            ObjectMapper objectMapper) {
         this.secret = secret;
         this.expirationTime = expirationTime;
-        this.authResponseBuilder = authResponseBuilder;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -40,7 +41,8 @@ public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHa
                 .sign(Algorithm.HMAC256(secret));
 
         try {
-            authResponseBuilder.buildResponseIntoStream(response.getOutputStream(), token, principal);
+            var responseBody = new SuccessfulAuthResponse(token, principal);
+            responseBody.writeToStream(response.getOutputStream(), objectMapper);
         } catch(Exception e) {
             throw new RuntimeException("Could not map response to json.");
         }

@@ -1,7 +1,7 @@
 package com.example.SOPSbackend.security.config;
 
 import com.example.SOPSbackend.model.BasicUser;
-import com.example.SOPSbackend.response.auth.CustomUnauthorizedEntryPoint;
+import com.example.SOPSbackend.response.CustomUnauthorizedEntryPoint;
 import com.example.SOPSbackend.security.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
