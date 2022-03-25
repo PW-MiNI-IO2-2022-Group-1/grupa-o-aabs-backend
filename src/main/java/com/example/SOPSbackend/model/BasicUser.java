@@ -17,7 +17,7 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = Doctor.class, name = "doctor"),
         @JsonSubTypes.Type(value = Patient.class, name = "patient")
 })
-public class BasicUser {
+public abstract class BasicUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -3,12 +3,13 @@ package com.example.SOPSbackend.security;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
+@Getter
 public enum Role {
-    ADMIN ("ROLE_ADMIN"),
-    DOCTOR ("ROLE_DOCTOR"),
-    PATIENT("ROLE_PATIENT");
+    ADMIN ("admin", "ROLE_ADMIN"),
+    DOCTOR ("doctor", "ROLE_DOCTOR"),
+    PATIENT("patient", "ROLE_PATIENT");
 
-    private final String roleToString;
+    private final String name;
+    private final String label;
 }

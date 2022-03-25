@@ -19,7 +19,7 @@ import java.util.Date;
 public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     private final int expirationTime;
     private final String secret;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
 
     public RestAuthenticationSuccessHandler(@Value("${jwt.secret}") String secret,
