@@ -10,5 +10,4 @@ class SopsBackendApplicationTests {
 
 	@Test
 	void contextLoads() { }
-
 }
