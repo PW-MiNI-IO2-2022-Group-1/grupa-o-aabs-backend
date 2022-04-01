@@ -1,8 +1,8 @@
 package com.example.SOPSbackend.security.config;
 
-import com.example.SOPSbackend.model.Admin;
-import com.example.SOPSbackend.model.Doctor;
-import com.example.SOPSbackend.model.Patient;
+import com.example.SOPSbackend.model.AdminEntity;
+import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
@@ -17,17 +17,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class BasicSecurityConfig {
     @Bean
-    public BasicUserService<Admin> adminUserService(AdminRepository repository) {
+    public BasicUserService<AdminEntity> adminUserService(AdminRepository repository) {
         return new BasicUserService<>(repository);
     }
 
     @Bean
-    public BasicUserService<Doctor> doctorUserService(DoctorRepository repository) {
+    public BasicUserService<DoctorEntity> doctorUserService(DoctorRepository repository) {
         return new BasicUserService<>(repository);
     }
 
     @Bean
-    public BasicUserService<Patient> patientUserService(PatientRepository repository) {
+    public BasicUserService<PatientEntity> patientUserService(PatientRepository repository) {
         return new BasicUserService<>(repository);
     }
 

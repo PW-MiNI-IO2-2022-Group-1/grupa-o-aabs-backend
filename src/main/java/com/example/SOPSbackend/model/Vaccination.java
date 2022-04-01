@@ -26,8 +26,8 @@ public class Vaccination {
     private VaccinationSlot vaccinationSlot;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = Patient.class)
-    private Patient patient;
+    @ManyToOne(targetEntity = PatientEntity.class)
+    private PatientEntity patient;
 
     @Column(nullable = false)
     private int status;

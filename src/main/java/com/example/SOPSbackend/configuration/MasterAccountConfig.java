@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.configuration;
 
-import com.example.SOPSbackend.model.Admin;
+import com.example.SOPSbackend.model.AdminEntity;
 import com.example.SOPSbackend.repository.AdminRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +27,7 @@ public class MasterAccountConfig implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         if(adminRepository.findByEmailIgnoreCase(adminEmail).isEmpty()) {
-            Admin admin = new Admin();
+            AdminEntity admin = new AdminEntity();
             admin.setFirstName("test");
             admin.setLastName("test");
             admin.setEmail(adminEmail);

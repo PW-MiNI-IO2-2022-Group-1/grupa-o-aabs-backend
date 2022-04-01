@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.security.config;
 
-import com.example.SOPSbackend.model.Doctor;
+import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.security.BasicUserService;
 import com.example.SOPSbackend.security.RestAuthenticationFailureHandler;
 import com.example.SOPSbackend.security.RestAuthenticationSuccessHandler;
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(2)
-public class DoctorSecurityConfig extends UserSecurityConfig<Doctor> {
+public class DoctorSecurityConfig extends UserSecurityConfig<DoctorEntity> {
 
-    public DoctorSecurityConfig(PasswordEncoder passwordEncoder, BasicUserService<Doctor> userService,
+    public DoctorSecurityConfig(PasswordEncoder passwordEncoder, BasicUserService<DoctorEntity> userService,
                                 ObjectMapper objectMapper, RestAuthenticationSuccessHandler successHandler,
                                 RestAuthenticationFailureHandler failureHandler,
                                 @Value("${jwt.secret}") String tokenSecret) {

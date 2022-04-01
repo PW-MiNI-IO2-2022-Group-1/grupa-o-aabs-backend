@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @NoRepositoryBean
 public interface UserRepository<T extends BasicUser, ID extends Serializable> extends JpaRepository<T, ID> {
-    public Optional<T> findByEmailIgnoreCase(String email);
+    Optional<T> findByEmailIgnoreCase(String email);
 }

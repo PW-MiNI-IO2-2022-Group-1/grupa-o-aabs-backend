@@ -9,9 +9,9 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Doctor extends BasicUser {
+public class AdminEntity extends BasicUser {
     @Override
     public Role getRole() {
-        return Role.DOCTOR;
+        return Role.ADMIN;
     }
 }

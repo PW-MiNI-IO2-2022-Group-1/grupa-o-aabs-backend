@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.controller;
 
-import com.example.SOPSbackend.model.Doctor;
+import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.service.AdminService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/doctors")
-    public ResponseEntity<Object> createDoctor(@RequestBody Doctor doctor) {
+    public ResponseEntity<Object> createDoctor(@RequestBody DoctorEntity doctor) {
         return ResponseEntity.accepted().body(adminService.addDoctor(doctor));
     }
 }

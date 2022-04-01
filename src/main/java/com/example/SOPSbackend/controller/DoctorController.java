@@ -1,7 +1,7 @@
 package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
-import com.example.SOPSbackend.model.Doctor;
+import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.service.DoctorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,7 +29,7 @@ public class DoctorController extends BasicController {
     @PostMapping("/doctor/vaccination-slots")
     public ResponseEntity<Object> createNewVaccinationSlot(
             @RequestBody @Valid NewVaccinationSlotDto vaccinationSlot,
-            @AuthenticationPrincipal Doctor doctor) {
+            @AuthenticationPrincipal DoctorEntity doctor) {
 
         doctorService.addVaccinationSlot(doctor, vaccinationSlot.getDate());
 

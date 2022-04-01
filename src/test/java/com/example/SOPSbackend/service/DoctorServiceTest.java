@@ -1,7 +1,7 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.exception.InternalValidationException;
-import com.example.SOPSbackend.model.Doctor;
+import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import org.junit.Before;
@@ -38,11 +38,11 @@ class DoctorServiceTest {
     @Autowired
     DoctorService doctorService;
 
-    Doctor doctor;
+    DoctorEntity doctor;
 
     @Before
     public void setUp() {
-        doctor = new Doctor();
+        doctor = new DoctorEntity();
     }
 
     @Test

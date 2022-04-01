@@ -22,6 +22,6 @@ public class VaccinationSlot {
     private LocalDateTime date;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = Doctor.class)
-    private Doctor doctor;
+    @ManyToOne(targetEntity = DoctorEntity.class)
+    private DoctorEntity doctor;
 }

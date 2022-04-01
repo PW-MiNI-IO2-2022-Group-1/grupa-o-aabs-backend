@@ -1,5 +1,5 @@
 package com.example.SOPSbackend.repository;
 
-import com.example.SOPSbackend.model.Admin;
+import com.example.SOPSbackend.model.AdminEntity;
 
-public interface AdminRepository extends UserRepository<Admin, Long> { }
+public interface AdminRepository extends UserRepository<AdminEntity, Long> { }

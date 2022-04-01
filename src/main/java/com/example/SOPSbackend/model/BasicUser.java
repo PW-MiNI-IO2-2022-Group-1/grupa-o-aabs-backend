@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,9 +14,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Admin.class, name = "admin"),
-        @JsonSubTypes.Type(value = Doctor.class, name = "doctor"),
-        @JsonSubTypes.Type(value = Patient.class, name = "patient")
+        @JsonSubTypes.Type(value = AdminEntity.class, name = "admin"),
+        @JsonSubTypes.Type(value = DoctorEntity.class, name = "doctor"),
+        @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
 public abstract class BasicUser {
     @Id
