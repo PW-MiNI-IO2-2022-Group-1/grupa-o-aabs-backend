@@ -24,4 +24,9 @@ public class VaccinationSlot {
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = Doctor.class)
     private Doctor doctor;
+
+    public VaccinationSlot(Doctor doctor, LocalDateTime date) {
+        this.doctor = doctor;
+        this.date = date;
+    }
 }

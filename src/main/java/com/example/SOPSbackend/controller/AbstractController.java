@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicController {
+public abstract class AbstractController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationException(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -22,38 +22,31 @@ public class BasicController {
             errors.put(field, message);
         }
 
-        return ResponseEntity.unprocessableEntity()
-                .body(new HashMap<String, Object>() {{
-                    put("success", false);
-                    put("data", errors);
-                }});
+        Map<String, Object> responseDict = Map.of("success", false, "data", errors);
+        return ResponseEntity.unprocessableEntity().body(responseDict);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Object> handleValidationException(HttpMessageNotReadableException ex) {
         if(ex.getCause() instanceof JsonMappingException) {
             var mappingEx = (JsonMappingException)ex.getCause();
-            return ResponseEntity.unprocessableEntity()
-                    .body(new HashMap<String, Object>() {{
-                        put("success", false);
-                        put("data", new HashMap<String, Object>() {{
-                            put(mappingEx.getPath().get(0).getFieldName(), "Invalid format");
-                        }});
-                    }});
+            var fieldName = mappingEx.getPath().get(0).getFieldName();
+
+            Map<String, Object> responseDict = Map.of(
+                    "success", false,
+                    "data", Map.of(fieldName, "Invalid format"));
+            return ResponseEntity.unprocessableEntity().body(responseDict);
         }
 
-        return ResponseEntity.unprocessableEntity()
-                .body(new HashMap<String, Object>() {{
-                    put("success", false);
-                }});
+        return ResponseEntity.unprocessableEntity().body(Map.of("success", false));
     }
 
     @ExceptionHandler(InternalValidationException.class)
     public ResponseEntity<Object> handleValidationException(InternalValidationException ex) {
-        return ResponseEntity.unprocessableEntity()
-                .body(new HashMap<String, Object>() {{
-                    put("success", false);
-                    if(ex.getErrors() != null)  put("data", ex.getErrors());
-                }});
+        Map<String, Object> responseDict = Map.of("success", false);
+        if(ex.getErrors() != null)
+            responseDict.put("data", ex.getErrors());
+
+        return ResponseEntity.unprocessableEntity().body(responseDict);
     }
 }
