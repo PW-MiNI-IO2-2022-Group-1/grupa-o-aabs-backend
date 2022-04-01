@@ -6,20 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Vaccine {
+public class VaccinationSlotEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime date;
 
-    @Column(nullable = false)
-    private String disease;
+    @JoinColumn(nullable = false)
+    @ManyToOne(targetEntity = DoctorEntity.class)
+    private DoctorEntity doctor;
 }

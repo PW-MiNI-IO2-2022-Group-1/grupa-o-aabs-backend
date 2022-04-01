@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Address {
+public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,7 +31,7 @@ public class Address {
     @Column()
     private String localNumber;
 
-    public Address(NewPatientRegistrationDto.Address address) {
+    public AddressEntity(NewPatientRegistrationDto.Address address) {
         city = address.getCity();
         zipCode = address.getZipCode();
         street = address.getStreet();

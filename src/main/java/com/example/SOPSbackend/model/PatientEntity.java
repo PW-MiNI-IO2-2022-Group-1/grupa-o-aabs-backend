@@ -20,7 +20,7 @@ public class PatientEntity extends BasicUser {
     private String pesel;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Address address;
+    private AddressEntity address;
 
     public PatientEntity(NewPatientRegistrationDto registration, PasswordEncoder passwordEncoder) {
         super(registration.getFirstName(),
@@ -28,7 +28,7 @@ public class PatientEntity extends BasicUser {
                 registration.getEmail(),
                 passwordEncoder.encode(registration.getPassword()));
         this.pesel = registration.getPesel();
-        this.address = new Address(registration.getAddress());
+        this.address = new AddressEntity(registration.getAddress());
     }
 
     @Override

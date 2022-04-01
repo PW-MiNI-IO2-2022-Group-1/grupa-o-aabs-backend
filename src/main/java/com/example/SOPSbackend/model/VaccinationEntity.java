@@ -12,18 +12,18 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Vaccination {
+public class VaccinationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = Vaccine.class, optional = false)
-    private Vaccination vaccine;
+    @ManyToOne(targetEntity = VaccineEntity.class, optional = false)
+    private VaccinationEntity vaccine;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = VaccinationSlot.class, optional = false)
-    private VaccinationSlot vaccinationSlot;
+    @ManyToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
+    private VaccinationSlotEntity vaccinationSlot;
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = PatientEntity.class)
