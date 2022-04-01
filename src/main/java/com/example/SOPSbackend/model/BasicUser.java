@@ -18,7 +18,15 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = DoctorEntity.class, name = "doctor"),
         @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
+@NoArgsConstructor
 public abstract class BasicUser {
+    public BasicUser(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +37,7 @@ public abstract class BasicUser {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // TODO: 01/04/2022 Filip , unique = true)
     private String email;
 
     @Column(nullable = false)

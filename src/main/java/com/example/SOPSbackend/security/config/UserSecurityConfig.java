@@ -38,17 +38,21 @@ public class UserSecurityConfig<T extends BasicUser> extends WebSecurityConfigur
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http
-            .antMatcher("/" + directory + "/**")
-            .authorizeRequests()
-            .anyRequest().authenticated()
-        .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-            .addFilter(createAuthenticationFilter())
-            .addFilter(createAuthorizationFilter())
-            .exceptionHandling()
-            .authenticationEntryPoint(new CustomUnauthorizedEntryPoint());
+                .authorizeRequests()
+                .antMatchers("/" + directory + "/hello")
+                .permitAll()
+            .and()
+                .antMatcher("/" + directory + "/**")
+                .authorizeRequests()
+                .anyRequest().authenticated()
+            .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+                .addFilter(createAuthenticationFilter())
+                .addFilter(createAuthorizationFilter())
+                .exceptionHandling()
+                .authenticationEntryPoint(new CustomUnauthorizedEntryPoint());
     }
 
     @Override
@@ -62,7 +66,7 @@ public class UserSecurityConfig<T extends BasicUser> extends WebSecurityConfigur
 
     private JsonObjectAuthenticationFilter createAuthenticationFilter() throws Exception {
         var authFilter = new JsonObjectAuthenticationFilter(objectMapper);
-        authFilter.setFilterProcessesUrl("/"+directory+"/login");
+        authFilter.setFilterProcessesUrl("/" + directory + "/login");
         authFilter.setUsernameParameter("email");
         authFilter.setAuthenticationSuccessHandler(successHandler);
         authFilter.setAuthenticationFailureHandler(failureHandler);
@@ -72,6 +76,6 @@ public class UserSecurityConfig<T extends BasicUser> extends WebSecurityConfigur
 
     public JwtAuthorizationFilter createAuthorizationFilter() throws Exception {
         return new JwtAuthorizationFilter(super.authenticationManager(),
-                                          userService, tokenSecret);
+                userService, tokenSecret);
     }
 }

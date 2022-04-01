@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.model;
 
+import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,5 +30,13 @@ public class Address {
 
     @Column()
     private String localNumber;
+
+    public Address(NewPatientRegistrationDto.Address address) {
+        city = address.getCity();
+        zipCode = address.getZipCode();
+        street = address.getStreet();
+        houseNumber = address.getHouseNumber();
+        localNumber = address.getLocalNumber();
+    }
 }
 

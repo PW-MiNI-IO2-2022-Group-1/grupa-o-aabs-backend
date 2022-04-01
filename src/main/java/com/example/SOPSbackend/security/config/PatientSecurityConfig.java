@@ -7,6 +7,7 @@ import com.example.SOPSbackend.security.RestAuthenticationSuccessHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -19,5 +20,11 @@ public class PatientSecurityConfig extends UserSecurityConfig<PatientEntity> {
                                  @Value("${jwt.secret}") String tokenSecret) {
         super("patient", passwordEncoder, userService, objectMapper, successHandler, failureHandler,
               tokenSecret);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/patient/registration").permitAll();
+        super.configure(http);
     }
 }
