@@ -8,5 +8,5 @@ import java.time.Instant;
 @Getter
 public class NewVaccinationSlotDto {
     @NotNull
-    Instant date;
+    private Instant date;
 }

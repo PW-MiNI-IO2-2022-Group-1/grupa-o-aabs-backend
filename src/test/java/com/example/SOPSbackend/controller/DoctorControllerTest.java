@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -50,7 +51,7 @@ class DoctorControllerTest {
     @Test
     public void createNewVaccinationSlot_shouldReturnErrorResponse_whenDateIsInvalid() throws Exception {
         performPostOnVaccinationSlots("{\"date\": \"data=february\"}").andExpectAll(
-            status().is(422),
+            status().is(HttpStatus.UNPROCESSABLE_ENTITY.value()),
             jsonPath("$.success").value(false),
             jsonPath("$.data.date").exists()
         );
@@ -60,7 +61,7 @@ class DoctorControllerTest {
     @Test
     public void createNewVaccinationSlot_shouldReturnErrorResponse_whenRequestBodyIsMalformed() throws Exception {
         performPostOnVaccinationSlots("json to nawet nie jest on").andExpectAll(
-            status().is(422),
+            status().is(HttpStatus.UNPROCESSABLE_ENTITY.value()),
             jsonPath("$.success").value(false)
         );
     }

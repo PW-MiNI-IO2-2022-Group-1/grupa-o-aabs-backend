@@ -9,33 +9,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 import javax.validation.Valid;
 import java.util.HashMap;
 
 @RestController
-public class DoctorController extends BasicController {
+@RequestMapping("doctor")
+public class DoctorController extends AbstractController {
     private final DoctorService doctorService;
 
     public DoctorController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctor/hello")
+    @GetMapping("hello")
     public ResponseEntity<String> hello() {
         return ResponseEntity.ok("hello");
     }
 
-    @PostMapping("/doctor/vaccination-slots")
+    @PostMapping("vaccination-slots")
     public ResponseEntity<Object> createNewVaccinationSlot(
             @RequestBody @Valid NewVaccinationSlotDto vaccinationSlot,
             @AuthenticationPrincipal DoctorEntity doctor) {
 
         doctorService.addVaccinationSlot(doctor, vaccinationSlot.getDate());
 
-        return ResponseEntity.ok()
-            .body(new HashMap<String, Object>(){{
-                put("success", true);
-            }});
+        return ResponseEntity.ok().body(Map.of("success", true));
     }
 }

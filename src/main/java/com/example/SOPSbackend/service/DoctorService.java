@@ -1,8 +1,8 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.exception.InternalValidationException;
-import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
+import com.example.SOPSbackend.model.VaccinationSlotEntity
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import org.springframework.stereotype.Service;
@@ -11,15 +11,18 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
+import java.util.Map;
+
 
 @Service
 public class DoctorService {
     private static final int NEW_SLOT_MIN_TIME_DIFF = 15;
-
+  
+    private final DoctorRepository doctorRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
 
     public DoctorService(DoctorRepository doctorRepository, VaccinationSlotRepository vaccinationSlotRepository) {
+        this.doctorRepository = doctorRepository;
         this.vaccinationSlotRepository = vaccinationSlotRepository;
     }
 
@@ -27,22 +30,20 @@ public class DoctorService {
         LocalDateTime transformedDate = transformVaccinationSlotDate(date);
 
         if(!isVaccinationSlotDateValid(transformedDate))
-            throw new InternalValidationException(new HashMap<>() {{
-                put("date", "Invalid date value");
-            }});
+            throw new InternalValidationException(Map.of("date", "Invalid date value"));
 
-        VaccinationSlotEntity newSlot = new VaccinationSlotEntity();
-        newSlot.setDoctor(doctor);
-        newSlot.setDate(transformedDate);
+        VaccinationSlotEntity newSlot = new VaccinationSlot(doctor, transformedDate);
         vaccinationSlotRepository.save(newSlot);
     }
 
     private LocalDateTime transformVaccinationSlotDate(Instant date) {
-        return LocalDateTime.ofInstant(date.truncatedTo(ChronoUnit.MINUTES), ZoneId.of("UTC"));
+        Instant truncatedDate = date.truncatedTo(ChronoUnit.MINUTES);
+        return LocalDateTime.ofInstant(truncatedDate, ZoneId.of("UTC"));
     }
 
     private boolean isVaccinationSlotDateValid(LocalDateTime slotDate) {
-        long minuteDifference = ChronoUnit.MINUTES.between(LocalDateTime.now(ZoneId.of("UTC")), slotDate);
+        LocalDateTime currentDate = LocalDateTime.now(ZoneId.of("UTC"));
+        long minuteDifference = ChronoUnit.MINUTES.between(currentDate, slotDate);
         return (minuteDifference >= NEW_SLOT_MIN_TIME_DIFF);
     }
 }
