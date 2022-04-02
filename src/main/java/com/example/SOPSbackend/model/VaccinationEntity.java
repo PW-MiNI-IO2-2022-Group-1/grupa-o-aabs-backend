@@ -12,14 +12,14 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Vaccination {
+public class VaccinationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = VaccineEntity.class, optional = false)
-    private Vaccination vaccine;
+    private VaccinationEntity vaccine;
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = VaccinationSlotEntity.class, optional = false)

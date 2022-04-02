@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,11 +14,19 @@ import javax.persistence.*;
 @Getter
 @Setter
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Admin.class, name = "admin"),
-        @JsonSubTypes.Type(value = Doctor.class, name = "doctor"),
-        @JsonSubTypes.Type(value = Patient.class, name = "patient")
+        @JsonSubTypes.Type(value = AdminEntity.class, name = "admin"),
+        @JsonSubTypes.Type(value = DoctorEntity.class, name = "doctor"),
+        @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
-public abstract class BasicUser {
+@NoArgsConstructor
+public abstract class BasicUserEntity {
+    public BasicUserEntity(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +37,7 @@ public abstract class BasicUser {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // TODO: 01/04/2022 Filip , unique = true)
     private String email;
 
     @Column(nullable = false)
