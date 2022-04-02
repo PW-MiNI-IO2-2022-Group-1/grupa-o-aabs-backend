@@ -1,8 +1,8 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.exception.InternalValidationException;
+import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
-import com.example.SOPSbackend.model.VaccinationSlotEntity
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class DoctorService {
         if(!isVaccinationSlotDateValid(transformedDate))
             throw new InternalValidationException(Map.of("date", "Invalid date value"));
 
-        VaccinationSlotEntity newSlot = new VaccinationSlot(doctor, transformedDate);
+        VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
         vaccinationSlotRepository.save(newSlot);
     }
 

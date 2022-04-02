@@ -19,8 +19,8 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
 @NoArgsConstructor
-public abstract class BasicUser {
-    public BasicUser(String firstName, String lastName, String email, String password) {
+public abstract class BasicUserEntity {
+    public BasicUserEntity(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

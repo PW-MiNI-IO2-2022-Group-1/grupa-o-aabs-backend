@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.security.config;
 
-import com.example.SOPSbackend.model.BasicUser;
+import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.response.CustomUnauthorizedEntryPoint;
 import com.example.SOPSbackend.security.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-public class UserSecurityConfig<T extends BasicUser> extends WebSecurityConfigurerAdapter {
+public class UserSecurityConfig<T extends BasicUserEntity> extends WebSecurityConfigurerAdapter {
     protected final String directory;
     protected final PasswordEncoder passwordEncoder;
     protected final BasicUserService<T> userService;

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PatientEntity extends BasicUser {
+public class PatientEntity extends BasicUserEntity {
     @Column(nullable = false)
     private String pesel;
 
