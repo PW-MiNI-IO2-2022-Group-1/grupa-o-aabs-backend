@@ -18,16 +18,16 @@ public class Vaccination {
     private Long id;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = VaccineEntity.class, optional = false)
+    @ManyToOne(targetEntity = Vaccine.class, optional = false)
     private Vaccination vaccine;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
-    private VaccinationSlotEntity vaccinationSlot;
+    @ManyToOne(targetEntity = VaccinationSlot.class, optional = false)
+    private VaccinationSlot vaccinationSlot;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = PatientEntity.class)
-    private PatientEntity patient;
+    @ManyToOne(targetEntity = Patient.class)
+    private Patient patient;
 
     @Column(nullable = false)
     private int status;

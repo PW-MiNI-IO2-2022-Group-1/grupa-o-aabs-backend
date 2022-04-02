@@ -9,11 +9,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DoctorEntity extends BasicUserEntity {
-    public DoctorEntity(String firstName, String lastName, String email, String password) {
-        super(firstName, lastName, email, password);
-    }
-
+public class Doctor extends BasicUser {
     @Override
     public Role getRole() {
         return Role.DOCTOR;

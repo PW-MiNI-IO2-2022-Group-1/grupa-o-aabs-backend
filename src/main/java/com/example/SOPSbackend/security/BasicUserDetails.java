@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.security;
 
-import com.example.SOPSbackend.model.BasicUserEntity;
+import com.example.SOPSbackend.model.BasicUser;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,9 +16,9 @@ public class BasicUserDetails implements UserDetails {
     private final String password;
     private final Role role;
 
-    private final BasicUserEntity user;
+    private final BasicUser user;
 
-    public BasicUserDetails(BasicUserEntity user) {
+    public BasicUserDetails(BasicUser user) {
         username = user.getEmail();
         password = user.getPassword();
         role = user.getRole();

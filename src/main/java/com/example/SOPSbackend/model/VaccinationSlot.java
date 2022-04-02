@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class VaccinationSlotEntity {
+public class VaccinationSlot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,10 +22,10 @@ public class VaccinationSlotEntity {
     private LocalDateTime date;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = DoctorEntity.class)
-    private DoctorEntity doctor;
+    @ManyToOne(targetEntity = Doctor.class)
+    private Doctor doctor;
 
-    public VaccinationSlotEntity(DoctorEntity doctor, LocalDateTime date) {
+    public VaccinationSlot(Doctor doctor, LocalDateTime date) {
         this.doctor = doctor;
         this.date = date;
     }

@@ -1,25 +1,33 @@
 package com.example.SOPSbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class VaccineEntity {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String city;
 
     @Column(nullable = false)
-    private String disease;
+    private String zipCode;
+
+    @Column(nullable = false)
+    private String street;
+
+    @Column(nullable = false)
+    private String houseNumber;
+
+    @Column()
+    private String localNumber;
 }
+

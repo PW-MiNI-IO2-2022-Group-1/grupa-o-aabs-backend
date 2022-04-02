@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.service;
 
-import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.Doctor;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class AdminService {
     }
 
     @Transactional
-    public DoctorEntity addDoctor(DoctorEntity doctor) {
+    public Doctor addDoctor(Doctor doctor) {
         if(doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent()) {
             throw new RuntimeException("Account already exists");
         }

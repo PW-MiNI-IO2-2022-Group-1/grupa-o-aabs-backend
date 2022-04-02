@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.security.config;
 
-import com.example.SOPSbackend.model.BasicUserEntity;
+import com.example.SOPSbackend.model.BasicUser;
 import com.example.SOPSbackend.response.CustomUnauthorizedEntryPoint;
 import com.example.SOPSbackend.security.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-public class UserSecurityConfig<T extends BasicUserEntity> extends WebSecurityConfigurerAdapter {
+public class UserSecurityConfig<T extends BasicUser> extends WebSecurityConfigurerAdapter {
     protected final String directory;
     protected final PasswordEncoder passwordEncoder;
     protected final BasicUserService<T> userService;
@@ -38,21 +38,17 @@ public class UserSecurityConfig<T extends BasicUserEntity> extends WebSecurityCo
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http
-                .authorizeRequests()
-                .antMatchers("/" + directory + "/hello")
-                .permitAll()
-            .and()
-                .antMatcher("/" + directory + "/**")
-                .authorizeRequests()
-                .anyRequest().authenticated()
-            .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-                .addFilter(createAuthenticationFilter())
-                .addFilter(createAuthorizationFilter())
-                .exceptionHandling()
-                .authenticationEntryPoint(new CustomUnauthorizedEntryPoint());
+            .antMatcher("/" + directory + "/**")
+            .authorizeRequests()
+            .anyRequest().authenticated()
+        .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+            .addFilter(createAuthenticationFilter())
+            .addFilter(createAuthorizationFilter())
+            .exceptionHandling()
+            .authenticationEntryPoint(new CustomUnauthorizedEntryPoint());
     }
 
     @Override
@@ -66,7 +62,7 @@ public class UserSecurityConfig<T extends BasicUserEntity> extends WebSecurityCo
 
     private JsonObjectAuthenticationFilter createAuthenticationFilter() throws Exception {
         var authFilter = new JsonObjectAuthenticationFilter(objectMapper);
-        authFilter.setFilterProcessesUrl("/" + directory + "/login");
+        authFilter.setFilterProcessesUrl("/"+directory+"/login");
         authFilter.setUsernameParameter("email");
         authFilter.setAuthenticationSuccessHandler(successHandler);
         authFilter.setAuthenticationFailureHandler(failureHandler);
@@ -76,6 +72,6 @@ public class UserSecurityConfig<T extends BasicUserEntity> extends WebSecurityCo
 
     public JwtAuthorizationFilter createAuthorizationFilter() throws Exception {
         return new JwtAuthorizationFilter(super.authenticationManager(),
-                userService, tokenSecret);
+                                          userService, tokenSecret);
     }
 }

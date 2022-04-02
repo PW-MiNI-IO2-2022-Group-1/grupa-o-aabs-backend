@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.security.config;
 
-import com.example.SOPSbackend.model.AdminEntity;
+import com.example.SOPSbackend.model.Admin;
 import com.example.SOPSbackend.security.BasicUserService;
 import com.example.SOPSbackend.security.RestAuthenticationFailureHandler;
 import com.example.SOPSbackend.security.RestAuthenticationSuccessHandler;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
-public class AdminSecurityConfig extends UserSecurityConfig<AdminEntity> {
-    public AdminSecurityConfig(PasswordEncoder passwordEncoder, BasicUserService<AdminEntity> userService,
+public class AdminSecurityConfig extends UserSecurityConfig<Admin> {
+    public AdminSecurityConfig(PasswordEncoder passwordEncoder, BasicUserService<Admin> userService,
                                ObjectMapper objectMapper, RestAuthenticationSuccessHandler successHandler,
                                RestAuthenticationFailureHandler failureHandler,
                                @Value("${jwt.secret}") String tokenSecret) {
