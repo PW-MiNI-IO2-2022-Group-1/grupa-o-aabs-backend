@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(path="patient")
-public class PatientController extends BasicController {
+public class PatientController extends AbstractController {
     private final PatientService patientService;
 
     public PatientController(PatientService patientService) {
