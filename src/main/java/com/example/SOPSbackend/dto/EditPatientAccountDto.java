@@ -1,12 +1,17 @@
 package com.example.SOPSbackend.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class EditPatientAccountDto {
     @NotBlank(message = "Required field is empty")
     private String firstName;
@@ -18,6 +23,5 @@ public class EditPatientAccountDto {
     private String password;
 
     @NotNull(message = "Required field is empty")
-    @Valid
     private AddressDto address;
 }

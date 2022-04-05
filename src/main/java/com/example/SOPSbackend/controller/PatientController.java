@@ -43,7 +43,6 @@ public class PatientController extends BasicController {
     public ResponseEntity<Object> editAccount(@RequestBody @Valid EditPatientAccountDto newData,
                                               @AuthenticationPrincipal BasicUserDetails authPrincipal) {
         PatientEntity patient = (PatientEntity)authPrincipal.getUser();
-        patientService.editAccount(patient, newData);
-        return ResponseEntity.ok(patient);
+        return ResponseEntity.ok(patientService.editAccount(patient, newData));
     }
 }

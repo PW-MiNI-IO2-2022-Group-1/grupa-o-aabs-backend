@@ -35,9 +35,9 @@ public class PatientService {
         return patientRepository.findByPesel(pesel).isPresent();
     }
 
-    public PatientEntity editAccount(PatientEntity patient, EditPatientAccountDto newData) {
-        patient.update(newData, passwordEncoder);
-        patientRepository.save(patient);
-        return patient;
+    public PatientEntity editAccount(PatientEntity patient, EditPatientAccountDto editedData) {
+        PatientEntity patientToEdit = patientRepository.findById(patient.getId()).get();
+        patientToEdit.update(editedData, passwordEncoder);
+        return patientRepository.save(patientToEdit);
     }
 }
