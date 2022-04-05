@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.model;
 
+import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.security.Role;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -34,5 +35,12 @@ public class PatientEntity extends BasicUserEntity {
     @Override
     public Role getRole() {
         return Role.PATIENT;
+    }
+
+    public void update(EditPatientAccountDto data, PasswordEncoder passwordEncoder) {
+        firstName = data.getFirstName();
+        lastName = data.getLastName();
+        password = passwordEncoder.encode(data.getPassword());
+        address = new AddressEntity(data.getAddress());
     }
 }
