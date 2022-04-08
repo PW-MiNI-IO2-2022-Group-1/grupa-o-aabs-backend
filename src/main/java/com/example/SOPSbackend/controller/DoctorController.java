@@ -58,12 +58,13 @@ public class DoctorController extends AbstractController {
                         "totalPages", slots.getTotalPages(),
                         "currentRecords", doctorService.ITEMS_PER_PAGE,
                         "totalRecords", slots.getTotalElements()
-                ))
-                /*"data", slots.get().map(
+                ),
+                "data", slots.get().map(
                         slot -> Map.of(
-                                "id", slot.getId()
-                        ))*/
-                )
+                                "id", slot.getId(),
+                                "date", slot.getDate()
+                        ))
+                ));
     }
 
     @DeleteMapping("vaccination-slots/{id}")
