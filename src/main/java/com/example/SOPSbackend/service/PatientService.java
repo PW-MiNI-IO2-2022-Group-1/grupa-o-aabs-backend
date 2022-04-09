@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.service;
 
+import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
@@ -32,5 +33,11 @@ public class PatientService {
 
     private boolean checkIfUserExistByPesel(String pesel) {
         return patientRepository.findByPesel(pesel).isPresent();
+    }
+
+    public PatientEntity editAccount(PatientEntity patient, EditPatientAccountDto editedData) {
+        PatientEntity patientToEdit = patientRepository.findById(patient.getId()).get();
+        patientToEdit.update(editedData, passwordEncoder);
+        return patientRepository.save(patientToEdit);
     }
 }
