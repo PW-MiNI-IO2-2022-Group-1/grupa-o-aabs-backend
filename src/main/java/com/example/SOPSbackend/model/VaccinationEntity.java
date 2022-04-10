@@ -19,10 +19,10 @@ public class VaccinationEntity {
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = VaccineEntity.class, optional = false)
-    private VaccinationEntity vaccine;
+    private VaccineEntity vaccine;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
+    @OneToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
     private VaccinationSlotEntity vaccinationSlot;
 
     @JoinColumn(nullable = false)
