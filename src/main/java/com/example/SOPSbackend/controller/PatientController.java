@@ -35,8 +35,8 @@ public class PatientController extends BasicController {
         }
     }
 
-    @GetMapping("vaccines")
-    public ResponseEntity<List<VaccineEntity>> getVaccines(@RequestParam(required = false) List<String> diseases) {
+    @GetMapping("vaccines") //TODO: dodać validation error. W tym zrobić jakiegoś enuma na rodzaje chorób.
+    public ResponseEntity<List<VaccineEntity>> getVaccines(@RequestParam List<String> diseases) {
         return ResponseEntity.ok().body(patientService.getVaccines(diseases));
     }
 
@@ -45,8 +45,8 @@ public class PatientController extends BasicController {
         return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots());
     }
 
-    @PutMapping("vaccination-slots/{vaccinationSlotId}")
+    @GetMapping("vaccination-slots/{vaccinationSlotId}")
     public ResponseEntity<Object> reserveVaccinationSlot(@RequestParam long vaccinationSlotId, @RequestBody long vaccineId) {
-
+        return null;
     }
 }

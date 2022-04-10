@@ -3,9 +3,11 @@ package com.example.SOPSbackend.service;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
+import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.VaccineRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,12 +22,14 @@ public class PatientService {
     private final PasswordEncoder passwordEncoder;
     private final VaccineRepository vaccineRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
+    private final VaccinationRepository vaccinationRepository;
 
-    public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder, VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository) {
+    public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder, VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository, VaccinationRepository vaccinationRepository) {
         this.patientRepository = patientRepository;
         this.passwordEncoder = passwordEncoder;
         this.vaccineRepository = vaccineRepository;
         this.vaccinationSlotRepository = vaccinationSlotRepository;
+        this.vaccinationRepository = vaccinationRepository;
     }
 
     public PatientEntity register(NewPatientRegistrationDto registration) throws UserAlreadyExistException {
@@ -43,7 +47,7 @@ public class PatientService {
 
     public List<VaccinationSlotEntity> getAvailableVaccinationSlots()
     {
-        return vaccinationSlotRepository.findAll();
+        return vaccinationSlotRepository.findAvailableSlots();
     }
 
     public void reserveVaccinationSlot(long vaccineId, long vaccinationSlotId) {
