@@ -2,7 +2,7 @@ package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
 import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.model.VaccinationSlotEntity;
+import com.example.SOPSbackend.model.converter.VaccinationSlotStatus;
 import com.example.SOPSbackend.service.DoctorService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Map;
 
-import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("doctor")
@@ -51,19 +49,50 @@ public class DoctorController extends AbstractController {
             @RequestParam(value = "onlyReserved", required = false) String onlyReserved,
             @RequestParam(value = "page", required = false) int page,
             @AuthenticationPrincipal DoctorEntity doctor){
-        Page<VaccinationSlotEntity> slots = doctorService.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
+        Page<VaccinationSlotStatus> slots = doctorService.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
+        var freeSlotsMap = slots.get().map(
+                slot -> {
+                    var hm = new HashMap<String, Object>();
+                    var v = slot.getVaccination();
+                    var patient = v.getPatient();
+                    var address = patient.getAddress();
+                    hm.put("id", slot.getId());
+                    hm.put("date", slot.getDate());
+                    hm.put("vaccination", v == null? null : Map.of(
+                            "id", v.getId(),
+                            "vaccine", Map.of(
+                                    "id", v.getVaccine().getId(),
+                                    "name", v.getVaccine().getName(),
+                                    "disease", v.getVaccine().getDisease(),
+                                    "requiredDoses", v.getVaccine().getRequiredDoses()
+                            ),
+                            "status", v.getStatus(),
+                            "patient", Map.of(
+                                    "id", patient.getId(),
+                                    "firstName", patient.getFirstName(),
+                                    "lastName", patient.getLastName(),
+                                    "pesel", patient.getPesel(),
+                                    "email", patient.getEmail(),
+                                    "address", Map.of(
+                                            "id", address.getId(),
+                                            "city", address.getCity(),
+                                            "zipCode", address.getZipCode(),
+                                            "street", address.getStreet(),
+                                            "houseNumber", address.getHouseNumber(),
+                                            "localNumber", address.getLocalNumber()
+                                    )
+                            )
+                    ));
+                    return hm;
+                }).toArray();
         return ResponseEntity.ok().body(Map.of(
                 "pagination", Map.of(
                         "currentPage", page,
                         "totalPages", slots.getTotalPages(),
-                        "currentRecords", doctorService.ITEMS_PER_PAGE,
+                        "currentRecords", slots.getNumberOfElements(),
                         "totalRecords", slots.getTotalElements()
                 ),
-                "data", slots.get().map(
-                        slot -> Map.of(
-                                "id", slot.getId(),
-                                "date", slot.getDate()
-                        ))
+                "data", freeSlotsMap
                 ));
     }
 

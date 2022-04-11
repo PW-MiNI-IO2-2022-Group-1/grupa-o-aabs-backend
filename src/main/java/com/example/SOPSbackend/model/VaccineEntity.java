@@ -22,4 +22,7 @@ public class VaccineEntity {
 
     @Column(nullable = false)
     private String disease;
+
+    @Column(nullable = false)
+    private int requiredDoses;
 }

@@ -4,10 +4,10 @@ import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.Vaccination;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
+import com.example.SOPSbackend.model.converter.VaccinationSlotStatus;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
-import com.example.SOPSbackend.repository.filters.SearchCriteria;
-import com.example.SOPSbackend.repository.filters.VaccinationSlotEntitySpecification;
+import com.example.SOPSbackend.repository.filters.ReportRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +25,7 @@ import java.util.Map;
 @Service
 public class DoctorService {
     private static final int NEW_SLOT_MIN_TIME_DIFF = 15;
-    public static final int ITEMS_PER_PAGE = 30;
+    private static final int ITEMS_PER_PAGE = 30;
     private final DoctorRepository doctorRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
 
@@ -45,27 +45,13 @@ public class DoctorService {
     }
 
     public void deleteVaccinationSlot(DoctorEntity doctor, Long id){
-        vaccinationSlotRepository.deleteById(id);
+        vaccinationSlotRepository.deleteByIdAndDoctor(id, doctor);
     }
 
-    public Page<VaccinationSlotEntity> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
+    public Page<VaccinationSlotStatus> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
         Pageable thisPage = PageRequest.of(page, ITEMS_PER_PAGE, Sort.by("date"));
-        VaccinationSlotEntitySpecification reserved = new VaccinationSlotEntitySpecification(
-                new SearchCriteria("vaccination", "!", onlyReserved));
-        Specification<VaccinationSlotEntity> mySpec = Specification.where(reserved);
-
-        if(startDate == null) {
-            startDate = Instant.now().toString();
-        }
-        VaccinationSlotEntitySpecification dateLowerBound = new VaccinationSlotEntitySpecification(
-                new SearchCriteria("date", ">", startDate));
-        mySpec = mySpec.and(dateLowerBound);
-        if(endDate != null) {
-            VaccinationSlotEntitySpecification dateUpperBound = new VaccinationSlotEntitySpecification(
-                    new SearchCriteria("date", "<", endDate));
-            mySpec = mySpec.and(dateUpperBound);
-        } // SELECT id, date, vaccination FROM Vaccination v, VaccinationSlot vs WHERE v.vacciationSlot = vs
-        return vaccinationSlotRepository.findAll(mySpec, thisPage);
+        var rr = new ReportRepository();
+        return rr.find(doctor, onlyReserved, startDate, endDate, thisPage);
     }
 
     private LocalDateTime transformVaccinationSlotDate(Instant date) {
