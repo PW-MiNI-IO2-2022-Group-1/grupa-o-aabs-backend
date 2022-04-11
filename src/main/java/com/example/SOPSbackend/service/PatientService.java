@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
+import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccinationEntity;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class PatientService {
@@ -50,8 +53,29 @@ public class PatientService {
         return vaccinationSlotRepository.findAvailableSlots();
     }
 
-    public void reserveVaccinationSlot(long vaccineId, long vaccinationSlotId) {
+    public void reserveVaccinationSlot(long vaccineId, long vaccinationSlotId, PatientEntity patient) throws AlreadyReservedException {
+        Optional<VaccineEntity> vaccine = vaccineRepository.findById(vaccineId);
+        Optional<VaccinationSlotEntity> vaccinationSlot = vaccinationSlotRepository.findById(vaccinationSlotId);
 
+        if (!vaccine.isPresent()) {
+            throw new NoSuchElementException("Vaccine not found");
+        }
+
+        if (!vaccinationSlot.isPresent()) {
+            throw new NoSuchElementException("Vaccination slot not found");
+        }
+
+        VaccinationEntity vaccination = vaccinationRepository.findByVaccinationSlot(vaccinationSlot.get());
+
+        if (vaccination != null) {
+            throw new AlreadyReservedException("Vaccination slot is already reserved.");
+        }
+
+        vaccinationRepository.save(new VaccinationEntity(
+                patient,
+                vaccine.get(),
+                vaccinationSlot.get()
+        ));
     }
 
     private boolean checkIfUserExistByEmail(String email) {

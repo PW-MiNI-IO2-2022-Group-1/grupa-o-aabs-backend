@@ -1,16 +1,22 @@
 package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
+import com.example.SOPSbackend.dto.VaccineIdDto;
+import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
+import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
 import com.example.SOPSbackend.service.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path="patient")
@@ -36,17 +42,31 @@ public class PatientController extends BasicController {
     }
 
     @GetMapping("vaccines") //TODO: dodać validation error. W tym zrobić jakiegoś enuma na rodzaje chorób.
+    @Secured({"ROLE_PATIENT"})
     public ResponseEntity<List<VaccineEntity>> getVaccines(@RequestParam List<String> diseases) {
         return ResponseEntity.ok().body(patientService.getVaccines(diseases));
     }
 
     @GetMapping("vaccination-slots")
+    @Secured({"ROLE_PATIENT"})
     public ResponseEntity<List<VaccinationSlotEntity>>  getAvailableVaccinationSlots() {
         return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots());
     }
 
-    @GetMapping("vaccination-slots/{vaccinationSlotId}")
-    public ResponseEntity<Object> reserveVaccinationSlot(@RequestParam long vaccinationSlotId, @RequestBody long vaccineId) {
-        return null;
+    @PutMapping("vaccination-slots/{vaccinationSlotId}")
+    @Secured({"ROLE_PATIENT"})
+    public ResponseEntity<Object> reserveVaccinationSlot(
+            @PathVariable long vaccinationSlotId,
+            @RequestBody VaccineIdDto vaccineId,
+            @AuthenticationPrincipal PatientEntity patient
+    ) {
+        try {
+            patientService.reserveVaccinationSlot(vaccineId.getVaccineId(), vaccinationSlotId, patient);
+            return ResponseEntity.ok().body(Map.of("success", true));
+        } catch (AlreadyReservedException e) {
+            return ResponseEntity.status(409).body(Map.of("success", false, "msg", e.getMessage()));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(404).body(Map.of("success", false, "msg", e.getMessage()));
+        }
     }
 }

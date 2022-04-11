@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -31,4 +32,11 @@ public class VaccinationEntity {
 
     @Column(nullable = false)
     private int status;
+
+    public VaccinationEntity(PatientEntity patient, VaccineEntity vaccine, VaccinationSlotEntity vaccinationSlot) {
+        this.patient = patient;
+        this.vaccine = vaccine;
+        this.vaccinationSlot = vaccinationSlot;
+        this.status = 1;
+    }
 }
