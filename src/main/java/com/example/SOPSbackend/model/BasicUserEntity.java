@@ -29,20 +29,20 @@ public abstract class BasicUserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    protected String firstName;
 
     @Column(nullable = false)
-    private String lastName;
+    protected String lastName;
 
     @Column(nullable = false) // TODO: 01/04/2022 Filip , unique = true)
-    private String email;
+    protected String email;
 
     @Column(nullable = false)
     @Getter(AccessLevel.NONE)
-    private String password;
+    protected String password;
 
     @JsonIgnore
     public String getPassword() {

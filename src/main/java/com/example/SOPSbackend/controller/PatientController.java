@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.controller;
 
+import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.dto.VaccineIdDto;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
@@ -20,7 +21,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path="patient")
-public class PatientController extends BasicController {
+public class PatientController extends AbstractController {
     private final PatientService patientService;
 
     public PatientController(PatientService patientService) {
@@ -68,5 +69,13 @@ public class PatientController extends BasicController {
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("success", false, "msg", e.getMessage()));
         }
+    }
+
+    @PutMapping("account")
+    @Secured({"ROLE_PATIENT"})
+    public ResponseEntity<Object> editAccount(@RequestBody @Valid EditPatientAccountDto newData,
+                                              @AuthenticationPrincipal BasicUserDetails authPrincipal) {
+        PatientEntity patient = (PatientEntity)authPrincipal.getUser();
+        return ResponseEntity.ok(patientService.editAccount(patient, newData));
     }
 }
