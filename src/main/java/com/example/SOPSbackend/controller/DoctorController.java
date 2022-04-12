@@ -2,6 +2,7 @@ package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.converter.VaccinationSlotStatus;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.DoctorService;
@@ -11,6 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import java.util.HashMap;
@@ -45,16 +47,18 @@ public class DoctorController extends AbstractController {
             @RequestParam(value = "endDate", required = false) String endDate,
             @RequestParam(value = "onlyReserved", required = false) String onlyReserved,
             @RequestParam(value = "page", required = false) int page,
-            @AuthenticationPrincipal DoctorEntity doctor){
+            @AuthenticationPrincipal BasicUserDetails authPrincipal){
+        DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
         Page<VaccinationSlotStatus> slots = doctorService.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
         var freeSlotsMap = slots.get().map(
                 slot -> {
                     var hm = new HashMap<String, Object>();
                     var v = slot.getVaccination();
-                    var patient = v.getPatient();
-                    var address = patient.getAddress();
-                    hm.put("id", slot.getId());
-                    hm.put("date", slot.getDate());
+                    var patient = v == null? null : v.getPatient();
+                    var address = patient == null? null : patient.getAddress();
+                    hm.put("id", slot.getVaccinationSlot().getId());
+                    hm.put("date", slot.getVaccinationSlot().getDate()
+                            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z");
                     hm.put("vaccination", v == null? null : Map.of(
                             "id", v.getId(),
                             "vaccine", Map.of(
@@ -96,8 +100,8 @@ public class DoctorController extends AbstractController {
     @DeleteMapping("vaccination-slots/{id}")
     public ResponseEntity<Object> deletePost(
             @PathVariable Long id,
-            @AuthenticationPrincipal DoctorEntity doctor) {
-
+            @AuthenticationPrincipal BasicUserDetails authPrincipal) {
+        DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
         doctorService.deleteVaccinationSlot(doctor, id);
 
         return ResponseEntity.ok().body(Map.of("success",true));
