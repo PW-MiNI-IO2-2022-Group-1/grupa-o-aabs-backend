@@ -57,16 +57,15 @@ public class PatientController extends AbstractController {
 
     @GetMapping("vaccines")
     @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<Object> getVaccines(@RequestParam(name="diseases") String diseasesList) {
-        List<String> diseases = Arrays.stream(diseasesList.split(",")).collect(toList());
-        for (String disease : diseases) {
+    public ResponseEntity<Object> getVaccines(@RequestParam(name="disease") List<String> diseasesList) {
+        for (String disease : diseasesList) {
             if (!VaccineEntity.Disease.isInEnum(disease)) {
                 return ResponseEntity.status(422).body(Map.of("success", false,
                         "data", Map.of("diseases", disease + " is not valid disease name. Try: " +
                                 VaccineEntity.Disease.collectedLabels())));
             }
         }
-        return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseases)));
+        return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseasesList)));
     }
 
     @GetMapping("vaccination-slots")
