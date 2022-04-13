@@ -28,7 +28,9 @@ public class PatientService {
     private final VaccinationSlotRepository vaccinationSlotRepository;
     private final VaccinationRepository vaccinationRepository;
 
-    public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder, VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository, VaccinationRepository vaccinationRepository) {
+    public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder,
+                          VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository,
+                          VaccinationRepository vaccinationRepository) {
         this.patientRepository = patientRepository;
         this.passwordEncoder = passwordEncoder;
         this.vaccineRepository = vaccineRepository;
@@ -37,9 +39,9 @@ public class PatientService {
     }
 
     public PatientEntity register(NewPatientRegistrationDto registration) throws UserAlreadyExistException {
-        if(checkIfUserExistByPesel(registration.getPesel()))
+        if (checkIfUserExistByPesel(registration.getPesel()))
             throw new UserAlreadyExistException("User already exists for this pesel");
-        if(checkIfUserExistByEmail(registration.getEmail()))
+        if (checkIfUserExistByEmail(registration.getEmail()))
             throw new UserAlreadyExistException("User already exists for this email");
 
         return patientRepository.save(new PatientEntity(registration, passwordEncoder));
@@ -49,8 +51,7 @@ public class PatientService {
         return vaccineRepository.findByDiseaseIn(diseases);
     }
 
-    public List<VaccinationSlotEntity> getAvailableVaccinationSlots()
-    {
+    public List<VaccinationSlotEntity> getAvailableVaccinationSlots() {
         return vaccinationSlotRepository.findAvailableSlots();
     }
 

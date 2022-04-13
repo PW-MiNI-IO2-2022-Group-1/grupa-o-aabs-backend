@@ -3,6 +3,9 @@ package com.example.SOPSbackend.service;
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.repository.VaccinationRepository;
+import com.example.SOPSbackend.repository.VaccinationSlotRepository;
+import com.example.SOPSbackend.repository.VaccineRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,12 +17,20 @@ class PatientServiceTest {
     PasswordEncoder passwordEncoder;
     PatientRepository patientRepository;
     PatientService patientService;
+    VaccineRepository vaccineRepository;
+    VaccinationRepository vaccinationRepository;
+    VaccinationSlotRepository vaccinationSlotRepository;
+
 
     @BeforeEach
     public void setUp() {
        patientRepository = Mockito.mock(PatientRepository.class);
        passwordEncoder = Mockito.mock(PasswordEncoder.class);
-       patientService = new PatientService(patientRepository, passwordEncoder);
+       vaccineRepository = Mockito.mock(VaccineRepository.class);
+       vaccinationRepository = Mockito.mock(VaccinationRepository.class);
+       vaccinationSlotRepository = Mockito.mock(VaccinationSlotRepository.class);
+       patientService = new PatientService(patientRepository, passwordEncoder,
+               vaccineRepository, vaccinationSlotRepository, vaccinationRepository);
     }
 
     @Test
