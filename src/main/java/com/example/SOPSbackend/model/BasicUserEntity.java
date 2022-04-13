@@ -44,7 +44,6 @@ public abstract class BasicUserEntity {
     @Getter(AccessLevel.NONE)
     protected String password;
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
