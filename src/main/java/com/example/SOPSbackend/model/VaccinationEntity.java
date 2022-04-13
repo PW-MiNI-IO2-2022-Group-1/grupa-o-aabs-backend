@@ -31,12 +31,24 @@ public class VaccinationEntity {
     private PatientEntity patient;
 
     @Column(nullable = false)
-    private int status;
+    private String status;
 
     public VaccinationEntity(PatientEntity patient, VaccineEntity vaccine, VaccinationSlotEntity vaccinationSlot) {
         this.patient = patient;
         this.vaccine = vaccine;
         this.vaccinationSlot = vaccinationSlot;
-        this.status = 1;
+        this.status = Status.PLANNED.label;
+    }
+
+    public enum Status {
+        PLANNED("Planned"),
+        CANCELED("Canceled"),
+        COMPLETED("Completed");
+
+        public final String label;
+
+        private Status(String label) {
+            this.label = label;
+        }
     }
 }
