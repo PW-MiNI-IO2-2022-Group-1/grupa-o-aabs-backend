@@ -9,7 +9,7 @@ import java.util.List;
 public interface VaccinationSlotRepository extends JpaRepository<VaccinationSlotEntity, Long> {
 
     @Query("select s from VaccinationSlotEntity s " +
-            "left join VaccinationEntity v on s.id = v.vaccinationSlot " +
+            "left join VaccinationEntity v on s.id = v.vaccinationSlot.id " +
             "WHERE v.vaccinationSlot is null")
     public List<VaccinationSlotEntity> findAvailableSlots();
 }
