@@ -17,9 +17,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+
+import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping(path = "patient")
@@ -54,7 +57,8 @@ public class PatientController extends AbstractController {
 
     @GetMapping("vaccines")
     @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<Object> getVaccines(@RequestParam List<String> diseases) {
+    public ResponseEntity<Object> getVaccines(@RequestParam(name="diseases") String diseasesList) {
+        List<String> diseases = Arrays.stream(diseasesList.split(",")).collect(toList());
         for (String disease : diseases) {
             if (!VaccineEntity.Disease.isInEnum(disease)) {
                 return ResponseEntity.status(422).body(Map.of("success", false,
@@ -62,7 +66,7 @@ public class PatientController extends AbstractController {
                                 VaccineEntity.Disease.collectedLabels())));
             }
         }
-        return ResponseEntity.ok().body(patientService.getVaccines(diseases));
+        return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseases)));
     }
 
     @GetMapping("vaccination-slots")
