@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -53,11 +52,11 @@ public class VaccineEntity {
             return BY_LABEL.get(label);
         }
 
-        public static boolean isInEnum(String label) {
+        public static boolean isValidDiseaseName(String label) {
             return valueOfLabel(label) != null;
         }
 
-        public static String collectedLabels() {
+        public static String getValidDiseaseNames() {
             return BY_LABEL.keySet().stream().collect(Collectors.joining(","));
         }
     }

@@ -23,9 +23,10 @@ public class AdminService {
     @Transactional
     public DoctorEntity addDoctor(NewDoctorDto doctor) throws UserAlreadyExistException {
 
-        if(doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
+        if (doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
             throw new UserAlreadyExistException("User already exists for this email");
 
-        return doctorRepository.save(new DoctorEntity(doctor.getFirstName(), doctor.getLastName(), doctor.getEmail(), encoder.encode(doctor.getPassword())));
+        return doctorRepository.save(new DoctorEntity(doctor.getFirstName(), doctor.getLastName(),
+                doctor.getEmail(), encoder.encode(doctor.getPassword())));
     }
 }

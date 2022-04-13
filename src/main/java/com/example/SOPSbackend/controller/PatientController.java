@@ -17,12 +17,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-
-import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping(path = "patient")
@@ -59,10 +56,10 @@ public class PatientController extends AbstractController {
     @Secured({"ROLE_PATIENT"})
     public ResponseEntity<Object> getVaccines(@RequestParam(name="disease") List<String> diseasesList) {
         for (String disease : diseasesList) {
-            if (!VaccineEntity.Disease.isInEnum(disease)) {
-                return ResponseEntity.status(422).body(Map.of("success", false,
+            if (!VaccineEntity.Disease.isValidDiseaseName(disease)) {
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(Map.of("success", false,
                         "data", Map.of("diseases", disease + " is not valid disease name. Try: " +
-                                VaccineEntity.Disease.collectedLabels())));
+                                VaccineEntity.Disease.getValidDiseaseNames())));
             }
         }
         return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseasesList)));
@@ -86,9 +83,9 @@ public class PatientController extends AbstractController {
             patientService.reserveVaccinationSlot(vaccineId.getVaccineId(), vaccinationSlotId, patient);
             return ResponseEntity.ok().body(Map.of("success", true));
         } catch (AlreadyReservedException e) {
-            return ResponseEntity.status(409).body(Map.of("success", false, "msg", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false, "msg", e.getMessage()));
         } catch (NoSuchElementException e) {
-            return ResponseEntity.status(404).body(Map.of("success", false, "msg", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("success", false, "msg", e.getMessage()));
         }
     }
 }
