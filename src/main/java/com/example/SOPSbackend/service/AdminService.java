@@ -5,6 +5,7 @@ import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ import java.util.Optional;
  */
 @Service
 @Transactional
+@Secured({"ROLE_ADMIN"}) //TODO: check if that prevents other users from using these requests
 public class AdminService {
     private static final int ITEMS_PER_PAGE = 10;
     private final DoctorRepository doctorRepository;
