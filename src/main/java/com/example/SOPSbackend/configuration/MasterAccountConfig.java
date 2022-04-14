@@ -7,25 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/**
- * This will be run at the beginning the Spring Boot application
- * (because it's an {@link InitializingBean}). This adds an admin
- * account to the database. The adminEmail and adminPassword
- * are taken from the application.properties file.
- */
 @Component
 public class MasterAccountConfig implements InitializingBean {
     private final AdminRepository adminRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    private final String adminEmail;
-    private final String adminEncodedPassword;
+    private String adminEmail;
+    private String adminPassword;
 
     public MasterAccountConfig(AdminRepository adminRepository, PasswordEncoder passwordEncoder,
                                @Value("${admin.email}") String adminEmail,
                                @Value("${admin.password}") String adminPassword) {
         this.adminRepository = adminRepository;
+        this.passwordEncoder = passwordEncoder;
         this.adminEmail = adminEmail;
-        this.adminEncodedPassword = passwordEncoder.encode(adminPassword);
+        this.adminPassword = adminPassword;
     }
 
     @Override
@@ -35,8 +31,9 @@ public class MasterAccountConfig implements InitializingBean {
             admin.setFirstName("test");
             admin.setLastName("test");
             admin.setEmail(adminEmail);
-            admin.setPassword(adminEncodedPassword);
+            admin.setPassword(passwordEncoder.encode(adminPassword));
             adminRepository.save(admin);
+            adminPassword = null;
         }
     }
 }
