@@ -2,6 +2,7 @@ package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.BasicUserWithoutPasswordDto;
 import com.example.SOPSbackend.dto.EditDoctorDto;
+import com.example.SOPSbackend.dto.EditPatientDto;
 import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
@@ -52,6 +53,15 @@ public class AdminController {
     public ResponseEntity<Object> editDoctor(@PathVariable String doctorId, @RequestBody EditDoctorDto editDoctor) {
         try {
             return new BasicUserOkResponse(adminService.updateDoctor(doctorId, editDoctor));
+        } catch (EntityNotFoundException e) {
+            return new NotFoundResponse();
+        }
+    }
+
+    @PutMapping("patients/{patientId}")
+    public ResponseEntity<Object> editPatient(@PathVariable String patientId, @RequestBody EditPatientDto editPatient) {
+        try {
+            return new BasicUserOkResponse(adminService.updatePatient(patientId, editPatient));
         } catch (EntityNotFoundException e) {
             return new NotFoundResponse();
         }

@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EditPatientAccountDto extends EditPatientDto {
-    @NotBlank(message = "Required field is empty")
-    private String password;
+public class EditPatientDto extends EditDoctorDto {
+    @NotNull(message = "Required field is empty")
+    private AddressDto address;
 }

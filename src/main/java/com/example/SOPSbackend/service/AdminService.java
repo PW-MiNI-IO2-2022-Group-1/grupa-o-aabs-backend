@@ -1,6 +1,9 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditDoctorDto;
+import com.example.SOPSbackend.dto.EditPatientDto;
+import com.example.SOPSbackend.model.AddressEntity;
+import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
@@ -55,7 +58,7 @@ public class AdminService {
     }
 
     public DoctorEntity addDoctor(DoctorEntity doctor) {
-        if(doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
+        if (doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
             throw new RuntimeException("Account already exists"); // TODO: (see https://stackoverflow.com/a/36851768) current implementation makes us return 500, which is not what we want (should be 409 or other). Either find a way to choose the http error code or deal with this higher in the callstack
 
         var hashedPass = encoder.encode(doctor.getPassword());
@@ -66,12 +69,19 @@ public class AdminService {
     /**
      * Exception will be thrown if doctor with such doctorId is non-existent.
      */
-    public DoctorEntity updateDoctor(String doctorId, EditDoctorDto doctorUpdate) {
+    public DoctorEntity updateDoctor(String doctorId, EditDoctorDto editDoctor) {
         DoctorEntity doctor = doctorRepository.getById(Long.valueOf(doctorId));
-        doctor.setFirstName(doctorUpdate.getFirstName());
-        doctor.setLastName(doctorUpdate.getLastName());
-        doctor.setEmail(doctorUpdate.getEmail());
+        doctor.setFirstName(editDoctor.getFirstName());
+        doctor.setLastName(editDoctor.getLastName());
+        doctor.setEmail(editDoctor.getEmail());
         return doctor;
+    }
+
+    /**
+     * Exception will be thrown if patient with such patientId is non-existent.
+     */
+    public BasicUserEntity updatePatient(String patientId, EditPatientDto editPatient) {
+        return patientRepository.getById(Long.valueOf(patientId)).update(editPatient);
     }
 
     public Optional<DoctorEntity> getDoctor(Long doctorId) {

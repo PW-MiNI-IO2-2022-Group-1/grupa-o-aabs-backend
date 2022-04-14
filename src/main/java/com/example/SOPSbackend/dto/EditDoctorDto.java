@@ -1,18 +1,14 @@
 package com.example.SOPSbackend.dto;
 
-import com.example.SOPSbackend.model.BasicUserEntity;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class EditDoctorDto {
-    private final String firstName, lastName, email;
-
-    @JsonCreator
-    public EditDoctorDto(@JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("email") String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
+    private String firstName, lastName, email;
 }
