@@ -2,7 +2,9 @@ package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
+import com.example.SOPSbackend.repository.PatientRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.annotation.Secured;
@@ -35,15 +37,21 @@ import java.util.Optional;
 public class AdminService {
     private static final int ITEMS_PER_PAGE = 10;
     private final DoctorRepository doctorRepository;
+    private final PatientRepository patientRepository;
     private final PasswordEncoder encoder;
 
-    public AdminService(DoctorRepository doctorRepository, PasswordEncoder encoder) {
+    public AdminService(DoctorRepository doctorRepository, PatientRepository patientRepository, PasswordEncoder encoder) {
         this.doctorRepository = doctorRepository;
+        this.patientRepository = patientRepository;
         this.encoder = encoder;
     }
 
     public Page<DoctorEntity> getAllDoctors(int pageNumber) {
         return doctorRepository.findAll(Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
+    }
+
+    public Page<PatientEntity> getAllPatients(int pageNumber) {
+        return patientRepository.findAll(Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
     }
 
     public DoctorEntity addDoctor(DoctorEntity doctor) {

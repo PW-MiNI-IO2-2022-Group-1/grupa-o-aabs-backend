@@ -2,6 +2,7 @@ package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.BasicUserWithoutPasswordDto;
 import com.example.SOPSbackend.dto.EditDoctorDto;
+import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.response.BasicUserOkResponse;
 import com.example.SOPSbackend.response.NotFoundResponse;
@@ -33,6 +34,15 @@ public class AdminController {
         return ResponseEntity.ok(new PaginatedResponse<>(
                 adminService.getAllDoctors(page.orElse(0))
                         .map(BasicUserWithoutPasswordDto::new)
+                )
+        );
+    }
+
+    @GetMapping("patients")
+    public ResponseEntity<Object> showPatients(@RequestParam Optional<Integer> page) {
+        return ResponseEntity.ok(new PaginatedResponse<>(
+                        adminService.getAllPatients(page.orElse(0))
+                                .map(PatientWithoutPasswordDto::new)
                 )
         );
     }
