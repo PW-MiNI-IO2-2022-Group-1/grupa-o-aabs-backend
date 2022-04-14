@@ -97,5 +97,14 @@ public class AdminService {
         doctorRepository.deleteById(doctorId);
         return true;
         // TODO: warning trying to delete doctor with doctorId=1 causes java.sql.SQLIntegrityConstraintViolationException. Fix that.
+        // TODO: RE: this is actually OK, if the doctor has some vaccinations planned we cannot delete them. Should think about that in the future. Solution: add "CASCADE" to constraints annotation in order to delete in cascade.
+    }
+
+    public boolean deletePatient(Long patientId) {
+        if (!patientRepository.existsById(patientId)) return false;
+        patientRepository.deleteById(patientId); // TODO: this is code duplication. What can we do?
+        return true;
+        // TODO: warning - we cannot delete patientId=3. Why? java.sql.SQLIntegrityConstraintViolationException
+        // TODO: RE: this is actually OK, if the patient has some vaccinations planned we cannot delete them. Should think about that in the future. Solution: add "CASCADE" to constraints annotation in order to delete in cascade.
     }
 }

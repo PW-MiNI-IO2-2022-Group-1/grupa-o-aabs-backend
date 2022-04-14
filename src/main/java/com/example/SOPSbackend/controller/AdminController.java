@@ -86,6 +86,11 @@ public class AdminController {
         return adminService.deleteDoctor(Long.valueOf(doctorId)) ? new SuccessTrueResponse() : new NotFoundResponse();
     }
 
+    @DeleteMapping("patients/{patientId}")
+    public ResponseEntity<Object> deletePatient(@PathVariable String patientId) {
+        return adminService.deletePatient(Long.valueOf(patientId)) ? new SuccessTrueResponse() : new NotFoundResponse();
+    }
+
     @PostMapping("doctors")
     public ResponseEntity<Object> createDoctor(@RequestBody DoctorEntity doctor) {
         return new BasicUserOkResponse(adminService.addDoctor(doctor));
