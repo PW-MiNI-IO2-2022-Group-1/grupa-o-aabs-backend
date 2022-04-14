@@ -42,7 +42,8 @@ public class PatientController extends AbstractController {
         try {
             return ResponseEntity.ok().body(patientService.register(registration));
         } catch (UserAlreadyExistException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false, "msg", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false,
+                    "msg", e.getMessage()));
         }
     }
 
@@ -59,9 +60,10 @@ public class PatientController extends AbstractController {
     public ResponseEntity<Object> getVaccines(@RequestParam(name = "disease") List<String> diseasesList) {
         for (String disease : diseasesList) {
             if (!VaccineEntity.Disease.isValidDiseaseName(disease)) {
-                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(Map.of("success", false,
-                        "data", Map.of("diseases", disease + " is not valid disease name. Try: " +
-                                VaccineEntity.Disease.getValidDiseaseNames())));
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(
+                        Map.of("success", false,
+                                "data", Map.of("diseases", disease + " is not valid disease name. Try: " +
+                                        VaccineEntity.Disease.getValidDiseaseNames())));
             }
         }
         return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseasesList)));
@@ -73,7 +75,7 @@ public class PatientController extends AbstractController {
         return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots().stream().map(
                 vaccinationSlot -> Map.of("id", vaccinationSlot.getId(),
                         "date", vaccinationSlot.getDate().toString()
-        )));
+                )));
     }
 
     @PutMapping("vaccination-slots/{vaccinationSlotId}")
@@ -88,9 +90,11 @@ public class PatientController extends AbstractController {
             patientService.reserveVaccinationSlot(vaccineId.getVaccineId(), vaccinationSlotId, patient);
             return ResponseEntity.ok().body(Map.of("success", true));
         } catch (AlreadyReservedException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false, "msg", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false,
+                    "msg", e.getMessage()));
         } catch (NoSuchElementException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("success", false, "msg", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("success", false,
+                    "msg", e.getMessage()));
         }
     }
 }
