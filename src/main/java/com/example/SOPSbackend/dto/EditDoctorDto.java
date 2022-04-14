@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditDoctorDto {
-    private String firstName, lastName, email;
+    private @NotBlank(message = "Required field is empty") String firstName, lastName;
+    private String email;
 }
