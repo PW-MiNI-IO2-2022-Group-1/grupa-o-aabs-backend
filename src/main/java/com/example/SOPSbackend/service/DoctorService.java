@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -50,6 +51,7 @@ public class DoctorService {
             vaccinationSlotRepository.save(newSlot);
     }
 
+    @Transactional
     public void deleteVaccinationSlot(DoctorEntity doctor, Long id){
         vaccinationSlotRepository.deleteByIdAndDoctor(id, doctor);
     }
