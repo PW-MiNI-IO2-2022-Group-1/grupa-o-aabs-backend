@@ -22,20 +22,6 @@ public class CustomVaccinationSlotSpecifications {
     public static Specification<VaccinationSlotEntity> findByDoctor(DoctorEntity doctor) {
         return (root, query, cb) -> cb.equal(root.get("doctor"), doctor);
     }
-    public static Specification<VaccinationSlotEntity> findReservedVaccinationSlots() {
-        return (root, query, cb) -> {
-            Join<VaccinationSlotEntity, VaccinationEntity> vaccination = root.join("id", JoinType.INNER);
-            vaccination.get("vaccinationSlot");
-            return cb.equal(vaccination.get("vaccinationSlot"),root);
-        };
-    }
-    public static Specification<VaccinationSlotEntity> findNotReservedVaccinationSlots() {
-        return (root, query, cb) -> {
-            Join<VaccinationSlotEntity, VaccinationEntity> vaccination = root.join("id", JoinType.LEFT);
-            vaccination.get("vaccinationSlot");
-            return cb.equal(vaccination.get("vaccinationSlot"),root);
-        };
-    }
     public static Specification<VaccinationSlotEntity> findAfter(LocalDateTime startDate) {
         return (root, query, cb) -> cb.greaterThanOrEqualTo(root.get("date"), startDate);
     }

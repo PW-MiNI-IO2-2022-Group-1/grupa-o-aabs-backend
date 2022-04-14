@@ -16,6 +16,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.security.InvalidParameterException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -58,18 +59,35 @@ public class DoctorService {
 
     public Page<VaccinationSlotStatus> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
         Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("date"));
-        Specification<VaccinationSlotEntity> mySpec = Specification.where(CustomVaccinationSlotSpecifications.findByDoctor(doctor));
-        if(onlyReserved != null){
-            if(onlyReserved.equals("1"))
-                mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findReservedVaccinationSlots());
-            else
-                mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findNotReservedVaccinationSlots());
+        Page<VaccinationSlotEntity> mySlots;
+        LocalDateTime sDate, eDate;
+        if(startDate == null) sDate = LocalDateTime.now();
+        else sDate = LocalDateTime.parse(startDate, DateTimeFormatter.ISO_DATE_TIME);
+        if(endDate == null) eDate = null;
+        else eDate = LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME);
+        if(onlyReserved != null)
+        {
+            if(onlyReserved.equals("0"))
+            mySlots = vaccinationSlotRepository.findNotReserved(doctor,
+                    sDate,
+                    eDate,
+                    thisPage);
+            else if(onlyReserved.equals("1"))
+                mySlots = vaccinationSlotRepository.findReserved(doctor,
+                        sDate,
+                        eDate,
+                        thisPage);
+            else throw new InvalidParameterException();
         }
-        if(startDate != null)
-            mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findAfter(LocalDateTime.parse(startDate, DateTimeFormatter.ISO_DATE_TIME)));
-        if(endDate != null)
-            mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findBefore(LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME)));
-        var mySlots = vaccinationSlotRepository.findAll(mySpec, thisPage);
+        else
+        {
+            Specification<VaccinationSlotEntity> mySpec = Specification.where(CustomVaccinationSlotSpecifications.findByDoctor(doctor));
+            mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findAfter(sDate));
+            if(endDate != null)
+                mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findBefore(eDate));
+            mySlots = vaccinationSlotRepository.findAll(mySpec, thisPage);
+        }
+
         var myVaccinations = vaccinationRepository.findMatchingVaccinations(mySlots.toList());
         return mySlots.map((vs) -> new VaccinationSlotStatus(vs,
                         myVaccinations.stream()

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
@@ -20,5 +21,36 @@ public interface VaccinationSlotRepository extends
             );
     List<VaccinationSlotEntity> findResultsByDate(
             @Param("date") LocalDateTime date);
+
+    @Query(value = "SELECT vs FROM VaccinationSlotEntity vs LEFT JOIN VaccinationEntity v ON v.vaccinationSlot = vs " +
+            "WHERE vs.doctor = :doctor AND " +
+            "(:startDate IS NULL OR vs.date >= :startDate) AND " +
+            "(:endDate IS NULL OR vs.date <= :endDate) " +
+            "AND v.id IS NULL",
+            countQuery = "SELECT COUNT(vs) FROM VaccinationSlotEntity vs LEFT JOIN VaccinationEntity v ON v.vaccinationSlot = vs " +
+            "WHERE vs.doctor = :doctor AND " +
+            "(:startDate IS NULL OR vs.date >= :startDate) AND " +
+            "(:endDate IS NULL OR vs.date <= :endDate) " +
+            "AND v.id IS NULL")
+    Page<VaccinationSlotEntity> findNotReserved(
+            @Param("doctor") DoctorEntity doctor,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate,
+            Pageable pageable
+    );
+    @Query(value = "SELECT vs FROM VaccinationSlotEntity vs INNER JOIN VaccinationEntity v ON v.vaccinationSlot = vs " +
+            "WHERE vs.doctor = :doctor AND " +
+            "(:startDate IS NULL OR vs.date >= :startDate) AND " +
+            "(:endDate IS NULL OR vs.date <= :endDate) ",
+            countQuery = "SELECT COUNT(vs) FROM VaccinationSlotEntity vs INNER JOIN VaccinationEntity v ON v.vaccinationSlot = vs " +
+                    "WHERE vs.doctor = :doctor AND " +
+                    "(:startDate IS NULL OR vs.date >= :startDate) AND " +
+                    "(:endDate IS NULL OR vs.date <= :endDate) ")
+    Page<VaccinationSlotEntity> findReserved(
+            @Param("doctor") DoctorEntity doctor,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate,
+            Pageable pageable
+    );
 }
 
