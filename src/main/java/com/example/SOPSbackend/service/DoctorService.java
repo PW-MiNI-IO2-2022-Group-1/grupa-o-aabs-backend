@@ -47,7 +47,7 @@ public class DoctorService {
             throw new InternalValidationException(Map.of("date", "Invalid date value"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
-        if(vaccinationSlotRepository.findSingleResultByDate(transformedDate) != null)
+        //if(vaccinationSlotRepository.findResultsByDate(transformedDate).stream().findAny().orElse(null) != null)
             vaccinationSlotRepository.save(newSlot);
     }
 
