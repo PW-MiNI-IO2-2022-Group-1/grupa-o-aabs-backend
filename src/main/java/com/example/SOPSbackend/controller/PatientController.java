@@ -8,6 +8,7 @@ import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
+import com.example.SOPSbackend.model.converter.DateTimeConverter;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.PatientService;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "patient")
@@ -54,7 +56,7 @@ public class PatientController extends AbstractController {
 
     @GetMapping("vaccines")
     @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<Object> getVaccines(@RequestParam(name="disease") List<String> diseasesList) {
+    public ResponseEntity<Object> getVaccines(@RequestParam(name = "disease") List<String> diseasesList) {
         for (String disease : diseasesList) {
             if (!VaccineEntity.Disease.isValidDiseaseName(disease)) {
                 return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(Map.of("success", false,
@@ -67,8 +69,11 @@ public class PatientController extends AbstractController {
 
     @GetMapping("vaccination-slots")
     @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<List<VaccinationSlotEntity>> getAvailableVaccinationSlots() {
-        return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots());
+    public ResponseEntity<Object> getAvailableVaccinationSlots() {
+        return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots().stream().map(
+                vaccinationSlot -> Map.of("id", vaccinationSlot.getId(),
+                        "date", vaccinationSlot.getDate().toString()
+        )));
     }
 
     @PutMapping("vaccination-slots/{vaccinationSlotId}")
