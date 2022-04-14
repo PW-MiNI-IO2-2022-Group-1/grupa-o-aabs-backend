@@ -30,5 +30,5 @@ public class VaccinationEntity {
     private PatientEntity patient;
 
     @Column(nullable = false)
-    private int status;
+    private String status;
 }

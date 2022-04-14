@@ -58,7 +58,7 @@ public class DoctorController extends AbstractController {
                     var address = patient == null? null : patient.getAddress();
                     hm.put("id", slot.getVaccinationSlot().getId());
                     hm.put("date", slot.getVaccinationSlot().getDate()
-                            .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z");
+                            .format(DateTimeFormatter.ISO_DATE_TIME));
                     hm.put("vaccination", v == null? null : Map.of(
                             "id", v.getId(),
                             "vaccine", Map.of(
