@@ -4,6 +4,7 @@ import com.example.SOPSbackend.dto.BasicUserWithoutPasswordDto;
 import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.response.BasicUserOkResponse;
 import com.example.SOPSbackend.response.NotFoundResponse;
 import com.example.SOPSbackend.response.PaginatedResponse;
@@ -60,6 +61,13 @@ public class AdminController {
     public ResponseEntity<Object> getSingleDoctor(@PathVariable String doctorId) {
         Optional<DoctorEntity> doctor = adminService.getDoctor(Long.parseLong(doctorId));
         if (doctor.isPresent()) return new BasicUserOkResponse(doctor.get()); // TODO: should we have better exception handling? (This could throw NumberFormatException causing a 500 response)
+        return new NotFoundResponse();
+    }
+
+    @GetMapping("patients/{patientId}")
+    public ResponseEntity<Object> showSinglePatient(@PathVariable String patientId) {
+        Optional<PatientEntity> patient = adminService.getPatient(Long.parseLong(patientId));
+        if (patient.isPresent()) return new BasicUserOkResponse(patient.get());
         return new NotFoundResponse();
     }
 

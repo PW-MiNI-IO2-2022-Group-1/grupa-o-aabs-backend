@@ -78,6 +78,10 @@ public class AdminService {
         return doctorRepository.findAllById(List.of(doctorId)).stream().findFirst();
     }
 
+    public Optional<PatientEntity> getPatient(long patientId) {
+        return patientRepository.findAllById(List.of(patientId)).stream().findFirst();
+    }
+
     public boolean deleteDoctor(Long doctorId) {
         if (!doctorRepository.existsById(doctorId)) return false;
         doctorRepository.deleteById(doctorId);
