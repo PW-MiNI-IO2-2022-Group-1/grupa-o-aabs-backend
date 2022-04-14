@@ -19,7 +19,7 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
 @NoArgsConstructor
-public abstract class BasicUserEntity {
+public abstract class BasicUserEntity { // TODO: we use this class and it's subclasses as DTOs, there should be a separate class(es) in the dto package (this will solve all confusion with hashed/not-hashed passwords in the system)
     public BasicUserEntity(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

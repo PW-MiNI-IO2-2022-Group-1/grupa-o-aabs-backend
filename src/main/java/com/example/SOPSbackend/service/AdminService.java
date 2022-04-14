@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.service;
 
+import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import org.springframework.data.domain.Page;
@@ -50,6 +51,18 @@ public class AdminService {
         var hashedPass = encoder.encode(doctor.getPassword());
         doctor.setPassword(hashedPass);
         return doctorRepository.save(doctor);
+    }
+
+    /**
+     * Exception will be thrown if doctor with such doctorId is non-existent.
+     */
+    @Transactional
+    public DoctorEntity updateDoctor(String doctorId, EditDoctorDto doctorUpdate) {
+        DoctorEntity doctor = doctorRepository.getById(Long.valueOf(doctorId));
+        doctor.setFirstName(doctorUpdate.getFirstName());
+        doctor.setLastName(doctorUpdate.getLastName());
+        doctor.setEmail(doctorUpdate.getEmail());
+        return doctor;
     }
 
     public Optional<DoctorEntity> getDoctor(Long doctorId) {
