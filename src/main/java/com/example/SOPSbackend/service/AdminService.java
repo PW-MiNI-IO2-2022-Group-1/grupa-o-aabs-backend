@@ -72,6 +72,5 @@ public class AdminService {
         if (!doctorRepository.existsById(doctorId)) return false;
         doctorRepository.deleteById(doctorId);
         return true;
-        // TODO: warning trying to delete doctor with doctorId=1 causes java.sql.SQLIntegrityConstraintViolationException. Fix that.
     }
 }
