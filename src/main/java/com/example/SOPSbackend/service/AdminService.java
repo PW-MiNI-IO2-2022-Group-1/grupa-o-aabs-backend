@@ -29,7 +29,6 @@ import java.util.Optional;
  *  filip.spychala.stud [at symbol] pw.edu.pl.</p>
  */
 @Service
-@Transactional
 public class AdminService {
     private static final int ITEMS_PER_PAGE = 10;
     private final DoctorRepository doctorRepository;
@@ -44,6 +43,7 @@ public class AdminService {
         return doctorRepository.findAll(Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
     }
 
+    @Transactional
     public DoctorEntity addDoctor(DoctorEntity doctor) {
         if(doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
             throw new RuntimeException("Account already exists"); // TODO: (see https://stackoverflow.com/a/36851768) current implementation makes us return 500, which is not what we want (should be 409 or other). Either find a way to choose the http error code or deal with this higher in the callstack
@@ -56,6 +56,7 @@ public class AdminService {
     /**
      * Exception will be thrown if doctor with such doctorId is non-existent.
      */
+    @Transactional
     public DoctorEntity updateDoctor(String doctorId, EditDoctorDto doctorUpdate) {
         DoctorEntity doctor = doctorRepository.getById(Long.valueOf(doctorId));
         doctor.setFirstName(doctorUpdate.getFirstName());
@@ -66,11 +67,5 @@ public class AdminService {
 
     public Optional<DoctorEntity> getDoctor(Long doctorId) {
         return doctorRepository.findAllById(List.of(doctorId)).stream().findFirst();
-    }
-
-    public boolean deleteDoctor(Long doctorId) {
-        if (!doctorRepository.existsById(doctorId)) return false;
-        doctorRepository.deleteById(doctorId);
-        return true;
     }
 }

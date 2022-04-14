@@ -6,7 +6,6 @@ import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.response.BasicUserOkResponse;
 import com.example.SOPSbackend.response.NotFoundResponse;
 import com.example.SOPSbackend.response.PaginatedResponse;
-import com.example.SOPSbackend.response.SuccessTrueResponse;
 import com.example.SOPSbackend.service.AdminService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,11 +50,6 @@ public class AdminController {
         Optional<DoctorEntity> doctor = adminService.getDoctor(Long.parseLong(doctorId));
         if (doctor.isPresent()) return new BasicUserOkResponse(doctor.get()); // TODO: should we have better exception handling? (This could throw NumberFormatException causing a 500 response)
         return new NotFoundResponse();
-    }
-
-    @DeleteMapping("doctors/{doctorId}")
-    public ResponseEntity<Object> deleteDoctor(@PathVariable String doctorId) {
-        return adminService.deleteDoctor(Long.valueOf(doctorId)) ? new SuccessTrueResponse() : new NotFoundResponse();
     }
 
     @PostMapping("doctors")
