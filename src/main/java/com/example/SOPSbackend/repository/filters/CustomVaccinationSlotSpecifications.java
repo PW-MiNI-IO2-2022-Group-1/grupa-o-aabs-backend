@@ -1,21 +1,10 @@
 package com.example.SOPSbackend.repository.filters;
 
 import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
-import com.example.SOPSbackend.model.converter.VaccinationSlotStatus;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.criteria.*;
-import javax.print.Doc;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CustomVaccinationSlotSpecifications {
 
