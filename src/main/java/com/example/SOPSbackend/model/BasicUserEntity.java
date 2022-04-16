@@ -20,13 +20,6 @@ import javax.persistence.*;
 })
 @NoArgsConstructor
 public abstract class BasicUserEntity { // TODO: we use this class and it's subclasses as DTOs, there should be a separate class(es) in the dto package (this will solve all confusion with hashed/not-hashed passwords in the system)
-    public BasicUserEntity(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -43,6 +36,13 @@ public abstract class BasicUserEntity { // TODO: we use this class and it's subc
     @Column(nullable = false)
     @Getter(AccessLevel.NONE)
     protected String password;
+
+    public BasicUserEntity(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getPassword() {
         return password;
