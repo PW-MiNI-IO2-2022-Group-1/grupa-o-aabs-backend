@@ -6,11 +6,11 @@ import org.springframework.data.domain.Page;
 import java.util.stream.Stream;
 
 @Getter
-public class PaginatedResponse<T> {
+public class PaginatedResponseBody<T> {
     private final Pagination pagination;
     private final Stream<T> data;
 
-    public PaginatedResponse(Page<T> page) {
+    public PaginatedResponseBody(Page<T> page) {
         pagination = new Pagination(page);
         data = page.stream();
     }
@@ -23,7 +23,7 @@ public class PaginatedResponse<T> {
         private final long totalRecords;
 
         public Pagination(Page<T> page) {
-            this.currentPage = page.getNumber();
+            this.currentPage = page.getNumber() + 1;
             this.totalPages = page.getTotalPages();
             this.currentRecords = page.stream().count();
             this.totalRecords = page.getTotalElements();

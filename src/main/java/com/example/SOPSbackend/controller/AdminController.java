@@ -8,10 +8,11 @@ import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.response.BasicUserOkResponse;
 import com.example.SOPSbackend.response.NotFoundResponse;
-import com.example.SOPSbackend.response.PaginatedResponse;
+import com.example.SOPSbackend.response.PaginatedResponseBody;
 import com.example.SOPSbackend.response.SuccessTrueResponse;
 import com.example.SOPSbackend.service.AdminService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path="admin")
+@Secured({"ROLE_ADMIN"}) //TODO: check if that prevents other users from using these requests
 public class AdminController {
     private final AdminService adminService;
 
@@ -33,8 +35,8 @@ public class AdminController {
 
     @GetMapping("doctors")
     public ResponseEntity<Object> showDoctors(@RequestParam Optional<Integer> page) {
-        return ResponseEntity.ok(new PaginatedResponse<>(
-                adminService.getAllDoctors(page.orElse(0))
+        return ResponseEntity.ok(new PaginatedResponseBody<>(
+                adminService.getAllDoctors(page.orElse(1) - 1)
                         .map(BasicUserWithoutPasswordDto::new)
                 )
         );
@@ -42,8 +44,8 @@ public class AdminController {
 
     @GetMapping("patients")
     public ResponseEntity<Object> showPatients(@RequestParam Optional<Integer> page) {
-        return ResponseEntity.ok(new PaginatedResponse<>(
-                        adminService.getAllPatients(page.orElse(0))
+        return ResponseEntity.ok(new PaginatedResponseBody<>(
+                        adminService.getAllPatients(page.orElse(1) - 1)
                                 .map(PatientWithoutPasswordDto::new)
                 )
         );
