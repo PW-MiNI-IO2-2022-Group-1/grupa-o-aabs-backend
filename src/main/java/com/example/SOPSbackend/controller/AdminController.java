@@ -4,6 +4,8 @@ import com.example.SOPSbackend.dto.BasicUserWithoutPasswordDto;
 import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.dto.EditPatientDto;
 import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
+import com.example.SOPSbackend.dto.NewDoctorDto;
+import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.response.BasicUserOkResponse;
@@ -11,15 +13,16 @@ import com.example.SOPSbackend.response.NotFoundResponse;
 import com.example.SOPSbackend.response.PaginatedResponseBody;
 import com.example.SOPSbackend.response.SuccessTrueResponse;
 import com.example.SOPSbackend.service.AdminService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-
 import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
+import java.util.Optional;ff
+import java.util.Map;
 
 @RestController
-@RequestMapping(path="admin")
+@RequestMapping(path = "admin")
 @Secured({"ROLE_ADMIN"}) //TODO: check if that prevents other users from using these requests
 public class AdminController {
     private final AdminService adminService;
@@ -95,6 +98,14 @@ public class AdminController {
 
     @PostMapping("doctors")
     public ResponseEntity<Object> createDoctor(@RequestBody DoctorEntity doctor) {
-        return new BasicUserOkResponse(adminService.addDoctor(doctor));
-    }
+        return new BasicUserOkResponse(adminService.addDoctor(doctor)); 
+// TODO FILIP: NIE MA CZEGOŚ TAKIEGO W API, WIĘC NIE IMPLEMENTUJEMY
+//     public ResponseEntity<Object> createDoctor(@RequestBody NewDoctorDto doctor) {
+//         try {
+//             return ResponseEntity.accepted().body(adminService.addDoctor(doctor));
+//         } catch (UserAlreadyExistException e) {
+//             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+//                     .body(Map.of("success", false, "data", Map.of("email", "Email already exists")));
+//         }
+//     }
 }
