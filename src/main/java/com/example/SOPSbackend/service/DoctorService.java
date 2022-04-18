@@ -61,7 +61,7 @@ public class DoctorService {
         Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("date"));
         Page<VaccinationSlotEntity> mySlots;
         LocalDateTime sDate, eDate;
-        if(startDate == null) sDate = LocalDateTime.now();
+        if(startDate == null) sDate = null;
         else sDate = LocalDateTime.parse(startDate, DateTimeFormatter.ISO_DATE_TIME);
         if(endDate == null) eDate = null;
         else eDate = LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME);
@@ -82,7 +82,8 @@ public class DoctorService {
         else
         {
             Specification<VaccinationSlotEntity> mySpec = Specification.where(CustomVaccinationSlotSpecifications.findByDoctor(doctor));
-            mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findAfter(sDate));
+            if(startDate != null)
+                mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findAfter(sDate));
             if(endDate != null)
                 mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findBefore(eDate));
             mySlots = vaccinationSlotRepository.findAll(mySpec, thisPage);
