@@ -20,7 +20,7 @@ public class ResponseDictionary {
     {
         this.id = vaccinationSlotEntity.getId();
         this.date = vaccinationSlotEntity.getDate();
-        this.vaccination = new ResponseVaccination(vaccination);
+        this.vaccination = vaccination == null? null : new ResponseVaccination(vaccination);
     }
 
     private Long id;
