@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("doctor")
@@ -40,13 +41,14 @@ public class DoctorController extends AbstractController {
 
     @GetMapping("vaccination-slots")
     public ResponseEntity<Object> getVaccinationSlots(
-            @RequestParam(value = "startDate", required = false) String startDate,
-            @RequestParam(value = "endDate", required = false) String endDate,
-            @RequestParam(value = "onlyReserved", required = false) String onlyReserved,
-            @RequestParam(value = "page", required = false) int page,
+            @RequestParam Optional<String> startDate,
+            @RequestParam Optional<String> endDate,
+            @RequestParam Optional<String> onlyReserved,
+            @RequestParam Optional<Integer> page,
             @AuthenticationPrincipal BasicUserDetails authPrincipal){
         DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
-        Page<ResponseDictionary> slots = doctorService.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
+        Page<ResponseDictionary> slots = doctorService.getVaccinationSlots(doctor, page.orElse(1), startDate.orElse(null), endDate.orElse(null), onlyReserved.orElse(null));
+
         var freeSlotsMap = slots.get().map(ResponseDictionary::toMap).toArray();
         return ResponseEntity.ok().body(Map.of(
                 "pagination", Map.of(
