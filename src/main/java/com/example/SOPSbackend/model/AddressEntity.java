@@ -38,5 +38,13 @@ public class AddressEntity {
         houseNumber = address.getHouseNumber();
         localNumber = address.getLocalNumber();
     }
+
+    public void update(AddressDto newAddress) {
+        if(newAddress.getCity() != null)  city = newAddress.getCity();
+        if(newAddress.getStreet() != null) street = newAddress.getStreet();
+        if(newAddress.getZipCode() != null) zipCode = newAddress.getZipCode();
+        if(newAddress.getHouseNumber() != null) houseNumber = newAddress.getHouseNumber();
+        if(newAddress.getLocalNumber() != null) localNumber = newAddress.getLocalNumber();
+    }
 }
 

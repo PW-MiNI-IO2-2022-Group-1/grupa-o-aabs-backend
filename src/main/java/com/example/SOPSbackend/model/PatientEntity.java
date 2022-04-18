@@ -1,6 +1,5 @@
 package com.example.SOPSbackend.model;
 
-import com.example.SOPSbackend.dto.AddressDto;
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.security.Role;
@@ -39,15 +38,9 @@ public class PatientEntity extends BasicUserEntity {
     }
 
     public void update(EditPatientAccountDto data, PasswordEncoder passwordEncoder) {
-        firstName = data.getFirstName();
-        lastName = data.getLastName();
-        password = passwordEncoder.encode(data.getPassword());
-
-        AddressDto newAddress = data.getAddress();
-        address.setCity(newAddress.getCity());
-        address.setStreet(newAddress.getStreet());
-        address.setZipCode(newAddress.getZipCode());
-        address.setHouseNumber(newAddress.getHouseNumber());
-        address.setLocalNumber(newAddress.getLocalNumber());
+        if(data.getFirstName() != null) firstName = data.getFirstName();
+        if(data.getLastName() != null) lastName = data.getLastName();
+        if(data.getPassword() != null) password = passwordEncoder.encode(data.getPassword());
+        address.update(data.getAddress());
     }
 }
