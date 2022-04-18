@@ -44,8 +44,8 @@ public class DoctorService {
     public void addVaccinationSlot(DoctorEntity doctor, Instant date) {
         LocalDateTime transformedDate = transformVaccinationSlotDate(date);
 
-        if(!isVaccinationSlotDateValid(transformedDate))
-            throw new InternalValidationException(Map.of("date", "Invalid date value"));
+        //if(!isVaccinationSlotDateValid(transformedDate))
+            //throw new InternalValidationException(Map.of("date", "Invalid date value"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
         //if(vaccinationSlotRepository.findResultsByDate(transformedDate).stream().findAny().orElse(null) != null)
