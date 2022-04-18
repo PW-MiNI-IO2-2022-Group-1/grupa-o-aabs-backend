@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,25 +26,23 @@ public class ResponseDictionary {
     private Long id;
     private LocalDateTime date;
     private ResponseVaccination vaccination;
-    public static Map<String, Object> convertToMap(ResponseDictionary slot)
+    public static Map<String, Object> toMap(ResponseDictionary slot)
     {
         var hm = new HashMap<String, Object>();
         var v = slot.getVaccination();
         var patient = v == null? null : v.getPatient();
+        var vaccine = v == null? null : v.getVaccine();
         var address = patient == null? null : patient.getAddress();
-        hm.put("id", slot.getId());
-        hm.put("date", slot.getDate()
-                .format(DateTimeFormatter.ISO_DATE_TIME));
-        hm.put("vaccination", v == null? null : Map.of(
-                "id", v.getId(),
-                "vaccine", Map.of(
+        var vaccinationHashMap = v == null? null: Map.ofEntries(
+                new AbstractMap.SimpleEntry<String, Object>("id", v.getId()),
+                new AbstractMap.SimpleEntry<String, Object>("vaccine", vaccine == null? null : Map.of(
                         "id", v.getVaccine().getId(),
                         "name", v.getVaccine().getName(),
                         "disease", v.getVaccine().getDisease(),
                         "requiredDoses", v.getVaccine().getRequiredDoses()
-                ),
-                "status", v.getStatus(),
-                "patient", Map.of(
+                )),
+                new AbstractMap.SimpleEntry<String, Object>("status", v.getStatus()),
+                new AbstractMap.SimpleEntry<String, Object>("patient", patient == null? null : Map.of(
                         "id", patient.getId(),
                         "firstName", patient.getFirstName(),
                         "lastName", patient.getLastName(),
@@ -57,8 +56,12 @@ public class ResponseDictionary {
                                 "houseNumber", address.getHouseNumber(),
                                 "localNumber", address.getLocalNumber()
                         )
-                )
-        ));
+                ))
+        );
+        hm.put("id", slot.getId());
+        hm.put("date", slot.getDate()
+                .format(DateTimeFormatter.ISO_DATE_TIME));
+        hm.put("vaccination", v == null? null : vaccinationHashMap);
         return hm;
     }
 }

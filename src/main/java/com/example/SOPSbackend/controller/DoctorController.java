@@ -11,10 +11,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-import java.util.HashMap;
 @RestController
 @RequestMapping("doctor")
 public class DoctorController extends AbstractController {
@@ -49,7 +47,7 @@ public class DoctorController extends AbstractController {
             @AuthenticationPrincipal BasicUserDetails authPrincipal){
         DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
         Page<ResponseDictionary> slots = doctorService.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
-        var freeSlotsMap = slots.get().map(ResponseDictionary::convertToMap).toArray();
+        var freeSlotsMap = slots.get().map(ResponseDictionary::toMap).toArray();
         return ResponseEntity.ok().body(Map.of(
                 "pagination", Map.of(
                         "currentPage", page,
