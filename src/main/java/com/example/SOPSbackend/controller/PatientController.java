@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +48,7 @@ public class PatientController extends AbstractController {
 
     @PutMapping("account")
     @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<Object> editAccount(@RequestBody @Valid EditPatientAccountDto newData,
+    public ResponseEntity<Object> editAccount(@RequestBody EditPatientAccountDto newData,
                                               @AuthenticationPrincipal BasicUserDetails authPrincipal) {
         PatientEntity patient = (PatientEntity) authPrincipal.getUser();
         return ResponseEntity.ok(patientService.editAccount(patient, newData));
