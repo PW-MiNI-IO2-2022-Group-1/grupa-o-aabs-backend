@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.controller;
 
+import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.AdminEntity;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.AdminService;
@@ -38,7 +39,7 @@ class AdminControllerTest {
     private AdminEntity admin;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UserAlreadyExistException {
         admin = Mockito.mock(AdminEntity.class);
         adminService = Mockito.mock(AdminService.class);
         when(adminService.getAllDoctors(0)).thenReturn(new PageImpl<>(USE_ME_TestDataForMocks.DOCTOR_ENTITIES));

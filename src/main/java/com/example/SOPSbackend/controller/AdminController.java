@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 import java.util.Map;
@@ -39,8 +40,8 @@ public class AdminController {
     @GetMapping("doctors")
     public ResponseEntity<Object> showDoctors(@RequestParam Optional<Integer> page) {
         return ResponseEntity.ok(new PaginatedResponseBody<>(
-                adminService.getAllDoctors(page.orElse(1) - 1)
-                        .map(BasicUserWithoutPasswordDto::new)
+                        adminService.getAllDoctors(page.orElse(1) - 1)
+                                .map(BasicUserWithoutPasswordDto::new)
                 )
         );
     }
@@ -75,7 +76,8 @@ public class AdminController {
     @GetMapping("doctors/{doctorId}")
     public ResponseEntity<Object> getSingleDoctor(@PathVariable String doctorId) {
         Optional<DoctorEntity> doctor = adminService.getDoctor(Long.parseLong(doctorId));
-        if (doctor.isPresent()) return new BasicUserOkResponse(doctor.get()); // TODO: should we have better exception handling? (This could throw NumberFormatException causing a 500 response)
+        if (doctor.isPresent())
+            return new BasicUserOkResponse(doctor.get()); // TODO: should we have better exception handling? (This could throw NumberFormatException causing a 500 response)
         return new NotFoundResponse();
     }
 
@@ -97,16 +99,12 @@ public class AdminController {
     }
 
     @PostMapping("doctors")
-    public ResponseEntity<Object> createDoctor(@RequestBody DoctorEntity doctor) {
-        return new BasicUserOkResponse(adminService.addDoctor(doctor)); 
-// TODO FILIP: NIE MA CZEGOŚ TAKIEGO W API, WIĘC NIE IMPLEMENTUJEMY
-//     public ResponseEntity<Object> createDoctor(@RequestBody NewDoctorDto doctor) {
-//         try {
-//             return ResponseEntity.accepted().body(adminService.addDoctor(doctor));
-//         } catch (UserAlreadyExistException e) {
-//             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-//                     .body(Map.of("success", false, "data", Map.of("email", "Email already exists")));
-//         }
-//     }
+    public ResponseEntity<Object> createDoctor(@RequestBody NewDoctorDto doctor) {
+        try {
+            return new BasicUserOkResponse(adminService.addDoctor(doctor));
+        } catch (UserAlreadyExistException e) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                    .body(Map.of("success", false, "data", Map.of("email", "Email already exists")));
+        }
     }
 }

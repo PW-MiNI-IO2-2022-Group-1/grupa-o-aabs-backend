@@ -58,19 +58,8 @@ public class AdminService {
         return patientRepository.findAll(Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
     }
 
-    public DoctorEntity addDoctor(DoctorEntity doctor) {
-        if (doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
-            throw new RuntimeException("Account already exists"); // TODO: (see https://stackoverflow.com/a/36851768) current implementation makes us return 500, which is not what we want (should be 409 or other). Either find a way to choose the http error code or deal with this higher in the callstack
-
-        var hashedPass = encoder.encode(doctor.getPassword());
-        doctor.setPassword(hashedPass);
-        return doctorRepository.save(doctor);
-    }
-  
-    // TODO Filip: One of those is redundant, this happened during a merge
     @Transactional
     public DoctorEntity addDoctor(NewDoctorDto doctor) throws UserAlreadyExistException {
-
         if (doctorRepository.findByEmailIgnoreCase(doctor.getEmail()).isPresent())
             throw new UserAlreadyExistException("User already exists for this email");  // TODO: (see https://stackoverflow.com/a/36851768) current implementation makes us return 500, which is not what we want (should be 409 or other). Either find a way to choose the http error code or deal with this higher in the callstack
 
