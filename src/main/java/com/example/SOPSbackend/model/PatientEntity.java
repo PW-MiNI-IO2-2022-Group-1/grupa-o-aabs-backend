@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.model;
 
+import com.example.SOPSbackend.dto.AddressDto;
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.EditPatientDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
