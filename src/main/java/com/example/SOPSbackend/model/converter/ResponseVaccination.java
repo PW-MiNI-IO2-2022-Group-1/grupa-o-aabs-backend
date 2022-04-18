@@ -4,6 +4,7 @@ package com.example.SOPSbackend.model.converter;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ResponseVaccination {
     public ResponseVaccination(VaccinationEntity vaccinationEntity) {
         this.id = vaccinationEntity.getId();

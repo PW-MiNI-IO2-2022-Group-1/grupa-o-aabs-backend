@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -20,28 +21,29 @@ public class ResponseDictionary {
     {
         this.id = vaccinationSlotEntity.getId();
         this.date = vaccinationSlotEntity.getDate();
-        this.vaccination = vaccination == null? null : new ResponseVaccination(vaccination);
+        this.vaccination = vaccination == null? Optional.empty() : Optional.of(new ResponseVaccination(vaccination));
     }
 
     private Long id;
     private LocalDateTime date;
-    private ResponseVaccination vaccination;
+    private Optional<ResponseVaccination> vaccination;
     public static Map<String, Object> toMap(ResponseDictionary slot)
     {
         var hm = new HashMap<String, Object>();
         var v = slot.getVaccination();
-        var patient = v == null? null : v.getPatient();
-        var vaccine = v == null? null : v.getVaccine();
+        var patient = v.isEmpty()? null : v.get().getPatient();
+        var vaccine = v.isEmpty()? null : v.get().getVaccine();
         var address = patient == null? null : patient.getAddress();
-        var vaccinationHashMap = v == null? null: Map.ofEntries(
-                new AbstractMap.SimpleEntry<String, Object>("id", v.getId()),
+        var vaccination = v.orElse(null);
+        var vaccinationHashMap = v.isEmpty()? null: Map.ofEntries(
+                new AbstractMap.SimpleEntry<String, Object>("id", vaccination.getId()),
                 new AbstractMap.SimpleEntry<String, Object>("vaccine", vaccine == null? null : Map.of(
-                        "id", v.getVaccine().getId(),
-                        "name", v.getVaccine().getName(),
-                        "disease", v.getVaccine().getDisease(),
-                        "requiredDoses", v.getVaccine().getRequiredDoses()
+                        "id", vaccine.getId(),
+                        "name", vaccine.getName(),
+                        "disease", vaccine.getDisease(),
+                        "requiredDoses", vaccine.getRequiredDoses()
                 )),
-                new AbstractMap.SimpleEntry<String, Object>("status", v.getStatus()),
+                new AbstractMap.SimpleEntry<String, Object>("status", vaccination.getStatus()),
                 new AbstractMap.SimpleEntry<String, Object>("patient", patient == null? null : Map.of(
                         "id", patient.getId(),
                         "firstName", patient.getFirstName(),
@@ -61,7 +63,7 @@ public class ResponseDictionary {
         hm.put("id", slot.getId());
         hm.put("date", slot.getDate()
                 .format(DateTimeFormatter.ISO_DATE_TIME));
-        hm.put("vaccination", v == null? null : vaccinationHashMap);
+        hm.put("vaccination", vaccinationHashMap);
         return hm;
     }
 }
