@@ -59,11 +59,11 @@ public class PatientService {
         Optional<VaccineEntity> vaccine = vaccineRepository.findById(vaccineId);
         Optional<VaccinationSlotEntity> vaccinationSlot = vaccinationSlotRepository.findById(vaccinationSlotId);
 
-        if (!vaccine.isPresent()) {
+        if (vaccine.isEmpty()) {
             throw new NoSuchElementException("Vaccine not found");
         }
 
-        if (!vaccinationSlot.isPresent()) {
+        if (vaccinationSlot.isEmpty()) {
             throw new NoSuchElementException("Vaccination slot not found");
         }
 

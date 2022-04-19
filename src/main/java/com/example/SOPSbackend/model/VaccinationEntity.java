@@ -32,7 +32,6 @@ public class VaccinationEntity {
 
     @Column(nullable = false)
     private String status;
-
     public VaccinationEntity(PatientEntity patient, VaccineEntity vaccine, VaccinationSlotEntity vaccinationSlot) {
         this.patient = patient;
         this.vaccine = vaccine;
