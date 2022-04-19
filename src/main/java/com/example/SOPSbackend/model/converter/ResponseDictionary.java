@@ -22,7 +22,7 @@ public class ResponseDictionary {
     private ResponseVaccination vaccination;
     public Optional<ResponseVaccination> getVaccination()
     {
-        return Optional.of(vaccination);
+        return Optional.ofNullable(vaccination);
     }
     
     public ResponseDictionary(VaccinationSlotEntity vaccinationSlotEntity, VaccinationEntity vaccination)
