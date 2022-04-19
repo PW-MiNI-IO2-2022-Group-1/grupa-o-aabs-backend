@@ -1,10 +1,6 @@
 package com.example.SOPSbackend.controller;
 
-import com.example.SOPSbackend.dto.BasicUserWithoutPasswordDto;
-import com.example.SOPSbackend.dto.EditDoctorDto;
-import com.example.SOPSbackend.dto.EditPatientDto;
-import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
-import com.example.SOPSbackend.dto.NewDoctorDto;
+import com.example.SOPSbackend.dto.*;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
@@ -19,8 +15,8 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "admin")
@@ -65,7 +61,7 @@ public class AdminController {
     }
 
     @PutMapping("patients/{patientId}")
-    public ResponseEntity<Object> editPatient(@PathVariable String patientId, @RequestBody EditPatientDto editPatient) {
+    public ResponseEntity<Object> editPatient(@PathVariable String patientId, @RequestBody EditPatientAccountDto editPatient) {
         try {
             return new BasicUserOkResponse(adminService.updatePatient(patientId, editPatient));
         } catch (EntityNotFoundException e) {

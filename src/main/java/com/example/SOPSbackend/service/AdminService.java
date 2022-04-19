@@ -1,18 +1,16 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditDoctorDto;
-import com.example.SOPSbackend.dto.EditPatientDto;
-import com.example.SOPSbackend.model.AddressEntity;
-import com.example.SOPSbackend.model.BasicUserEntity;
+import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewDoctorDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
+import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -81,8 +79,8 @@ public class AdminService {
     /**
      * Exception will be thrown if patient with such patientId is non-existent.
      */
-    public BasicUserEntity updatePatient(String patientId, EditPatientDto editPatient) {
-        return patientRepository.getById(Long.valueOf(patientId)).update(editPatient);
+    public BasicUserEntity updatePatient(String patientId, EditPatientAccountDto editPatient) {
+        return patientRepository.getById(Long.valueOf(patientId)).update(editPatient, encoder);
     }
 
     public Optional<DoctorEntity> getDoctor(Long doctorId) {
