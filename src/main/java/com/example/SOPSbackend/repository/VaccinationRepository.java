@@ -14,5 +14,3 @@ public interface VaccinationRepository extends JpaRepository<VaccinationEntity, 
     List<VaccinationEntity> findMatchingVaccinations(
             @Param("vsList") List<VaccinationSlotEntity> vsList);
 }
-
-

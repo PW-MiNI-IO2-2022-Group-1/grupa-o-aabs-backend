@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class VaccinationEntity {
     private VaccineEntity vaccine;
 
     @JoinColumn(nullable = false)
-    @ManyToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
+    @OneToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
     private VaccinationSlotEntity vaccinationSlot;
 
     @JoinColumn(nullable = false)
@@ -31,4 +32,22 @@ public class VaccinationEntity {
 
     @Column(nullable = false)
     private String status;
+    public VaccinationEntity(PatientEntity patient, VaccineEntity vaccine, VaccinationSlotEntity vaccinationSlot) {
+        this.patient = patient;
+        this.vaccine = vaccine;
+        this.vaccinationSlot = vaccinationSlot;
+        this.status = Status.PLANNED.label;
+    }
+
+    public enum Status {
+        PLANNED("Planned"),
+        CANCELED("Canceled"),
+        COMPLETED("Completed");
+
+        public final String label;
+
+        private Status(String label) {
+            this.label = label;
+        }
+    }
 }
