@@ -27,7 +27,7 @@ public class VaccineEntity {
     private String disease;
 
     @Column(nullable = false)
-    private  long requiredDoses;
+    private long requiredDoses;
 
     public enum Disease {
         COVID_19("COVID-19"),
@@ -60,5 +60,4 @@ public class VaccineEntity {
             return BY_LABEL.keySet().stream().collect(Collectors.joining(","));
         }
     }
-
 }
