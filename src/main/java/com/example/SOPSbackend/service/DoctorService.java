@@ -3,7 +3,7 @@ package com.example.SOPSbackend.service;
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
-import com.example.SOPSbackend.model.converter.ResponseDictionary;
+import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
@@ -57,7 +57,7 @@ public class DoctorService {
         vaccinationSlotRepository.deleteByIdAndDoctor(id, doctor);
     }
 
-    public Page<ResponseDictionary> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
+    public Page<ResponseDictionaryDto> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
         Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("date"));
         Page<VaccinationSlotEntity> mySlots;
         LocalDateTime sDate, eDate;
@@ -90,7 +90,7 @@ public class DoctorService {
         }
 
         var myVaccinations = vaccinationRepository.findMatchingVaccinations(mySlots.toList());
-        return mySlots.map((vs) -> new ResponseDictionary(vs,
+        return mySlots.map((vs) -> new ResponseDictionaryDto(vs,
                         myVaccinations.stream()
                                       .filter((v) -> v.getVaccinationSlot().equals(vs))
                                       .findAny()

@@ -1,4 +1,4 @@
-package com.example.SOPSbackend.model.converter;
+package com.example.SOPSbackend.dto;
 
 
 import com.example.SOPSbackend.model.PatientEntity;
@@ -9,19 +9,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseVaccination {
-    public ResponseVaccination(VaccinationEntity vaccinationEntity) {
+public class ResponseVaccinationDto {
+    @NotNull
+    private Long id;
+
+    private VaccineEntity vaccine;
+    @NotNull
+    private PatientEntity patient;
+    @NotNull
+    private String status;
+
+    public ResponseVaccinationDto(VaccinationEntity vaccinationEntity) {
         this.id = vaccinationEntity.getId();
         this.patient = vaccinationEntity.getPatient();
         this.status = vaccinationEntity.getStatus();
         this.vaccine = vaccinationEntity.getVaccine();
     }
-    private Long id;
-    private VaccineEntity vaccine;
-    private PatientEntity patient;
-    private String status;
 }

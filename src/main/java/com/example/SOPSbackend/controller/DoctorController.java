@@ -3,7 +3,7 @@ package com.example.SOPSbackend.controller;
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.model.converter.ResponseDictionary;
+import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.DoctorService;
 import org.springframework.data.domain.Page;
@@ -55,9 +55,13 @@ public class DoctorController extends AbstractController {
             @RequestParam Optional<Integer> page,
             @AuthenticationPrincipal BasicUserDetails authPrincipal){
         DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
-        Page<ResponseDictionary> slots = doctorService.getVaccinationSlots(doctor, page.orElse(1), startDate.orElse(null), endDate.orElse(null), onlyReserved.orElse(null));
-
-        var freeSlotsMap = slots.get().map(ResponseDictionary::toMap).toArray();
+        Page<ResponseDictionaryDto> slots = doctorService.getVaccinationSlots(
+                doctor,
+                page.orElse(1),
+                startDate.orElse(null),
+                endDate.orElse(null),
+                onlyReserved.orElse(null)
+        );
         return ResponseEntity.ok().body(Map.of(
                 "pagination", Map.of(
                         "currentPage", page,
@@ -65,7 +69,7 @@ public class DoctorController extends AbstractController {
                         "currentRecords", slots.getNumberOfElements(),
                         "totalRecords", slots.getTotalElements()
                 ),
-                "data", freeSlotsMap
+                "data", slots.get().toArray()
                 ));
     }
 
