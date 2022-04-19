@@ -27,7 +27,7 @@ import java.util.Map;
 
 @Service
 public class DoctorService {
-    private static final int NEW_SLOT_MIN_TIME_DIFF = 15;
+    private static final int NEW_SLOT_MIN_TIME_DIFF = 0; //TODO CHANGE FOR RELEASE!!!
     private static final int ITEMS_PER_PAGE = 30;
     private final DoctorRepository doctorRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
@@ -44,8 +44,8 @@ public class DoctorService {
     public void addVaccinationSlot(DoctorEntity doctor, Instant date) {
         LocalDateTime transformedDate = transformVaccinationSlotDate(date);
 
-        //if(!isVaccinationSlotDateValid(transformedDate))
-            //throw new InternalValidationException(Map.of("date", "Invalid date value"));
+        if(!isVaccinationSlotDateValid(transformedDate))
+            throw new InternalValidationException(Map.of("date", "Invalid date value: date should not be set in past"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
         //if(vaccinationSlotRepository.findResultsByDate(transformedDate).stream().findAny().orElse(null) != null)

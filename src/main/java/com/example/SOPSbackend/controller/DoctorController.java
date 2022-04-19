@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
+import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.converter.ResponseDictionary;
 import com.example.SOPSbackend.security.BasicUserDetails;
@@ -34,7 +35,14 @@ public class DoctorController extends AbstractController {
             @AuthenticationPrincipal BasicUserDetails authPrincipal) {
 
         DoctorEntity doctor = (DoctorEntity)authPrincipal.getUser();
-        doctorService.addVaccinationSlot(doctor, vaccinationSlot.getDate());
+        try {
+            doctorService.addVaccinationSlot(doctor, vaccinationSlot.getDate());
+        }
+        catch (InternalValidationException e)
+        {
+            return ResponseEntity.unprocessableEntity().body(e.getErrors());
+        }
+
 
         return ResponseEntity.ok().body(Map.of("success", true));
     }
