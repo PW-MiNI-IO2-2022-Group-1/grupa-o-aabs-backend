@@ -1,6 +1,8 @@
 package com.example.SOPSbackend.model;
 
+import com.example.SOPSbackend.dto.AddressDto;
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
+import com.example.SOPSbackend.dto.EditPatientDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.security.Role;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -37,11 +39,24 @@ public class PatientEntity extends BasicUserEntity {
         return Role.PATIENT;
     }
 
-    public PatientEntity update(EditPatientAccountDto data, PasswordEncoder passwordEncoder) {
+    public PatientEntity update(EditPatientDto data) {
+        firstName = data.getFirstName();
+        lastName = data.getLastName();
+
+        AddressDto newAddress = data.getAddress();
+        address.setCity(newAddress.getCity());
+        address.setStreet(newAddress.getStreet());
+        address.setZipCode(newAddress.getZipCode());
+        address.setHouseNumber(newAddress.getHouseNumber());
+        address.setLocalNumber(newAddress.getLocalNumber());
+
+        return this;
+    }
+  
+    public void update(EditPatientAccountDto data, PasswordEncoder passwordEncoder) {
         if(data.getFirstName() != null) firstName = data.getFirstName();
         if(data.getLastName() != null) lastName = data.getLastName();
         if(data.getPassword() != null) password = passwordEncoder.encode(data.getPassword());
-        if(data.getAddress() != null) address.update(data.getAddress());
-        return this;
+        address.update(data.getAddress());
     }
 }
