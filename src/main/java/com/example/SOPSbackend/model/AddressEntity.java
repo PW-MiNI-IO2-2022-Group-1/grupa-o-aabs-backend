@@ -38,7 +38,7 @@ public class AddressEntity {
         houseNumber = address.getHouseNumber();
         localNumber = address.getLocalNumber();
     }
-
+  
     public void update(AddressDto newAddress) {
         if(newAddress.getCity() != null)  city = newAddress.getCity();
         if(newAddress.getStreet() != null) street = newAddress.getStreet();
