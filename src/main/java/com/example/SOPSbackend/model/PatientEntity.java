@@ -57,6 +57,6 @@ public class PatientEntity extends BasicUserEntity {
         if(data.getFirstName() != null) firstName = data.getFirstName();
         if(data.getLastName() != null) lastName = data.getLastName();
         if(data.getPassword() != null) password = passwordEncoder.encode(data.getPassword());
-        address.update(data.getAddress());
+        if(data.getAddress() != null) address.update(data.getAddress());
     }
 }
