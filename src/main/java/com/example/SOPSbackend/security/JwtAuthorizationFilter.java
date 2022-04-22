@@ -2,6 +2,7 @@ package com.example.SOPSbackend.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -62,12 +63,15 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                                          .verify(token);
 
             String username = decodedToken.getSubject();
-            if (username != null)
-                return userService.loadUserByUsername(username);
+            BasicUserDetails user = (BasicUserDetails)userService.loadUserByUsername(username);
+            Claim roleClaim = decodedToken.getClaim("role");
+            String tokenRole = roleClaim.asString();
 
+            return tokenRole.equals(user.getRole().getName())
+                    ? user
+                    : null;
         } catch(Exception e) {
             return null;
         }
-        return null;
     }
 }

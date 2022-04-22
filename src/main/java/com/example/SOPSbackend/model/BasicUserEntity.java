@@ -19,7 +19,24 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = PatientEntity.class, name = "patient")
 })
 @NoArgsConstructor
-public abstract class BasicUserEntity {
+public abstract class BasicUserEntity { // TODO: we use this class and it's subclasses as DTOs, there should be a separate class(es) in the dto package (this will solve all confusion with hashed/not-hashed passwords in the system)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    @Column(nullable = false)
+    protected String firstName;
+
+    @Column(nullable = false)
+    protected String lastName;
+
+    @Column(nullable = false) // TODO: 01/04/2022 Filip , unique = true)
+    protected String email;
+
+    @Column(nullable = false)
+    @Getter(AccessLevel.NONE)
+    protected String password;
+
     public BasicUserEntity(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,24 +44,6 @@ public abstract class BasicUserEntity {
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String firstName;
-
-    @Column(nullable = false)
-    private String lastName;
-
-    @Column(nullable = false) // TODO: 01/04/2022 Filip , unique = true)
-    private String email;
-
-    @Column(nullable = false)
-    @Getter(AccessLevel.NONE)
-    private String password;
-
-    @JsonIgnore
     public String getPassword() {
         return password;
     }

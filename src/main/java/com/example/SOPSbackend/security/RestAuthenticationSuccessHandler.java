@@ -37,6 +37,7 @@ public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHa
 
         String token = JWT.create()
                 .withSubject(principal.getUsername())
+                .withClaim("role", principal.getRole().getName())
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC256(secret));
 

@@ -1,6 +1,6 @@
 package com.example.SOPSbackend.model;
 
-import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
+import com.example.SOPSbackend.dto.AddressDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,12 +31,20 @@ public class AddressEntity {
     @Column()
     private String localNumber;
 
-    public AddressEntity(NewPatientRegistrationDto.Address address) {
+    public AddressEntity(AddressDto address) {
         city = address.getCity();
         zipCode = address.getZipCode();
         street = address.getStreet();
         houseNumber = address.getHouseNumber();
         localNumber = address.getLocalNumber();
+    }
+  
+    public void update(AddressDto newAddress) {
+        if(newAddress.getCity() != null)  city = newAddress.getCity();
+        if(newAddress.getStreet() != null) street = newAddress.getStreet();
+        if(newAddress.getZipCode() != null) zipCode = newAddress.getZipCode();
+        if(newAddress.getHouseNumber() != null) houseNumber = newAddress.getHouseNumber();
+        if(newAddress.getLocalNumber() != null) localNumber = newAddress.getLocalNumber();
     }
 }
 

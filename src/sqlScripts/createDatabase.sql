@@ -61,7 +61,7 @@ CREATE TABLE vaccination (
     vaccineSlotId int NOT NULL,
     patientID int NOT NULL,
     doctorID int NOT NULL,
-    status int NOT NULL,
+    status varchar(20) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (vaccineId) REFERENCES vaccine(id),
     FOREIGN KEY (vaccineSlotId) REFERENCES vaccinationSlot(id),
