@@ -19,8 +19,10 @@ public interface VaccinationSlotRepository extends
             @Param("id") Long id,
             @Param("doctor")DoctorEntity doctor
             );
-    List<VaccinationSlotEntity> findResultsByDate(
-            @Param("date") LocalDateTime date);
+    List<VaccinationSlotEntity> findResultsByDateAndDoctor(
+            @Param("date") LocalDateTime date,
+            @Param("doctor")DoctorEntity doctor
+    );
 
     @Query(value = "SELECT vs FROM VaccinationSlotEntity vs LEFT JOIN VaccinationEntity v ON v.vaccinationSlot = vs " +
             "WHERE vs.doctor = :doctor AND " +

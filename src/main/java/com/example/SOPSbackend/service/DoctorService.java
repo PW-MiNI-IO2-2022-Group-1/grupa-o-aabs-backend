@@ -49,8 +49,11 @@ public class DoctorService {
             throw new InternalValidationException(Map.of("date", "Invalid date value: date should not be set in past"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
-        //if(vaccinationSlotRepository.findResultsByDate(transformedDate).stream().findAny().orElse(null) != null)
-            vaccinationSlotRepository.save(newSlot);
+        if(vaccinationSlotRepository.findResultsByDateAndDoctor(transformedDate, doctor).stream().findAny().orElse(null) != null)
+            throw new InternalValidationException(Map.of("date", "Duplicate date"));
+
+        vaccinationSlotRepository.save(newSlot);
+
     }
 
     @Transactional
