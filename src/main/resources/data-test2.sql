@@ -1,0 +1,15 @@
+insert into vaccination_slot_entity (id, date, doctor_id) values (1, TIMESTAMPADD(DAY, 2, current_timestamp()), 2);
+insert into vaccination_slot_entity (id, date, doctor_id) values (2, TIMESTAMPADD(DAY, 3, current_timestamp()), 1);
+insert into vaccination_slot_entity (id, date, doctor_id) values (3, TIMESTAMPADD(DAY, 4, current_timestamp()), 2);
+insert into vaccination_slot_entity (id, date, doctor_id) values (4, TIMESTAMPADD(DAY, 5, current_timestamp()), 1);
+insert into vaccination_slot_entity (id, date, doctor_id) values (5, TIMESTAMPADD(DAY, 6, current_timestamp()), 2);
+insert into vaccination_slot_entity (id, date, doctor_id) values (6, TIMESTAMPADD(DAY, 7, current_timestamp()), 1);
+insert into vaccination_slot_entity (id, date, doctor_id) values (7, TIMESTAMPADD(DAY, 8, current_timestamp()), 2);
+insert into vaccination_slot_entity (id, date, doctor_id) values (8, TIMESTAMPADD(DAY, 9, current_timestamp()), 1);
+insert into vaccination_slot_entity (id, date, doctor_id) values (9, TIMESTAMPADD(DAY, 10, current_timestamp()), 2);
+insert into vaccination_slot_entity (id, date, doctor_id) values (10, TIMESTAMPADD(DAY, 11, current_timestamp()), 1);
+insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) values (1, 'Planned', 2, 1, 2);
+insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) values (2, 'Planned', 1, 2, 3);
+insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) values (3, 'Planned', 2, 3, 4);
+insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) values (4, 'Planned', 1, 4, 1);
+insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) values (5, 'Planned', 2, 5, 2);

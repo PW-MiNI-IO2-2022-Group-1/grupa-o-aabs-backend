@@ -38,7 +38,15 @@ public class AddressEntity {
         houseNumber = address.getHouseNumber();
         localNumber = address.getLocalNumber();
     }
-  
+
+    public AddressEntity(String city, String zipCode, String street, String houseNumber, String localNumber) {
+        this.city = city;
+        this.zipCode = zipCode;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.localNumber = localNumber;
+    }
+
     public void update(AddressDto newAddress) {
         if(newAddress.getCity() != null)  city = newAddress.getCity();
         if(newAddress.getStreet() != null) street = newAddress.getStreet();

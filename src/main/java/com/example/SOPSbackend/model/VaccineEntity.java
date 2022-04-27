@@ -29,6 +29,12 @@ public class VaccineEntity {
     @Column(nullable = false)
     private long requiredDoses;
 
+    public VaccineEntity(String name, String disease, long requiredDoses) {
+        this.name = name;
+        this.disease = disease;
+        this.requiredDoses = requiredDoses;
+    }
+
     public enum Disease {
         COVID_19("COVID-19"),
         COVID_21("COVID-21"),

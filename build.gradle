@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
 group = 'com.example'
@@ -9,23 +9,43 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  	compileOnly 'org.projectlombok:lombok'
-  	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	testImplementation 'org.springframework.security:spring-security-test'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'com.auth0:java-jwt:3.8.3'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.auth0:java-jwt:3.8.3'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
+
+task generateTestData() {
+    doLast {
+        File dataSql = file("src/main/resources/data-test2.sql")
+        dataSql.write("")
+
+        //vaccination slots
+        for (int i = 1; i <= 10; i++) {
+            dataSql.append("insert into vaccination_slot_entity (id, date, doctor_id) " +
+                    "values (${i}, TIMESTAMPADD(DAY, ${i + 1}, current_timestamp()), ${(i % 2) + 1});\n")
+        }
+
+        //vaccinations
+        for (int i = 1; i <= 5; i++) {
+            dataSql.append("insert into vaccination_entity (id, status, patient_id, vaccination_slot_id, vaccine_id) " +
+                    "values (${i}, 'Planned', ${(i % 2) + 1}, ${i}, ${(i % 4) + 1});\n")
+        }
+    }
+}
+

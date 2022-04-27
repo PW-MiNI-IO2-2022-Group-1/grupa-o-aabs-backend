@@ -34,6 +34,13 @@ public class PatientEntity extends BasicUserEntity {
         this.address = new AddressEntity(registration.getAddress());
     }
 
+    public PatientEntity(String firstName, String lastName, String email, String password, String pesel,
+                         AddressEntity address) {
+        super(firstName, lastName, email, password);
+        this.pesel = pesel;
+        this.address = address;
+    }
+
     @Override
     public Role getRole() {
         return Role.PATIENT;
