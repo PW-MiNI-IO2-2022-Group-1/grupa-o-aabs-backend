@@ -27,8 +27,6 @@ class VaccinationSlotRepositoryTest {
     private VaccinationSlotRepository underTest;
     @Autowired
     private DoctorRepository doctorRepository;
-    @Autowired
-    private VaccinationRepository vaccinationRepository;
 
     @Test
     void shouldFindAvailableSlots() {
