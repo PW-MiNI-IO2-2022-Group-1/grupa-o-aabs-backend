@@ -66,7 +66,7 @@ public class DoctorController extends AbstractController {
         );
         return ResponseEntity.ok().body(Map.of(
                 "pagination", Map.of(
-                        "currentPage", page,
+                        "currentPage", page.orElse(1),
                         "totalPages", slots.getTotalPages(),
                         "currentRecords", slots.getNumberOfElements(),
                         "totalRecords", slots.getTotalElements()
