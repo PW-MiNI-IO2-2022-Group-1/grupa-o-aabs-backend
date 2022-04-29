@@ -70,7 +70,7 @@ public class PatientService {
         VaccinationEntity vaccination = vaccinationRepository.findByVaccinationSlot(vaccinationSlot.get());
 
         if (vaccination != null) {
-            throw new AlreadyReservedException("Vaccination slot is already reserved.");
+            throw new AlreadyReservedException("Vaccination slot is already reserved");
         }
 
         vaccinationRepository.save(new VaccinationEntity(
