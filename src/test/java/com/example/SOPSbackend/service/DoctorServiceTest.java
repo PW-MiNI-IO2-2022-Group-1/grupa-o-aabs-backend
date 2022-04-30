@@ -7,6 +7,7 @@ import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,21 +16,17 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class DoctorServiceTest {
@@ -41,67 +38,87 @@ class DoctorServiceTest {
     VaccinationSlotRepository vaccinationSlotRepository;
     @Mock
     VaccinationRepository vaccinationRepository;
+    DoctorEntity doctor;
 
     @BeforeEach
     public void setUp() {
         underTest = new DoctorService(doctorRepository, vaccinationSlotRepository, vaccinationRepository);
+        doctor = new DoctorEntity();
+        doctor.setId(3l);
     }
 
     @Nested
     class addVaccinationSlot {
 
-        DoctorEntity doctor;
         Instant date;
+        LocalDateTime dateTime;
         @Captor
         ArgumentCaptor<VaccinationSlotEntity> vaccinationSlotArgumentCaptor;
 
-        @BeforeEach
-        void setUp() {
-            doctor = new DoctorEntity();
-            doctor.setId(3l);
-            date = Instant.now();
+        @Test
+        void shouldCallSaveWithDataPassedInParameter() {
+            date = Instant.now().plusSeconds(1000);
+            dateTime = LocalDateTime.ofInstant(date.truncatedTo(ChronoUnit.MINUTES), ZoneId.of("UTC"));
 
             underTest.addVaccinationSlot(doctor, date);
+
+            verify(vaccinationSlotRepository).save(vaccinationSlotArgumentCaptor.capture());
+            assertThat(vaccinationSlotArgumentCaptor.getValue().getDoctor()).isEqualTo(doctor);
+            assertThat(vaccinationSlotArgumentCaptor.getValue().getDate()).isEqualTo(dateTime);
         }
 
         @Test
-        void shouldCallSaveWithDataPassedInParameter() {
-            Mockito.verify(vaccinationSlotRepository).save(vaccinationSlotArgumentCaptor.capture());
+        void whenDateInPastIsPassed_shouldThrowInternalValidationException() {
+            date = Instant.now().minusSeconds(1000);
+            dateTime = LocalDateTime.ofInstant(date.truncatedTo(ChronoUnit.MINUTES), ZoneId.of("UTC"));
+            assertThatThrownBy(() -> underTest.addVaccinationSlot(doctor, date))
+                    .isInstanceOf(InternalValidationException.class);
+        }
 
-            assertThat(vaccinationSlotArgumentCaptor.getValue().getDoctor()).isEqualTo(doctor);
-            assertThat(vaccinationSlotArgumentCaptor.getValue().getDate()).isEqualTo(date);
+        @Test
+        void whenDuplicatedDateIsPassed_shouldThrowInternalValidationException() {
+            date = Instant.now().plusSeconds(1000);
+            dateTime = LocalDateTime.ofInstant(date.truncatedTo(ChronoUnit.MINUTES), ZoneId.of("UTC"));
+            Mockito.when(vaccinationSlotRepository.findResultsByDateAndDoctor(dateTime, doctor))
+                    .thenReturn(Arrays.asList(new VaccinationSlotEntity()));
+
+            assertThatThrownBy(() -> underTest.addVaccinationSlot(doctor, date))
+                    .isInstanceOf(InternalValidationException.class);
         }
     }
 
+    @Captor
+    ArgumentCaptor<DoctorEntity> doctorArgumentCaptor;
+    @Captor
+    ArgumentCaptor<Long> idArgumentCaptor;
 
-//    @Autowired
-//    VaccinationSlotRepository slotRepository;
-//
-//
-//    @Test
-//    public void addVaccinationSlot_shouldThrowValidationException_whenDateIsInPast() {
-//        Instant date = Instant.now().minus(Duration.ofDays(1));
-//        assertThrows(InternalValidationException.class,
-//                () -> underTest.addVaccinationSlot(doctor, date));
-//    }
-//
-//    /*@Test
-//    public void addVaccinationSlot_shouldThrowValidationException_whenDateIsComingTooSoon() {
-//        Instant date = Instant.now().plus(Duration.ofMinutes(2));
-//        assertThrows(InternalValidationException.class,
-//                () -> doctorService.addVaccinationSlot(doctor, date));
-//    }*/
-//
-//    @Test
-//    public void addVaccinationSlot_shouldSaveSlotWithTruncatedDate_whenDateIsCorrect() {
-//        Instant date = Instant.now().plus(Duration.ofDays(1));
-//        Instant truncatedDate = date.truncatedTo(ChronoUnit.MINUTES);
-//
-//        LocalDateTime localDate = LocalDateTime.ofInstant(truncatedDate, ZoneId.of("UTC"));
-//        underTest.addVaccinationSlot(doctor, date);
-//
-//        Mockito.verify(slotRepository)
-//                .save(argThat(argument -> argument.getDate().equals(localDate)));
-//    }
+    @Test
+    void deleteVaccinationSlot_shouldDeleteByIdAndDoctorWithPassedData() {
+        long vaccinationSlotId = 5;
+        underTest.deleteVaccinationSlot(doctor, vaccinationSlotId);
 
+        verify(vaccinationSlotRepository).deleteByIdAndDoctor(
+                idArgumentCaptor.capture(),
+                doctorArgumentCaptor.capture()
+        );
+
+        assertThat(idArgumentCaptor.getValue()).isEqualTo(vaccinationSlotId);
+        assertThat(doctorArgumentCaptor.getValue()).isEqualTo(doctor);
+    }
+
+    @Nested
+    @Disabled
+    //TODO
+    class getVaccinationSlots {
+
+        int page = 2;
+        String startDate = "startDate";
+        String endDate = "endDate";
+        String onlyReserved = "onlyReserved";
+
+        @Test
+        void shouldBeGood() {
+            underTest.getVaccinationSlots(doctor, page, startDate, endDate, onlyReserved);
+        }
+    }
 }

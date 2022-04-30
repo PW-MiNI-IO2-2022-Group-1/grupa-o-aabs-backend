@@ -6,7 +6,10 @@ import com.example.SOPSbackend.service.PatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -28,9 +31,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @ActiveProfiles("test")
+@ExtendWith(MockitoExtension.class)
 class PatientControllerTest {
     private MockMvc mockMvc;
-    private PatientController controller;
+    private PatientController underTest;
+    @Mock
     private PatientService patientService;
     private PatientEntity patient;
 
@@ -39,10 +44,9 @@ class PatientControllerTest {
 
     @BeforeEach
     public void setUp() {
+        underTest = new PatientController(patientService);
         patient = Mockito.mock(PatientEntity.class);
-        patientService = Mockito.mock(PatientService.class);
-        controller = new PatientController(patientService);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+        mockMvc = MockMvcBuilders.standaloneSetup(underTest)
                 .setCustomArgumentResolvers(new FakeAuthArgumentResolver(patient))
                 .build();
     }
@@ -85,7 +89,7 @@ class PatientControllerTest {
 
     @Test
     public void controller_shouldInitialize() {
-        assertThat(controller).isNotNull();
+        assertThat(underTest).isNotNull();
     }
 
     @Test
