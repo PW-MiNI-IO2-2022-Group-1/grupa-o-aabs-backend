@@ -20,6 +20,7 @@ import java.security.InvalidParameterException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
@@ -27,7 +28,7 @@ import java.util.Map;
 
 @Service
 public class DoctorService {
-    private static final int NEW_SLOT_MIN_TIME_DIFF = 0; //TODO CHANGE FOR RELEASE!!!
+    private static final int NEW_SLOT_MIN_TIME_DIFF = 15;
     private static final int ITEMS_PER_PAGE = 30;
     private final DoctorRepository doctorRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
@@ -48,8 +49,11 @@ public class DoctorService {
             throw new InternalValidationException(Map.of("date", "Invalid date value: date should not be set in past"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
-        //if(vaccinationSlotRepository.findResultsByDate(transformedDate).stream().findAny().orElse(null) != null)
-            vaccinationSlotRepository.save(newSlot);
+        if(vaccinationSlotRepository.findResultsByDateAndDoctor(transformedDate, doctor).stream().findAny().orElse(null) != null)
+            throw new InternalValidationException(Map.of("date", "Duplicate date"));
+
+        vaccinationSlotRepository.save(newSlot);
+
     }
 
     @Transactional
@@ -62,9 +66,9 @@ public class DoctorService {
         Page<VaccinationSlotEntity> mySlots;
         LocalDateTime sDate, eDate;
         if(startDate == null) sDate = null;
-        else sDate = LocalDateTime.parse(startDate, DateTimeFormatter.ISO_DATE_TIME);
+        else sDate = LocalDateTime.ofInstant(Instant.parse(startDate), ZoneId.of("UTC"));
         if(endDate == null) eDate = null;
-        else eDate = LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME);
+        else eDate = LocalDateTime.ofInstant(Instant.parse(endDate), ZoneId.of("UTC"));
         if(onlyReserved != null)
         {
             if(onlyReserved.equals("0"))

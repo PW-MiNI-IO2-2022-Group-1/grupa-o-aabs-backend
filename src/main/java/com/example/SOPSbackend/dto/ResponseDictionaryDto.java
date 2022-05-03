@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
 @Getter
@@ -22,7 +24,10 @@ public class ResponseDictionaryDto {
     public ResponseDictionaryDto(VaccinationSlotEntity vaccinationSlotEntity, VaccinationEntity vaccination)
     {
         this.id = vaccinationSlotEntity.getId();
-        this.date = vaccinationSlotEntity.getDate().format(DateTimeFormatter.ISO_DATE_TIME);
+        this.date = vaccinationSlotEntity
+                .getDate()
+                .toInstant(ZoneOffset.UTC)
+                .toString();
         this.vaccination = vaccination == null? null : new ResponseVaccinationDto(vaccination);
     }
 
