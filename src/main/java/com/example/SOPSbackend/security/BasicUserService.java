@@ -4,8 +4,11 @@ import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
 
 public class BasicUserService<T extends BasicUserEntity> implements UserDetailsService {
+
     private UserRepository<T, Long> repository;
 
     public BasicUserService(UserRepository<T, Long> repository) {

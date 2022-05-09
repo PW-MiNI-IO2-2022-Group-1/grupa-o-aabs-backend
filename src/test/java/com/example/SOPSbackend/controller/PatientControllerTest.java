@@ -3,9 +3,11 @@ package com.example.SOPSbackend.controller;
 import com.example.SOPSbackend.dto.AddressDto;
 import com.example.SOPSbackend.dto.NewPatientAfterRegistrationDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
+import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
 import com.example.SOPSbackend.model.AddressEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.security.config.BasicSecurityConfig;
 import com.example.SOPSbackend.service.PatientService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +25,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -59,15 +63,17 @@ class PatientControllerTest {
     private PatientEntity patient;
     @Autowired
     PatientRepository patientRepository;
-
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    BasicSecurityConfig basicSecurityConfig;
 
     @Nested
-    class integration {
+    class integrationTests {
         @Nested
-        class registerPatient {
+        class register {
             private Map<String, Object> body;
+
             @BeforeEach
             void setUp() {
                 body = new HashMap<>(Map.of(
@@ -89,7 +95,7 @@ class PatientControllerTest {
             @Test
             void whenPeselAlreadyExists_shouldResponseWithStatus409() throws Exception {
                 body.put("pesel", "82110392536");
-                MvcResult mvcResult = mockMvc.perform(post("/patient/registration")
+                mockMvc.perform(post("/patient/registration")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(body)))
                         .andDo(print())
@@ -101,7 +107,7 @@ class PatientControllerTest {
             @Test
             void whenEmailAlreadyExists_shouldResponseWithStatus409() throws Exception {
                 body.put("email", "patient1@email.com");
-                MvcResult mvcResult = mockMvc.perform(post("/patient/registration")
+                mockMvc.perform(post("/patient/registration")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(body)))
                         .andDo(print())
@@ -117,7 +123,7 @@ class PatientControllerTest {
             class whenAllDataIsValid {
                 private NewPatientRegistrationDto newPatient;
                 private MvcResult mvcResult;
-                private NewPatientAfterRegistrationDto returnedPatient;
+                private PatientWithoutPasswordDto returnedPatient;
 
                 @BeforeEach
                 void setUp() throws Exception {
@@ -134,12 +140,12 @@ class PatientControllerTest {
                             .andReturn();
                     returnedPatient = objectMapper.readValue(
                             mvcResult.getResponse().getContentAsString(),
-                            NewPatientAfterRegistrationDto.class
+                            PatientWithoutPasswordDto.class
                     );
                 }
 
                 @Test
-                void shouldReturnRegisteredPatient() {
+                void shouldResponseWithRegisteredPatient() {
                     assertThat(mvcResult.getResponse().getStatus()).isEqualTo(201);
                     assertThat(returnedPatient.getFirstName()).isEqualTo(newPatient.getFirstName());
                     assertThat(returnedPatient.getLastName()).isEqualTo(newPatient.getLastName());
@@ -150,20 +156,70 @@ class PatientControllerTest {
                 }
 
                 @Test
-                void shouldSaveNewPatient() {
-                    Optional<PatientEntity> savedPatient = patientRepository.findById(returnedPatient.getId());
+                void shouldSaveNewPatientWithEncodedPassword() {
+                    Optional<PatientEntity> savedPatient =
+                            patientRepository.findById(Long.valueOf(returnedPatient.getId()));
                     assertThat(savedPatient.isPresent()).isTrue();
-                    assertThat(new NewPatientAfterRegistrationDto(savedPatient.get())).usingRecursiveComparison()
+                    assertThat(new PatientWithoutPasswordDto(savedPatient.get())).usingRecursiveComparison()
                             .isEqualTo(returnedPatient);
+                    assertThat(
+                            basicSecurityConfig.passwordEncoder().matches(
+                                    body.get("password").toString(),
+                                    savedPatient.get().getPassword()
+                            )
+                    ).isTrue();
                 }
 
 
             }
         }
+
+        @Nested
+        @Transactional
+        @WithUserDetails(value = "patient1@email.com", userDetailsServiceBeanName = "patientUserService")
+        class account {
+
+            @Test
+            void shouldResponseUpdatedPatientWithEncodedPassword() throws Exception {
+                HashMap<String, Object> body = new HashMap<>(Map.of(
+                        "firstName", "firstName3",
+                        "lastName", "lastName3",
+                        "password", "password3",
+                        "address", Map.of(
+                                "city", "city3",
+                                "zipCode", "00-003",
+                                "street", "street3",
+                                "houseNumber", "houseNumber3",
+                                "localNumber", "localNumber3"
+                        )
+                ));
+
+                MvcResult mvcResult = mockMvc.perform(put("/patient/account")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(body)))
+                        .andDo(print())
+                        .andExpect(status().is(200))
+                        .andReturn();
+
+                PatientEntity user = patientRepository.findByEmailIgnoreCase("patient1@email.com").get();
+                assertThat(objectMapper.readValue(
+                        mvcResult.getResponse().getContentAsString(),
+                        PatientWithoutPasswordDto.class
+                )).usingRecursiveComparison().isEqualTo(new PatientWithoutPasswordDto(user));
+                assertThat(user.getFirstName()).isEqualTo(body.get("firstName"));
+                assertThat(user.getLastName()).isEqualTo(body.get("lastName"));
+                assertThat(
+                        basicSecurityConfig.passwordEncoder().matches(
+                                body.get("password").toString(),
+                                user.getPassword()
+                        )
+                ).isTrue();
+            }
+        }
     }
 
     @Nested
-    class unit {
+    class unitTests {
 
         @BeforeEach
         public void setUp() {
