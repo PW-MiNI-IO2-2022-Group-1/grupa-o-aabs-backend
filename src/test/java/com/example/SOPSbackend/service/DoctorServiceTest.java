@@ -63,7 +63,8 @@ class DoctorServiceTest {
             underTest.addVaccinationSlot(doctor, date);
 
             verify(vaccinationSlotRepository).save(vaccinationSlotArgumentCaptor.capture());
-            assertThat(vaccinationSlotArgumentCaptor.getValue().getDoctor()).isEqualTo(doctor);
+            assertThat(vaccinationSlotArgumentCaptor.getValue().getDoctor()).usingRecursiveComparison()
+                    .isEqualTo(doctor);
             assertThat(vaccinationSlotArgumentCaptor.getValue().getDate()).isEqualTo(dateTime);
         }
 
@@ -102,7 +103,8 @@ class DoctorServiceTest {
                 doctorArgumentCaptor.capture()
         );
 
-        assertThat(idArgumentCaptor.getValue()).isEqualTo(vaccinationSlotId);
+        assertThat(idArgumentCaptor.getValue()).usingRecursiveComparison()
+                .isEqualTo(vaccinationSlotId);
         assertThat(doctorArgumentCaptor.getValue()).isEqualTo(doctor);
     }
 

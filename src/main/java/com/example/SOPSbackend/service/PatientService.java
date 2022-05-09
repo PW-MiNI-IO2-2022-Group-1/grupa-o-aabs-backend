@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
+import com.example.SOPSbackend.dto.NewPatientAfterRegistrationDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;

@@ -40,11 +40,9 @@ public class DoctorController extends AbstractController {
         try {
             doctorService.addVaccinationSlot(doctor, vaccinationSlot.getDate());
         }
-        catch (InternalValidationException e)
-        {
+        catch (InternalValidationException e) {
             return ResponseEntity.unprocessableEntity().body(e.getErrors());
         }
-
 
         return ResponseEntity.ok().body(Map.of("success", true));
     }

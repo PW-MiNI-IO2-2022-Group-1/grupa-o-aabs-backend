@@ -104,7 +104,7 @@ class AdminServiceTest {
 
             DoctorEntity result = underTest.addDoctor(newDoctor);
 
-            assertThat(result).isEqualTo(returnedDoctor);
+            assertThat(result).usingRecursiveComparison().isEqualTo(returnedDoctor);
         }
 
         @Test
