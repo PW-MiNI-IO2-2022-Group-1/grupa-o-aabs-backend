@@ -116,6 +116,9 @@ class DoctorServiceTest {
 
     @Nested
     class vaccinatePatient {
+        @Captor
+        ArgumentCaptor<VaccinationEntity> vaccinationArgumentCaptor;
+
         @Test
         void whenVaccinationSlotIsNotPresent_shouldThrowNoSuchElementException() {
             Long vaccinationSlotId = 5l;
@@ -187,6 +190,8 @@ class DoctorServiceTest {
             Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
                     .thenReturn(vaccinationSlot);
             VaccinationEntity vaccination = new VaccinationEntity();
+            Long vaccinationId = 7l;
+            vaccination.setId(vaccinationId);
             Mockito.when(vaccinationRepository.findByVaccinationSlot(vaccinationSlotEntity))
                     .thenReturn(vaccination);
 
@@ -196,8 +201,9 @@ class DoctorServiceTest {
                 assertThat(1).isEqualTo(2);
             }
 
-            //TODO: argument captor
-            verify(vaccinationRepository).save(vaccination);
+            verify(vaccinationRepository).save(vaccinationArgumentCaptor.capture());
+            assertThat(vaccinationArgumentCaptor.getValue().getStatus()).isEqualToIgnoringCase(status);
+            assertThat(vaccinationArgumentCaptor.getValue().getId()).isEqualTo(vaccinationId);
         }
 
     }
