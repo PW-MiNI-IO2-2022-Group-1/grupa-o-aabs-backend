@@ -12,6 +12,7 @@ import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.filters.CustomVaccinationSlotSpecifications;
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -109,7 +110,7 @@ public class DoctorService {
     public void vaccinatePatient(
             Long vaccinationSlotId,
             String vaccinationStatus,
-            DoctorEntity doctor) {
+            DoctorEntity doctor) throws AuthenticationException {
         Optional<VaccinationSlotEntity> vaccinationSlot =
                 vaccinationSlotRepository.findById(vaccinationSlotId);
         if (!vaccinationSlot.isPresent()) {
@@ -117,10 +118,7 @@ public class DoctorService {
         }
 
         if (vaccinationSlot.get().getDoctor().getId() != doctor.getId()) {
-            throw new InternalValidationException(
-                    Map.of("vaccinationSlotId", "Vaccination slot was not created by this doctor"
-                    )
-            );
+            throw new AuthenticationException("Vaccination slot was not created by this doctor");
         }
 
         VaccinationEntity vaccination

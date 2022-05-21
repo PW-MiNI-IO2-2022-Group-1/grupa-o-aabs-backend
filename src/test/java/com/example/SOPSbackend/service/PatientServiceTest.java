@@ -266,7 +266,6 @@ class PatientServiceTest {
     }
 
 
-
     @Test
     public void editAccount_ShouldUpdateAndSavePatient() {
         PatientEntity patient = Mockito.mock(PatientEntity.class);

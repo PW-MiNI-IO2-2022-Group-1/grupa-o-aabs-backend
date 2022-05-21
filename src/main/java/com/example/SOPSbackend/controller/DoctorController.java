@@ -8,6 +8,7 @@ import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.DoctorService;
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -106,6 +107,10 @@ public class DoctorController extends AbstractController {
         } catch (InternalValidationException e) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(
                     Map.of("success", false, "data", e.getErrors())
+            );
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                    Map.of("success", false, "msg", e.getMessage())
             );
         }
         return ResponseEntity.ok().body(Map.of("success",true));

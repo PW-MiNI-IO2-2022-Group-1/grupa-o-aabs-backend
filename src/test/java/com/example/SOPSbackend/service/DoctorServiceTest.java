@@ -2,10 +2,13 @@ package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
+import org.apache.tomcat.websocket.AuthenticationException;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -23,6 +26,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -109,8 +115,96 @@ class DoctorServiceTest {
     }
 
     @Nested
+    class vaccinatePatient {
+        @Test
+        void whenVaccinationSlotIsNotPresent_shouldThrowNoSuchElementException() {
+            Long vaccinationSlotId = 5l;
+            String status = "COMPLETED";
+            Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
+                    .thenReturn(Optional.empty());
+
+            assertThatThrownBy(() -> underTest.vaccinatePatient(vaccinationSlotId, status, doctor))
+                    .isInstanceOf(NoSuchElementException.class);
+        }
+
+        @Test
+        void whenVaccinationSlotWasNotCreatedByThisDoctor_shouldThrowAuthenticationException() {
+            Long vaccinationSlotId = 5l;
+            String status = "COMPLETED";
+            DoctorEntity fakeDoctor = new DoctorEntity();
+            fakeDoctor.setId(doctor.getId() + 1);
+            VaccinationSlotEntity vaccinationSlotEntity = new VaccinationSlotEntity();
+            vaccinationSlotEntity.setDoctor(fakeDoctor);
+            Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
+                    .thenReturn(Optional.of(vaccinationSlotEntity));
+
+            assertThatThrownBy(() -> underTest.vaccinatePatient(vaccinationSlotId, status, doctor))
+                    .isInstanceOf(AuthenticationException.class);
+        }
+
+        @Test
+        void whenVaccinationSlotIsNotReserved_shouldThrowInternalValidationException() {
+            Long vaccinationSlotId = 5l;
+            String status = "COMPLETED";
+            VaccinationSlotEntity vaccinationSlotEntity = new VaccinationSlotEntity();
+            vaccinationSlotEntity.setId(5l);
+            vaccinationSlotEntity.setDoctor(doctor);
+            Optional<VaccinationSlotEntity> vaccinationSlot = Optional.of(vaccinationSlotEntity);
+            Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
+                    .thenReturn(vaccinationSlot);
+            Mockito.when(vaccinationRepository.findByVaccinationSlot(vaccinationSlotEntity))
+                    .thenReturn(null);
+
+            assertThatThrownBy(() -> underTest.vaccinatePatient(vaccinationSlotId, status, doctor))
+                    .isInstanceOf(InternalValidationException.class);
+        }
+
+        @Test
+        void whenStatusNameIsInValid_shouldThrowInternalValidationException() {
+            Long vaccinationSlotId = 5l;
+            String status = "NOT VALID NAME";
+            VaccinationSlotEntity vaccinationSlotEntity = new VaccinationSlotEntity();
+            vaccinationSlotEntity.setId(vaccinationSlotId);
+            vaccinationSlotEntity.setDoctor(doctor);
+            Optional<VaccinationSlotEntity> vaccinationSlot = Optional.of(vaccinationSlotEntity);
+            Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
+                    .thenReturn(vaccinationSlot);
+            Mockito.when(vaccinationRepository.findByVaccinationSlot(vaccinationSlotEntity))
+                    .thenReturn(new VaccinationEntity());
+
+            assertThatThrownBy(() -> underTest.vaccinatePatient(vaccinationSlotId, status, doctor))
+                    .isInstanceOf(InternalValidationException.class);
+        }
+
+        @Test
+        void whenAllDataIsValid_shouldSaveVaccinationWithNewStatus() {
+            Long vaccinationSlotId = 5l;
+            String status = "COMPLETED";
+            VaccinationSlotEntity vaccinationSlotEntity = new VaccinationSlotEntity();
+            vaccinationSlotEntity.setId(vaccinationSlotId);
+            vaccinationSlotEntity.setDoctor(doctor);
+            Optional<VaccinationSlotEntity> vaccinationSlot = Optional.of(vaccinationSlotEntity);
+            Mockito.when(vaccinationSlotRepository.findById(vaccinationSlotId))
+                    .thenReturn(vaccinationSlot);
+            VaccinationEntity vaccination = new VaccinationEntity();
+            Mockito.when(vaccinationRepository.findByVaccinationSlot(vaccinationSlotEntity))
+                    .thenReturn(vaccination);
+
+            try {
+                underTest.vaccinatePatient(vaccinationSlotId, status, doctor);
+            } catch (Exception e) {
+                assertThat(1).isEqualTo(2);
+            }
+
+            //TODO: argument captor
+            verify(vaccinationRepository).save(vaccination);
+        }
+
+    }
+
+    @Nested
     @Disabled
-    //TODO
+            //TODO
     class getVaccinationSlots {
 
         int page = 2;
