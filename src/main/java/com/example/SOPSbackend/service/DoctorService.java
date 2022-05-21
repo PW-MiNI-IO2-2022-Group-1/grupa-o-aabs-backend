@@ -53,11 +53,11 @@ public class DoctorService {
     public void addVaccinationSlot(DoctorEntity doctor, Instant date) {
         LocalDateTime transformedDate = transformVaccinationSlotDate(date);
 
-        if(!isVaccinationSlotDateValid(transformedDate))
+        if (!isVaccinationSlotDateValid(transformedDate))
             throw new InternalValidationException(Map.of("date", "Invalid date value: date should not be set in past"));
 
         VaccinationSlotEntity newSlot = new VaccinationSlotEntity(doctor, transformedDate);
-        if(vaccinationSlotRepository.findResultsByDateAndDoctor(transformedDate, doctor).stream().findAny().orElse(null) != null)
+        if (vaccinationSlotRepository.findResultsByDateAndDoctor(transformedDate, doctor).stream().findAny().orElse(null) != null)
             throw new InternalValidationException(Map.of("date", "Duplicate date"));
 
         vaccinationSlotRepository.save(newSlot);
@@ -65,48 +65,45 @@ public class DoctorService {
     }
 
     @Transactional
-    public void deleteVaccinationSlot(DoctorEntity doctor, Long id){
+    public void deleteVaccinationSlot(DoctorEntity doctor, Long id) {
         vaccinationSlotRepository.deleteByIdAndDoctor(id, doctor);
     }
 
-    public Page<ResponseDictionaryDto> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String  endDate, String onlyReserved) {
+    public Page<ResponseDictionaryDto> getVaccinationSlots(DoctorEntity doctor, int page, String startDate, String endDate, String onlyReserved) {
         Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("date"));
         Page<VaccinationSlotEntity> mySlots;
         LocalDateTime sDate, eDate;
-        if(startDate == null) sDate = null;
+        if (startDate == null) sDate = null;
         else sDate = LocalDateTime.ofInstant(Instant.parse(startDate), ZoneId.of("UTC"));
-        if(endDate == null) eDate = null;
+        if (endDate == null) eDate = null;
         else eDate = LocalDateTime.ofInstant(Instant.parse(endDate), ZoneId.of("UTC"));
-        if(onlyReserved != null)
-        {
-            if(onlyReserved.equals("0"))
-            mySlots = vaccinationSlotRepository.findNotReserved(doctor,
-                    sDate,
-                    eDate,
-                    thisPage);
-            else if(onlyReserved.equals("1"))
+        if (onlyReserved != null) {
+            if (onlyReserved.equals("0"))
+                mySlots = vaccinationSlotRepository.findNotReserved(doctor,
+                        sDate,
+                        eDate,
+                        thisPage);
+            else if (onlyReserved.equals("1"))
                 mySlots = vaccinationSlotRepository.findReserved(doctor,
                         sDate,
                         eDate,
                         thisPage);
             else throw new InvalidParameterException();
-        }
-        else
-        {
+        } else {
             Specification<VaccinationSlotEntity> mySpec = Specification.where(CustomVaccinationSlotSpecifications.findByDoctor(doctor));
-            if(startDate != null)
+            if (startDate != null)
                 mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findAfter(sDate));
-            if(endDate != null)
+            if (endDate != null)
                 mySpec = mySpec.and(CustomVaccinationSlotSpecifications.findBefore(eDate));
             mySlots = vaccinationSlotRepository.findAll(mySpec, thisPage);
         }
 
         var myVaccinations = vaccinationRepository.findMatchingVaccinations(mySlots.toList());
         return mySlots.map((vs) -> new ResponseDictionaryDto(vs,
-                        myVaccinations.stream()
-                                      .filter((v) -> v.getVaccinationSlot().equals(vs))
-                                      .findAny()
-                                      .orElse(null)));
+                myVaccinations.stream()
+                        .filter((v) -> v.getVaccinationSlot().equals(vs))
+                        .findAny()
+                        .orElse(null)));
     }
 
     public void vaccinatePatient(
@@ -119,9 +116,9 @@ public class DoctorService {
             throw new NoSuchElementException("No such vaccination slot");
         }
 
-        if (!vaccinationSlot.get().getDoctor().equals(doctor)) {
+        if (vaccinationSlot.get().getDoctor().getId() != doctor.getId()) {
             throw new InternalValidationException(
-                    Map.of("vaccinationSlotId","Vaccination slot was not created by this doctor"
+                    Map.of("vaccinationSlotId", "Vaccination slot was not created by this doctor"
                     )
             );
         }
@@ -130,19 +127,21 @@ public class DoctorService {
                 = vaccinationRepository.findByVaccinationSlot(vaccinationSlot.get());
         if (vaccination == null) {
             throw new InternalValidationException(
-                    Map.of("vaccinationSlotId","Vaccination slot is not reserved")
+                    Map.of("vaccinationSlotId", "Vaccination slot is not reserved")
             );
         }
 
-        if (vaccinationStatus != "COMPLETED" && vaccinationStatus != "CANCELED") {
+        if (!vaccinationStatus.contentEquals("COMPLETED")
+                && !vaccinationStatus.contentEquals("CANCELED")) {
             throw new InternalValidationException(
                     Map.of("status", "Not allowed value. Allowed value: \"COMPLETED\" or \"CANCELED\"")
             );
         }
 
         vaccination.setStatus(
-                vaccinationStatus == "COMPLETED" ? "Completed" : "Canceled"
+                vaccinationStatus.contentEquals("COMPLETED") ? "Completed" : "Canceled"
         );
+        vaccinationRepository.save(vaccination);
     }
 
     private LocalDateTime transformVaccinationSlotDate(Instant date) {
