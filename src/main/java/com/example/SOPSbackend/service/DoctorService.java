@@ -1,7 +1,11 @@
 package com.example.SOPSbackend.service;
 
+import com.example.SOPSbackend.dto.VaccinatePatientStatusDto;
 import com.example.SOPSbackend.exception.InternalValidationException;
+import com.example.SOPSbackend.exception.NotReservedException;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.model.Vaccination;
+import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.repository.DoctorRepository;
@@ -14,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 import java.security.InvalidParameterException;
@@ -24,6 +30,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @Service
@@ -99,6 +107,42 @@ public class DoctorService {
                                       .filter((v) -> v.getVaccinationSlot().equals(vs))
                                       .findAny()
                                       .orElse(null)));
+    }
+
+    public void vaccinatePatient(
+            Long vaccinationSlotId,
+            String vaccinationStatus,
+            DoctorEntity doctor) {
+        Optional<VaccinationSlotEntity> vaccinationSlot =
+                vaccinationSlotRepository.findById(vaccinationSlotId);
+        if (!vaccinationSlot.isPresent()) {
+            throw new NoSuchElementException("No such vaccination slot");
+        }
+
+        if (!vaccinationSlot.get().getDoctor().equals(doctor)) {
+            throw new InternalValidationException(
+                    Map.of("vaccinationSlotId","Vaccination slot was not created by this doctor"
+                    )
+            );
+        }
+
+        VaccinationEntity vaccination
+                = vaccinationRepository.findByVaccinationSlot(vaccinationSlot.get());
+        if (vaccination == null) {
+            throw new InternalValidationException(
+                    Map.of("vaccinationSlotId","Vaccination slot is not reserved")
+            );
+        }
+
+        if (vaccinationStatus != "COMPLETED" && vaccinationStatus != "CANCELED") {
+            throw new InternalValidationException(
+                    Map.of("status", "Not allowed value. Allowed value: \"COMPLETED\" or \"CANCELED\"")
+            );
+        }
+
+        vaccination.setStatus(
+                vaccinationStatus == "COMPLETED" ? "Completed" : "Canceled"
+        );
     }
 
     private LocalDateTime transformVaccinationSlotDate(Instant date) {

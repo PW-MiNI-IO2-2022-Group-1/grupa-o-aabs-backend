@@ -101,7 +101,6 @@ class PatientControllerTest {
                         .andDo(print())
                         .andExpect(status().is(409))
                         .andReturn();
-
             }
 
             @Test
