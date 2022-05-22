@@ -1,11 +1,10 @@
 package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.NewVaccinationSlotDto;
+import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.dto.VaccinatePatientStatusDto;
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.dto.ResponseDictionaryDto;
-import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.DoctorService;
 import org.apache.tomcat.websocket.AuthenticationException;
@@ -13,14 +12,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("doctor")
