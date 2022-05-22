@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -105,14 +103,20 @@ class PatientControllerTest {
     }
 
     @Test
-    public void editAccount_ShouldReturnErrorResponse_WhenRequestBodyIsInvalid() throws Exception {
+    public void editAccount_ShouldReturnOkResponse_WhenRequestBodyIsValidButIncomplete() throws Exception {
+        PatientEntity mockPatient = getValidPatient();
+        Mockito.when(patientService.editAccount(eq(patient), any())).thenReturn(mockPatient);
         HashMap<String, Object> bodyDict = new HashMap<>(getValidRequestBody());
         bodyDict.remove("firstName");
+        bodyDict.remove("password");
+        bodyDict.remove("address");
         String body = objectMapper.writeValueAsString(bodyDict);
         performEditAccountPut(body).andExpectAll(
-            status().is(HttpStatus.UNPROCESSABLE_ENTITY.value()),
-            jsonPath("$.success").value(false),
-            jsonPath("$.data.firstName").value("Required field is empty")
+            status().isOk(),
+            (MvcResult result) -> {
+                String correctBody = objectMapper.writeValueAsString(mockPatient);
+                assertEquals(correctBody, result.getResponse().getContentAsString());
+            }
         );
     }
 }
