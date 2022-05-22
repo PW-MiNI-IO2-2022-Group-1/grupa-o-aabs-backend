@@ -1,8 +1,6 @@
 package com.example.SOPSbackend.controller;
 
-import com.example.SOPSbackend.dto.EditPatientAccountDto;
-import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
-import com.example.SOPSbackend.dto.VaccineIdDto;
+import com.example.SOPSbackend.dto.*;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
@@ -39,7 +37,7 @@ public class PatientController extends AbstractController {
     @PostMapping("registration")
     public ResponseEntity<Object> registerPatient(@RequestBody NewPatientRegistrationDto registration) {
         try {
-            return ResponseEntity.ok().body(patientService.register(registration));
+            return ResponseEntity.status(201).body(new PatientWithoutPasswordDto(patientService.register(registration)));
         } catch (UserAlreadyExistException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false,
                     "msg", e.getMessage()));

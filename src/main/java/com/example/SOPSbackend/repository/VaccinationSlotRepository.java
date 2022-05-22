@@ -17,7 +17,7 @@ public interface VaccinationSlotRepository extends
         JpaSpecificationExecutor<VaccinationSlotEntity> {
     long deleteByIdAndDoctor(
             @Param("id") Long id,
-            @Param("doctor")DoctorEntity doctor
+            @Param("doctor") DoctorEntity doctor
             );
     List<VaccinationSlotEntity> findResultsByDateAndDoctor(
             @Param("date") LocalDateTime date,

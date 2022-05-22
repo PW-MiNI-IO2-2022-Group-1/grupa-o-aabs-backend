@@ -4,10 +4,12 @@ import com.example.SOPSbackend.model.AddressEntity;
 import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class PatientWithoutPasswordDto extends BasicUserWithoutPasswordDto {
     private String pesel;
     private AddressEntity address;

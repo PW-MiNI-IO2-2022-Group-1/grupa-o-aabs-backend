@@ -1,5 +1,6 @@
 package com.example.SOPSbackend.dto;
 
+import com.example.SOPSbackend.model.AddressEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,12 @@ public class AddressDto {
     private String houseNumber;
 
     private String localNumber;
+
+    public AddressDto(AddressEntity addressEntity) {
+        city = addressEntity.getCity();
+        zipCode = addressEntity.getZipCode();
+        street = addressEntity.getStreet();
+        houseNumber = addressEntity.getHouseNumber();
+        localNumber = addressEntity.getLocalNumber();
+    }
 }

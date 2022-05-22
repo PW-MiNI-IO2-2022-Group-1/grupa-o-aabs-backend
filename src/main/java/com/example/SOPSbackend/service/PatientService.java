@@ -1,6 +1,7 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
+import com.example.SOPSbackend.dto.NewPatientAfterRegistrationDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
@@ -70,7 +71,7 @@ public class PatientService {
         VaccinationEntity vaccination = vaccinationRepository.findByVaccinationSlot(vaccinationSlot.get());
 
         if (vaccination != null) {
-            throw new AlreadyReservedException("Vaccination slot is already reserved.");
+            throw new AlreadyReservedException("Vaccination slot is already reserved");
         }
 
         vaccinationRepository.save(new VaccinationEntity(

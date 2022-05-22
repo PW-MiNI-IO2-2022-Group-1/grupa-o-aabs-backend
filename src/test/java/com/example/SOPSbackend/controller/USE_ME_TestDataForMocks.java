@@ -10,11 +10,11 @@ import java.util.List;
  * change stuff).
  */
 public class USE_ME_TestDataForMocks {
-    public static final List<DoctorEntity> DOCTOR_ENTITIES = generateTestDoctorEntities();
+    public static final List<DoctorEntity> DOCTOR_ENTITIES = generateTestDoctorEntities(23);
 
-    private static List<DoctorEntity> generateTestDoctorEntities() {
+    private static List<DoctorEntity> generateTestDoctorEntities(int n) {
         List<DoctorEntity> ret = new ArrayList<>();
-        for (int i = 0; i < 23; i++) {
+        for (int i = 0; i < n; i++) {
             ret.add(new DoctorEntity("TestName" + i,
                     "TestSurename" + i,
                     "test" + i + "@test.com",
