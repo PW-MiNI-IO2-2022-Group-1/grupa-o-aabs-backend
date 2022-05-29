@@ -2,7 +2,6 @@ package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.dto.EditPatientDto;
-import com.example.SOPSbackend.model.AddressEntity;
 import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.dto.NewDoctorDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
@@ -12,7 +11,6 @@ import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

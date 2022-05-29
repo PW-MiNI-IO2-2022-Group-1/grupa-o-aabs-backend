@@ -16,22 +16,22 @@ import java.time.LocalDateTime;
 public class VaccinationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = VaccineEntity.class, optional = false)
-    private VaccineEntity vaccine;
+    protected VaccineEntity vaccine;
 
     @JoinColumn(nullable = false)
     @OneToOne(targetEntity = VaccinationSlotEntity.class, optional = false)
-    private VaccinationSlotEntity vaccinationSlot;
+    protected VaccinationSlotEntity vaccinationSlot;
 
     @JoinColumn(nullable = false)
     @ManyToOne(targetEntity = PatientEntity.class)
-    private PatientEntity patient;
+    protected PatientEntity patient;
 
     @Column(nullable = false)
-    private String status;
+    protected String status;
     public VaccinationEntity(PatientEntity patient, VaccineEntity vaccine, VaccinationSlotEntity vaccinationSlot) {
         this.patient = patient;
         this.vaccine = vaccine;

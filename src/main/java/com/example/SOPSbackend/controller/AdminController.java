@@ -41,8 +41,7 @@ public class AdminController {
     public ResponseEntity<Object> showDoctors(@RequestParam Optional<Integer> page) {
         return ResponseEntity.ok(new PaginatedResponseBody<>(
                         adminService.getAllDoctors(page.orElse(1) - 1)
-                                .map(BasicUserWithoutPasswordDto::new)
-                )
+                                .map(BasicUserWithoutPasswordDto::new))
         );
     }
 
