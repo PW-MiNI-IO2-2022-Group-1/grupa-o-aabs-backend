@@ -1,3 +1,6 @@
 password: password
 
-source: https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
+sources: 
+ - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html
+ - https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-api-cli.html
+
