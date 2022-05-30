@@ -1,7 +1,6 @@
 package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
-import com.example.SOPSbackend.dto.NewPatientAfterRegistrationDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
@@ -13,6 +12,8 @@ import com.example.SOPSbackend.repository.PatientRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.VaccineRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class PatientService {
     private final VaccineRepository vaccineRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
     private final VaccinationRepository vaccinationRepository;
+    private static final int ITEMS_PER_PAGE = 10;
 
     public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder,
                           VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository,
@@ -93,5 +95,9 @@ public class PatientService {
         PatientEntity patientToEdit = patientRepository.findById(patient.getId()).get();
         patientToEdit.update(editedData, passwordEncoder);
         return patientRepository.save(patientToEdit);
+    }
+
+    public Page<VaccinationEntity> getAllVaccinationsForPatient(PatientEntity patient, int pageNumber) {
+        return vaccinationRepository.findByPatient(patient, Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
     }
 }

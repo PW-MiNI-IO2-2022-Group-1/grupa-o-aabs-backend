@@ -4,9 +4,8 @@ import com.example.SOPSbackend.dto.*;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
-import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
-import com.example.SOPSbackend.model.converter.DateTimeConverter;
+import com.example.SOPSbackend.response.PaginatedResponseBody;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.service.PatientService;
 import org.springframework.http.HttpStatus;
@@ -14,11 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
+
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "patient")
@@ -65,6 +64,18 @@ public class PatientController extends AbstractController {
         }
         return ResponseEntity.ok().body(Map.of("vaccines", patientService.getVaccines(diseasesList)));
     }
+
+   @GetMapping("vaccinations")
+   @Secured({"ROLE_PATIENT"})
+   public ResponseEntity<Object> getHistoryOfVaccinations(@RequestParam Optional<Integer> page,
+                                                          @AuthenticationPrincipal BasicUserDetails authPrincipal) {
+       PatientEntity patient = (PatientEntity) authPrincipal.getUser();
+
+        return ResponseEntity.ok(new PaginatedResponseBody<>(
+                patientService.getAllVaccinationsForPatient(patient, page.orElse(1) - 1)
+                        .map(VaccinationDto::new))
+        );
+   }
 
     @GetMapping("vaccination-slots")
     @Secured({"ROLE_PATIENT"})
