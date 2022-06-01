@@ -1,21 +1,18 @@
 package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.AddressDto;
-import com.example.SOPSbackend.dto.NewPatientAfterRegistrationDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.dto.PatientWithoutPasswordDto;
 import com.example.SOPSbackend.model.AddressEntity;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.PatientRepository;
-import com.example.SOPSbackend.security.config.BasicSecurityConfig;
+import com.example.SOPSbackend.security.Role;
+import com.example.SOPSbackend.security.TokenService;
 import com.example.SOPSbackend.service.PatientService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.assertj.core.internal.Objects;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -25,8 +22,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -34,7 +30,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -46,7 +41,6 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -66,7 +60,9 @@ class PatientControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
-    BasicSecurityConfig basicSecurityConfig;
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private TokenService tokenService;
 
     @Nested
     class integrationTests {
@@ -162,7 +158,7 @@ class PatientControllerTest {
                     assertThat(new PatientWithoutPasswordDto(savedPatient.get())).usingRecursiveComparison()
                             .isEqualTo(returnedPatient);
                     assertThat(
-                            basicSecurityConfig.passwordEncoder().matches(
+                            passwordEncoder.matches(
                                     body.get("password").toString(),
                                     savedPatient.get().getPassword()
                             )
@@ -175,11 +171,11 @@ class PatientControllerTest {
 
         @Nested
         @Transactional
-        @WithUserDetails(value = "patient1@email.com", userDetailsServiceBeanName = "patientUserService")
         class account {
 
             @Test
             void shouldResponseUpdatedPatientWithEncodedPassword() throws Exception {
+                PatientEntity user = patientRepository.findByEmailIgnoreCase("patient1@email.com").get();
                 HashMap<String, Object> body = new HashMap<>(Map.of(
                         "firstName", "firstName3",
                         "lastName", "lastName3",
@@ -195,12 +191,12 @@ class PatientControllerTest {
 
                 MvcResult mvcResult = mockMvc.perform(put("/patient/account")
                                 .contentType(MediaType.APPLICATION_JSON)
+                                .header("authorization", tokenService.getToken(Role.PATIENT, user))
                                 .content(objectMapper.writeValueAsString(body)))
                         .andDo(print())
                         .andExpect(status().is(200))
                         .andReturn();
 
-                PatientEntity user = patientRepository.findByEmailIgnoreCase("patient1@email.com").get();
                 assertThat(objectMapper.readValue(
                         mvcResult.getResponse().getContentAsString(),
                         PatientWithoutPasswordDto.class
@@ -208,7 +204,7 @@ class PatientControllerTest {
                 assertThat(user.getFirstName()).isEqualTo(body.get("firstName"));
                 assertThat(user.getLastName()).isEqualTo(body.get("lastName"));
                 assertThat(
-                        basicSecurityConfig.passwordEncoder().matches(
+                        passwordEncoder.matches(
                                 body.get("password").toString(),
                                 user.getPassword()
                         )

@@ -2,13 +2,19 @@ package com.example.SOPSbackend.service;
 
 import com.example.SOPSbackend.dto.EditDoctorDto;
 import com.example.SOPSbackend.dto.EditPatientDto;
-import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.dto.NewDoctorDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
+import com.example.SOPSbackend.model.AdminEntity;
+import com.example.SOPSbackend.model.BasicUserEntity;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
+import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.security.AuthorizationResult;
+import com.example.SOPSbackend.security.Credentials;
+import com.example.SOPSbackend.security.Role;
+import com.example.SOPSbackend.security.TokenService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,14 +44,27 @@ import java.util.Optional;
 @Transactional
 public class AdminService {
     private static final int ITEMS_PER_PAGE = 10;
+    private final AdminRepository adminRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
-    private final PasswordEncoder encoder;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
-    public AdminService(DoctorRepository doctorRepository, PatientRepository patientRepository, PasswordEncoder encoder) {
+    public AdminService(AdminRepository adminRepository, DoctorRepository doctorRepository, PatientRepository patientRepository, PasswordEncoder encoder, TokenService tokenService) {
+        this.adminRepository = adminRepository;
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
-        this.encoder = encoder;
+        this.passwordEncoder = encoder;
+        this.tokenService = tokenService;
+    }
+
+    public AuthorizationResult logIn(Credentials credentials) {
+        AdminEntity admin = adminRepository.findByEmailIgnoreCase(credentials.getEmail()).orElse(null);
+        if(admin == null || !passwordEncoder.matches(credentials.getPassword(), admin.getPassword()))
+            return AuthorizationResult.failedAuthorization();
+
+        String token = tokenService.getToken(Role.ADMIN, admin);
+        return AuthorizationResult.successfulAuthorization(token, admin);
     }
 
     public Page<DoctorEntity> getAllDoctors(int pageNumber) {
@@ -62,7 +81,7 @@ public class AdminService {
             throw new UserAlreadyExistException("User already exists for this email");  // TODO: (see https://stackoverflow.com/a/36851768) current implementation makes us return 500, which is not what we want (should be 409 or other). Either find a way to choose the http error code or deal with this higher in the callstack
 
         return doctorRepository.save(new DoctorEntity(doctor.getFirstName(), doctor.getLastName(),
-                doctor.getEmail(), encoder.encode(doctor.getPassword())));
+                doctor.getEmail(), passwordEncoder.encode(doctor.getPassword())));
     }
 
     /**

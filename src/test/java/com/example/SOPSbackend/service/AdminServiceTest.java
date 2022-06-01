@@ -5,8 +5,10 @@ import com.example.SOPSbackend.dto.NewDoctorDto;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
+import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.security.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -24,7 +26,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -32,15 +34,19 @@ class AdminServiceTest {
 
     AdminService underTest;
     @Mock
+    AdminRepository adminRepository;
+    @Mock
     DoctorRepository doctorRepository;
     @Mock
     PatientRepository patientRepository;
     @Mock
     PasswordEncoder passwordEncoder;
+    @Mock
+    TokenService tokenService;
 
     @BeforeEach
     void setUp() {
-        underTest = new AdminService(doctorRepository, patientRepository, passwordEncoder);
+        underTest = new AdminService(adminRepository, doctorRepository, patientRepository, passwordEncoder, tokenService);
     }
 
     @Captor

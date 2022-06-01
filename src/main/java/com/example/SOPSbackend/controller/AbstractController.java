@@ -16,9 +16,9 @@ public abstract class AbstractController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationException(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-        for(ObjectError error : ex.getBindingResult().getAllErrors()) {
-            String field = ((FieldError)error).getField();
-            String message =  error.getDefaultMessage();
+        for (ObjectError error : ex.getBindingResult().getAllErrors()) {
+            String field = ((FieldError) error).getField();
+            String message = error.getDefaultMessage();
             errors.put(field, message);
         }
 
@@ -28,8 +28,8 @@ public abstract class AbstractController {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Object> handleValidationException(HttpMessageNotReadableException ex) {
-        if(ex.getCause() instanceof JsonMappingException) {
-            var mappingEx = (JsonMappingException)ex.getCause();
+        if (ex.getCause() instanceof JsonMappingException) {
+            var mappingEx = (JsonMappingException) ex.getCause();
             var fieldName = mappingEx.getPath().get(0).getFieldName();
 
             Map<String, Object> responseDict = Map.of(
@@ -44,9 +44,10 @@ public abstract class AbstractController {
     @ExceptionHandler(InternalValidationException.class)
     public ResponseEntity<Object> handleValidationException(InternalValidationException ex) {
         Map<String, Object> responseDict = Map.of("success", false);
-        if(ex.getErrors() != null)
+        if (ex.getErrors() != null)
             responseDict.put("data", ex.getErrors());
 
         return ResponseEntity.unprocessableEntity().body(responseDict);
     }
 }
+

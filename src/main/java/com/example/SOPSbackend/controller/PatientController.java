@@ -6,7 +6,9 @@ import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
 import com.example.SOPSbackend.response.PaginatedResponseBody;
+import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.BasicUserDetails;
+import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.service.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,18 @@ public class PatientController extends AbstractController {
     @GetMapping("hello")
     public ResponseEntity<String> hello() {
         return ResponseEntity.ok("hello");
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<Object> logIn(@RequestBody Credentials credentials) {
+        AuthorizationResult authResult = patientService.logIn(credentials);
+        if(authResult.wasSuccessful()) {
+            return ResponseEntity.ok(Map.of("token", authResult.getToken(), "patient", authResult.getUser()));
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false,
+                    "msg", "You are not authorized"));
+        }
     }
 
     @PostMapping("registration")
@@ -76,15 +90,6 @@ public class PatientController extends AbstractController {
                         .map(VaccinationDto::new))
         );
    }
-
-    @GetMapping("vaccination-slots")
-    @Secured({"ROLE_PATIENT"})
-    public ResponseEntity<Object> getAvailableVaccinationSlots() {
-        return ResponseEntity.ok().body(patientService.getAvailableVaccinationSlots().stream().map(
-                vaccinationSlot -> Map.of("id", vaccinationSlot.getId(),
-                        "date", vaccinationSlot.getDate().toString()
-                )));
-    }
 
     @PutMapping("vaccination-slots/{vaccinationSlotId}")
     @Secured({"ROLE_PATIENT"})

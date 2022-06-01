@@ -10,17 +10,23 @@ import com.example.SOPSbackend.repository.PatientRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.VaccineRepository;
+import com.example.SOPSbackend.security.TokenService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import org.mockito.*;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,13 +44,15 @@ class PatientServiceTest {
     private VaccinationRepository vaccinationRepository;
     @Mock
     private VaccinationSlotRepository vaccinationSlotRepository;
+    @Mock
+    private TokenService tokenService;
 
     PatientService underTest;
 
     @BeforeEach
     public void setUp() {
         underTest = new PatientService(patientRepository, passwordEncoder,
-                vaccineRepository, vaccinationSlotRepository, vaccinationRepository);
+                vaccineRepository, vaccinationSlotRepository, vaccinationRepository, tokenService);
     }
 
     @Nested

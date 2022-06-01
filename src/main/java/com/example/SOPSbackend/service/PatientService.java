@@ -12,6 +12,10 @@ import com.example.SOPSbackend.repository.PatientRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.VaccineRepository;
+import com.example.SOPSbackend.security.AuthorizationResult;
+import com.example.SOPSbackend.security.Credentials;
+import com.example.SOPSbackend.security.Role;
+import com.example.SOPSbackend.security.TokenService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,16 +33,27 @@ public class PatientService {
     private final VaccineRepository vaccineRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
     private final VaccinationRepository vaccinationRepository;
+    private final TokenService tokenService;
     private static final int ITEMS_PER_PAGE = 10;
 
     public PatientService(PatientRepository patientRepository, PasswordEncoder passwordEncoder,
                           VaccineRepository vaccineRepository, VaccinationSlotRepository vaccinationSlotRepository,
-                          VaccinationRepository vaccinationRepository) {
+                          VaccinationRepository vaccinationRepository, TokenService tokenService) {
         this.patientRepository = patientRepository;
         this.passwordEncoder = passwordEncoder;
         this.vaccineRepository = vaccineRepository;
         this.vaccinationSlotRepository = vaccinationSlotRepository;
         this.vaccinationRepository = vaccinationRepository;
+        this.tokenService = tokenService;
+    }
+
+    public AuthorizationResult logIn(Credentials credentials) {
+        PatientEntity patient = patientRepository.findByEmailIgnoreCase(credentials.getEmail()).orElse(null);
+        if(patient == null || !passwordEncoder.matches(credentials.getPassword(), patient.getPassword()))
+            return AuthorizationResult.failedAuthorization();
+
+        String token = tokenService.getToken(Role.PATIENT, patient);
+        return AuthorizationResult.successfulAuthorization(token, patient);
     }
 
     public PatientEntity register(NewPatientRegistrationDto registration) throws UserAlreadyExistException {

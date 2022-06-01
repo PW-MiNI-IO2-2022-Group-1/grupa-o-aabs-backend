@@ -12,4 +12,12 @@ public enum Role {
 
     private final String name;
     private final String label;
+
+    public static Role fromName(String name) {
+        for(Role role : Role.values()) {
+            if(role.name.equals(name))
+                return role;
+        }
+        return null;
+    }
 }

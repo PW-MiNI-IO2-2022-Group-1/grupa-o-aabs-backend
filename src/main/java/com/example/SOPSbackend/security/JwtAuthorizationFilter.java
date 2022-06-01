@@ -2,44 +2,33 @@ package com.example.SOPSbackend.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
+public class JwtAuthorizationFilter implements Filter {
     private final static String TOKEN_HEADER = "Authorization";
 
-    private final UserDetailsService userService;
+    private final UserService userService;
     private final String tokenSecret;
 
-    public JwtAuthorizationFilter(AuthenticationManager authManager, UserDetailsService userService,
-                                  String tokenSecret) {
-        super(authManager);
+    public JwtAuthorizationFilter(UserService userService, String tokenSecret) {
         this.userService = userService;
         this.tokenSecret = tokenSecret;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-                                    FilterChain filterChain) throws IOException, ServletException {
-        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-        if (authentication == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        filterChain.doFilter(request, response);
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        UsernamePasswordAuthenticationToken authentication = getAuthentication((HttpServletRequest) request);
+        if(authentication != null)
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        chain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
@@ -49,11 +38,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             return null;
 
         UserDetails userDetails = verifyTokenAndLoadUser(token);
-        if(userDetails != null)
-            return new UsernamePasswordAuthenticationToken(userDetails, null,
-                                                           userDetails.getAuthorities());
-        else
+        if(userDetails == null)
             return null;
+
+        return new UsernamePasswordAuthenticationToken(userDetails, null,
+                                                       userDetails.getAuthorities());
     }
 
     private UserDetails verifyTokenAndLoadUser(String token) {
@@ -63,13 +52,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                                          .verify(token);
 
             String username = decodedToken.getSubject();
-            BasicUserDetails user = (BasicUserDetails)userService.loadUserByUsername(username);
-            Claim roleClaim = decodedToken.getClaim("role");
-            String tokenRole = roleClaim.asString();
-
-            return tokenRole.equals(user.getRole().getName())
-                    ? user
-                    : null;
+            Role role = Role.fromName(decodedToken.getClaim("role").asString());
+            return role == null ? null :
+                userService.loadUserByUsername(role, username);
         } catch(Exception e) {
             return null;
         }
