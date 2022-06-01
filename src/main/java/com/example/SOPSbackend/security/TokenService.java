@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Component
 public class TokenService {
-    private static final int TOKEN_EXPIRATION_TIME_IN_MS = 3600 * 24;
+    private static final int TOKEN_EXPIRATION_TIME_IN_MS = 1000 * 3600 * 24;
     @Value("${jwt.secret}") String tokenSecret;
 
     public TokenService(@Value("${jwt.secret}") String tokenSecret) {
