@@ -1,34 +1,32 @@
 package com.example.SOPSbackend.service;
 
-import com.example.SOPSbackend.dto.VaccinatePatientStatusDto;
+import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.exception.InternalValidationException;
-import com.example.SOPSbackend.exception.NotReservedException;
 import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.model.Vaccination;
 import com.example.SOPSbackend.model.VaccinationEntity;
 import com.example.SOPSbackend.model.VaccinationSlotEntity;
-import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
 import com.example.SOPSbackend.repository.filters.CustomVaccinationSlotSpecifications;
+import com.example.SOPSbackend.security.AuthorizationResult;
+import com.example.SOPSbackend.security.Credentials;
+import com.example.SOPSbackend.security.Role;
+import com.example.SOPSbackend.security.TokenService;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 import java.security.InvalidParameterException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -42,13 +40,26 @@ public class DoctorService {
     private final DoctorRepository doctorRepository;
     private final VaccinationSlotRepository vaccinationSlotRepository;
     private final VaccinationRepository vaccinationRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
     public DoctorService(DoctorRepository doctorRepository,
                          VaccinationSlotRepository vaccinationSlotRepository,
-                         VaccinationRepository vaccinationRepository) {
+                         VaccinationRepository vaccinationRepository, PasswordEncoder passwordEncoder, TokenService tokenService) {
         this.doctorRepository = doctorRepository;
         this.vaccinationSlotRepository = vaccinationSlotRepository;
         this.vaccinationRepository = vaccinationRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
+    }
+
+    public AuthorizationResult logIn(Credentials credentials) {
+        DoctorEntity doctor = doctorRepository.findByEmailIgnoreCase(credentials.getEmail()).orElse(null);
+        if(doctor == null || !passwordEncoder.matches(credentials.getPassword(), doctor.getPassword()))
+            return AuthorizationResult.failedAuthorization();
+
+        String token = tokenService.getToken(Role.DOCTOR, doctor);
+        return AuthorizationResult.successfulAuthorization(token, doctor);
     }
 
     public void addVaccinationSlot(DoctorEntity doctor, Instant date) {
@@ -62,7 +73,6 @@ public class DoctorService {
             throw new InternalValidationException(Map.of("date", "Duplicate date"));
 
         vaccinationSlotRepository.save(newSlot);
-
     }
 
     @Transactional

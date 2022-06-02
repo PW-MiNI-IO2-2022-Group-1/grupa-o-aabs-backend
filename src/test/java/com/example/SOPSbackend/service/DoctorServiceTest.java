@@ -7,8 +7,8 @@ import com.example.SOPSbackend.model.VaccinationSlotEntity;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.repository.VaccinationSlotRepository;
+import com.example.SOPSbackend.security.TokenService;
 import org.apache.tomcat.websocket.AuthenticationException;
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -19,14 +19,13 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -44,11 +43,16 @@ class DoctorServiceTest {
     VaccinationSlotRepository vaccinationSlotRepository;
     @Mock
     VaccinationRepository vaccinationRepository;
+    @Mock
+    TokenService tokenService;
+    @Mock
+    PasswordEncoder passwordEncoder;
+
     DoctorEntity doctor;
 
     @BeforeEach
     public void setUp() {
-        underTest = new DoctorService(doctorRepository, vaccinationSlotRepository, vaccinationRepository);
+        underTest = new DoctorService(doctorRepository, vaccinationSlotRepository, vaccinationRepository, passwordEncoder, tokenService);
         doctor = new DoctorEntity();
         doctor.setId(3l);
     }

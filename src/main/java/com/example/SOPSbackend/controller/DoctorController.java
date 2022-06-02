@@ -5,12 +5,15 @@ import com.example.SOPSbackend.dto.ResponseDictionaryDto;
 import com.example.SOPSbackend.dto.VaccinatePatientStatusDto;
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.model.DoctorEntity;
+import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.BasicUserDetails;
+import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.service.DoctorService;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +36,20 @@ public class DoctorController extends AbstractController {
         return ResponseEntity.ok("hello");
     }
 
+    @PostMapping("login")
+    public ResponseEntity<Object> logIn(@RequestBody Credentials credentials) {
+        AuthorizationResult authResult = doctorService.logIn(credentials);
+        if(authResult.wasSuccessful()) {
+            return ResponseEntity.ok(Map.of("token", authResult.getToken(), "doctor", authResult.getUser()));
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("success", false,
+                    "msg", "You are not authorized"));
+        }
+    }
+
     @PostMapping("vaccination-slots")
+    @Secured({"ROLE_DOCTOR"})
     public ResponseEntity<Object> createNewVaccinationSlot(
             @RequestBody @Valid NewVaccinationSlotDto vaccinationSlot,
             @AuthenticationPrincipal BasicUserDetails authPrincipal) {
@@ -50,6 +66,7 @@ public class DoctorController extends AbstractController {
     }
 
     @GetMapping("vaccination-slots")
+    @Secured({"ROLE_DOCTOR"})
     public ResponseEntity<Object> getVaccinationSlots(
             @RequestParam Optional<String> startDate,
             @RequestParam Optional<String> endDate,
@@ -76,6 +93,7 @@ public class DoctorController extends AbstractController {
     }
 
     @DeleteMapping("vaccination-slots/{id}")
+    @Secured({"ROLE_DOCTOR"})
     public ResponseEntity<Object> deletePost(
             @PathVariable Long id,
             @AuthenticationPrincipal BasicUserDetails authPrincipal) {
@@ -86,6 +104,7 @@ public class DoctorController extends AbstractController {
     }
 
     @PutMapping("vaccination-slots/{vaccinationSlotId}")
+    @Secured({"ROLE_DOCTOR"})
     public ResponseEntity<Object> vaccinatePatient(
             @PathVariable Long vaccinationSlotId,
             @RequestBody VaccinatePatientStatusDto vaccinatePatientStatusDto,
