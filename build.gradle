@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.itextpdf:itextpdf:5.5.13.3'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.70'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
