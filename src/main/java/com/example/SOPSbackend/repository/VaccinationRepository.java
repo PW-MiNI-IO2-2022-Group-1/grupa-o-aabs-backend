@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VaccinationRepository extends JpaRepository<VaccinationEntity, Long>, JpaSpecificationExecutor<VaccinationEntity> {
@@ -21,4 +22,13 @@ public interface VaccinationRepository extends JpaRepository<VaccinationEntity, 
     VaccinationEntity findByVaccinationSlot(VaccinationSlotEntity vaccinationSlotEntity);
 
     Page<VaccinationEntity> findByPatient(PatientEntity patientEntity, Pageable pageable);
+
+    @Query("SELECT ve.disease, ve.name, COUNT(ve) FROM VaccinationEntity v INNER JOIN VaccineEntity ve ON v.vaccine = ve " +
+            "GROUP BY ve.name, ve.disease " +
+            "HAVING v.status = 'Completed' AND " +
+            "(:sDate IS NULL OR v.vaccinationSlot.date >=  :sDate) AND " +
+            "(:eDate IS NULL OR v.vaccinationSlot.date <=  :eDate)")
+    List<Object[]> getReportData(
+            @Param("startDate")LocalDateTime sDate,
+            @Param("endDate") LocalDateTime eDate);
 }

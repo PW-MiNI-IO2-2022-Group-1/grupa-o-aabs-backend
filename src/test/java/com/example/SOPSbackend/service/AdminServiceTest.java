@@ -8,6 +8,7 @@ import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.security.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -40,13 +41,15 @@ class AdminServiceTest {
     @Mock
     PatientRepository patientRepository;
     @Mock
+    VaccinationRepository vaccinationRepository;
+    @Mock
     PasswordEncoder passwordEncoder;
     @Mock
     TokenService tokenService;
 
     @BeforeEach
     void setUp() {
-        underTest = new AdminService(adminRepository, doctorRepository, patientRepository, passwordEncoder, tokenService);
+        underTest = new AdminService(adminRepository, doctorRepository, patientRepository, vaccinationRepository, passwordEncoder, tokenService);
     }
 
     @Captor
