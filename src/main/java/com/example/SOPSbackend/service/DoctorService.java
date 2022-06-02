@@ -87,13 +87,19 @@ public class DoctorService {
         if (startDate == null) sDate = null;
         else sDate = LocalDateTime.ofInstant(Instant.parse(startDate), ZoneId.of("UTC"));
         if (endDate == null) eDate = null;
-        else eDate = LocalDateTime.ofInstant(Instant.parse(endDate), ZoneId.of("UTC"));
+        else {
+            eDate = LocalDateTime.ofInstant(Instant.parse(endDate), ZoneId.of("UTC"));
+        }
+
         if (onlyReserved != null) {
-            if (onlyReserved.equals("0"))
+            if (onlyReserved.equals("0")) {
+                if(sDate == null || sDate.isBefore(LocalDateTime.now()))
+                    sDate = LocalDateTime.now();
                 mySlots = vaccinationSlotRepository.findNotReserved(doctor,
                         sDate,
                         eDate,
                         thisPage);
+            }
             else if (onlyReserved.equals("1"))
                 mySlots = vaccinationSlotRepository.findReserved(doctor,
                         sDate,

@@ -4,13 +4,15 @@ import com.example.SOPSbackend.dto.AdminVaccinationReportDto;
 import com.itextpdf.text.*;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 
-public class DocUtils {
+import java.util.Optional;
 
+public class DocUtils {
+    
     public static void addMetadata(Document doc, String title, String author){
         doc.addTitle(title);
         doc.addAuthor(author);
     }
-
+    
     public static void addParagraph(Document doc, String title, String[] lines, Font font) throws DocumentException {
         if(title != null){
             Paragraph p = new Paragraph(title, font);

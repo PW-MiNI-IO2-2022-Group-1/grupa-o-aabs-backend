@@ -1,8 +1,11 @@
 package com.example.SOPSbackend.service;
 
+import com.example.SOPSbackend.documentUtils.DocUtils;
 import com.example.SOPSbackend.dto.EditPatientAccountDto;
 import com.example.SOPSbackend.dto.NewPatientRegistrationDto;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
+import com.example.SOPSbackend.exception.InternalValidationException;
+import com.example.SOPSbackend.exception.InvalidVaccinationStateException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccinationEntity;
@@ -18,13 +21,15 @@ import com.example.SOPSbackend.security.Role;
 import com.example.SOPSbackend.security.TokenService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.springframework.data.util.Pair;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.util.*;
 
 @Service
 public class PatientService {
@@ -114,5 +119,33 @@ public class PatientService {
 
     public Page<VaccinationEntity> getAllVaccinationsForPatient(PatientEntity patient, int pageNumber) {
         return vaccinationRepository.findByPatient(patient, Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
+    }
+
+    public Pair<ByteArrayOutputStream, String> downloadCertificate(long vaccinationId) throws DocumentException, InvalidVaccinationStateException {
+        Optional<VaccinationEntity> vaccination = vaccinationRepository.findById(vaccinationId);
+        if(vaccination.isEmpty())
+            throw new NoSuchElementException("Vaccination not found");
+        if(!Objects.equals(vaccination.get().getStatus(), "Completed"))
+            throw new InvalidVaccinationStateException("Vaccination hasn't been completed yet");
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Document certificate = new Document();
+        VaccinationEntity vacc = vaccination.get();
+        PatientEntity patient = vacc.getPatient();
+        VaccineEntity v = vacc.getVaccine();
+        String title = "Certificate of vaccination";
+        String[] lines = {
+                "Vaccine:",
+                "\t- Name: " + v.getName(),
+                "\t- Disease: " + v.getDisease(),
+                "Patient: " + patient.getFirstName() + " " + patient.getLastName(),
+                "PESEL: " + patient.getPesel(),
+        };
+        Font font = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
+        PdfWriter.getInstance(certificate, baos);
+        certificate.open();
+        DocUtils.addMetadata(certificate, title, patient.getLastName() + " " + patient.getFirstName());
+        DocUtils.addParagraph(certificate, title, lines, font);
+        certificate.close();
+        return Pair.of(baos, patient.getLastName() + "_" + patient.getFirstName() + "_certificate.pdf");
     }
 }

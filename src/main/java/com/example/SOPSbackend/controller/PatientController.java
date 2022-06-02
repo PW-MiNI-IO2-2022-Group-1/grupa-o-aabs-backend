@@ -2,6 +2,7 @@ package com.example.SOPSbackend.controller;
 
 import com.example.SOPSbackend.dto.*;
 import com.example.SOPSbackend.exception.AlreadyReservedException;
+import com.example.SOPSbackend.exception.InvalidVaccinationStateException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.model.VaccineEntity;
@@ -10,16 +11,22 @@ import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.BasicUserDetails;
 import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.service.PatientService;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.springframework.data.util.Pair;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 
 @RestController
 @RequestMapping(path = "patient")
@@ -107,6 +114,28 @@ public class PatientController extends AbstractController {
                     "msg", e.getMessage()));
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("success", false,
+                    "msg", e.getMessage()));
+        }
+    }
+
+    @GetMapping("vaccinations/{vaccinationId}/certificate")
+    @Secured({"ROLE_PATIENT"})
+    public ResponseEntity<Object> downloadCertificate(@PathVariable long vaccinationId,
+                                                      @AuthenticationPrincipal BasicUserDetails authPrincipal) {
+        PatientEntity patient = (PatientEntity) authPrincipal.getUser();
+        try {
+            Pair<ByteArrayOutputStream, String> cert = patientService.downloadCertificate(vaccinationId);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + URLEncoder.encode(cert.getSecond(), StandardCharsets.UTF_8) + "\"");
+            return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(cert.getFirst().toByteArray());
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("success", false,
+                    "msg", e.getMessage()));
+        } catch (InvalidVaccinationStateException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("success", false,
+                    "msg", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("success", false,
                     "msg", e.getMessage()));
         }
     }
