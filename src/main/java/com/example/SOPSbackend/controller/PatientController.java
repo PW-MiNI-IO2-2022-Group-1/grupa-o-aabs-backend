@@ -126,6 +126,7 @@ public class PatientController extends AbstractController {
         try {
             Pair<ByteArrayOutputStream, String> cert = patientService.downloadCertificate(vaccinationId);
             HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "authorization, content-type, content-disposition");
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + URLEncoder.encode(cert.getSecond(), StandardCharsets.UTF_8) + "\"");
             return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(cert.getFirst().toByteArray());
         } catch (NoSuchElementException e) {

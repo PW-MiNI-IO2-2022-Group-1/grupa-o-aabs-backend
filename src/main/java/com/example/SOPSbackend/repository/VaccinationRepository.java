@@ -24,11 +24,11 @@ public interface VaccinationRepository extends JpaRepository<VaccinationEntity, 
     Page<VaccinationEntity> findByPatient(PatientEntity patientEntity, Pageable pageable);
 
     @Query("SELECT ve.disease, ve.name, COUNT(ve) FROM VaccinationEntity v INNER JOIN VaccineEntity ve ON v.vaccine = ve " +
-            "GROUP BY ve.name, ve.disease " +
-            "HAVING v.status = 'Completed' AND " +
-            "(:sDate IS NULL OR v.vaccinationSlot.date >=  :sDate) AND " +
-            "(:eDate IS NULL OR v.vaccinationSlot.date <=  :eDate)")
+            "WHERE v.status = 'Completed' AND " +
+            "(v.vaccinationSlot.date >=  :startDate) " +
+            "AND (v.vaccinationSlot.date <=  :endDate)" +
+            "GROUP BY ve.name, ve.disease ")
     List<Object[]> getReportData(
-            @Param("startDate")LocalDateTime sDate,
-            @Param("endDate") LocalDateTime eDate);
+            @Param("startDate")LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate);
 }

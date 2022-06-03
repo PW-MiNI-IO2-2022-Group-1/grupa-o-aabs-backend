@@ -13,6 +13,7 @@ import com.example.SOPSbackend.response.SuccessTrueResponse;
 import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.service.AdminService;
+import com.itextpdf.text.DocumentException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -155,6 +156,9 @@ public class AdminController extends AbstractController {
         } catch (InternalValidationException e){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .body(Map.of("success", false, "data", e.getErrors()));
+        } catch ( DocumentException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("success", false, "data", e.getCause()));
         }
     }
 }

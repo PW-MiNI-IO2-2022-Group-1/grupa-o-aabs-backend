@@ -144,7 +144,7 @@ public class AdminService {
         AdminVaccinationReportDto data = new AdminVaccinationReportDto();
         Map<String, ReportDiseaseDto> diseases = new HashMap<>();
         for (var queryRecord: queryData) {
-            String disease = (String)queryRecord[0];
+            String disease = (String) queryRecord[0];
             if(!diseases.containsKey(disease)){
                 diseases.put(disease, new ReportDiseaseDto(disease, 0, new ArrayList<>()));
             }
@@ -153,7 +153,7 @@ public class AdminService {
             diseases.get(disease).getVaccines().add(new ReportVaccineDto(vaccine, count));
             diseases.get(disease).setCount(diseases.get(disease).getCount() + count);
         }
-        data.setDiseases((List<ReportDiseaseDto>) diseases.values());
+        data.setDiseases(new ArrayList<>(diseases.values()));
         return data;
     }
 }
