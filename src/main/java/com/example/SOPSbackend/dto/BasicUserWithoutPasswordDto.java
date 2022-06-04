@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BasicUserWithoutPasswordDto {
-    private String id;
+    private Long id;
     private String firstName, lastName, email;
 
     public BasicUserWithoutPasswordDto(BasicUserEntity userEntity) {
-        this.id = String.valueOf(userEntity.getId());
+        this.id = userEntity.getId();
         this.firstName = userEntity.getFirstName();
         this.lastName = userEntity.getLastName();
         this.email = userEntity.getEmail();
