@@ -1,6 +1,8 @@
 package com.example.SOPSbackend.controller;
 
+import com.example.SOPSbackend.documentUtils.DocUtils;
 import com.example.SOPSbackend.dto.*;
+import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.DoctorEntity;
 import com.example.SOPSbackend.model.PatientEntity;
@@ -11,7 +13,10 @@ import com.example.SOPSbackend.response.SuccessTrueResponse;
 import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.service.AdminService;
+import com.itextpdf.text.DocumentException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
@@ -123,6 +128,37 @@ public class AdminController extends AbstractController {
         } catch (UserAlreadyExistException e) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                     .body(Map.of("success", false, "data", Map.of("email", "Email already exists")));
+        }
+    }
+
+    @GetMapping("vaccinations/report")
+    @Secured({"ROLE_ADMIN"})
+    public ResponseEntity<Object> generateReport(@RequestParam String startDate,
+                                                 @RequestParam String endDate) {
+        try {
+            var data = adminService.getReportData(startDate, endDate);
+            return ResponseEntity.ok().body(data);
+        } catch (InternalValidationException e){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                    .body(Map.of("success", false, "data", e.getErrors()));
+        }
+    }
+
+    @GetMapping("vaccinations/report/download")
+    @Secured({"ROLE_ADMIN"})
+    public ResponseEntity<Object> downloadReport(@RequestParam Optional<String> startDate,
+                                                 @RequestParam Optional<String> endDate) {
+        try {
+            var cert = DocUtils.convertToBaosPDF(adminService.getReportData(startDate.orElse(null), endDate.orElse(null)));
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"adminVaccinationReport_" + startDate + "_to_" + endDate + ".pdf\"");
+            return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(cert.toByteArray());
+        } catch (InternalValidationException e){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                    .body(Map.of("success", false, "data", e.getErrors()));
+        } catch ( DocumentException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("success", false, "data", e.getCause()));
         }
     }
 }

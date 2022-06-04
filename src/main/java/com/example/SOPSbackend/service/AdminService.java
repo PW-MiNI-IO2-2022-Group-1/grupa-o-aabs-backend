@@ -1,8 +1,7 @@
 package com.example.SOPSbackend.service;
 
-import com.example.SOPSbackend.dto.EditDoctorDto;
-import com.example.SOPSbackend.dto.EditPatientDto;
-import com.example.SOPSbackend.dto.NewDoctorDto;
+import com.example.SOPSbackend.dto.*;
+import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
 import com.example.SOPSbackend.model.AdminEntity;
 import com.example.SOPSbackend.model.BasicUserEntity;
@@ -11,6 +10,7 @@ import com.example.SOPSbackend.model.PatientEntity;
 import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
+import com.example.SOPSbackend.repository.VaccinationRepository;
 import com.example.SOPSbackend.security.AuthorizationResult;
 import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.security.Role;
@@ -21,8 +21,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
 /**
  *  <p>I know this is questionable,
@@ -47,13 +49,15 @@ public class AdminService {
     private final AdminRepository adminRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
+    private final VaccinationRepository vaccinationRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
 
-    public AdminService(AdminRepository adminRepository, DoctorRepository doctorRepository, PatientRepository patientRepository, PasswordEncoder encoder, TokenService tokenService) {
+    public AdminService(AdminRepository adminRepository, DoctorRepository doctorRepository, PatientRepository patientRepository, VaccinationRepository vaccinationRepository, PasswordEncoder encoder, TokenService tokenService) {
         this.adminRepository = adminRepository;
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
+        this.vaccinationRepository = vaccinationRepository;
         this.passwordEncoder = encoder;
         this.tokenService = tokenService;
     }
@@ -124,5 +128,32 @@ public class AdminService {
         return true;
         // TODO: warning - we cannot delete patientId=3. Why? java.sql.SQLIntegrityConstraintViolationException
         // TODO: RE: this is actually OK, if the patient has some vaccinations planned we cannot delete them. Should think about that in the future. Solution: add "CASCADE" to constraints annotation in order to delete in cascade.
+    }
+    public AdminVaccinationReportDto getReportData(String startDate, String endDate) {
+        LocalDateTime sDate = null, eDate = null;
+        HashMap<String, String> invArgs = new HashMap<>();
+        if (startDate == null)
+            invArgs.put("startDate", "startDate is required");
+        else sDate = LocalDateTime.ofInstant(Instant.parse(startDate), ZoneId.of("UTC"));
+        if (endDate == null)
+            invArgs.put("startDate", "endDate is required");
+        else eDate = LocalDateTime.ofInstant(Instant.parse(endDate), ZoneId.of("UTC"));
+        if(!invArgs.isEmpty())
+            throw new InternalValidationException(invArgs);
+        var queryData = vaccinationRepository.getReportData(sDate, eDate);
+        AdminVaccinationReportDto data = new AdminVaccinationReportDto();
+        Map<String, ReportDiseaseDto> diseases = new HashMap<>();
+        for (var queryRecord: queryData) {
+            String disease = (String) queryRecord[0];
+            if(!diseases.containsKey(disease)){
+                diseases.put(disease, new ReportDiseaseDto(disease, 0, new ArrayList<>()));
+            }
+            Integer count = ((Number)queryRecord[2]).intValue();
+            String vaccine = (String)queryRecord[1];
+            diseases.get(disease).getVaccines().add(new ReportVaccineDto(vaccine, count));
+            diseases.get(disease).setCount(diseases.get(disease).getCount() + count);
+        }
+        data.setDiseases(new ArrayList<>(diseases.values()));
+        return data;
     }
 }
