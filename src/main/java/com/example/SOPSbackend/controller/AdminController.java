@@ -146,10 +146,10 @@ public class AdminController extends AbstractController {
 
     @GetMapping("vaccinations/report/download")
     @Secured({"ROLE_ADMIN"})
-    public ResponseEntity<Object> downloadReport(@RequestParam String startDate,
-                                                 @RequestParam String endDate) {
+    public ResponseEntity<Object> downloadReport(@RequestParam Optional<String> startDate,
+                                                 @RequestParam Optional<String> endDate) {
         try {
-            var cert = DocUtils.convertToBaosPDF(adminService.getReportData(startDate, endDate));
+            var cert = DocUtils.convertToBaosPDF(adminService.getReportData(startDate.orElse(null), endDate.orElse(null)));
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"adminVaccinationReport_" + startDate + "_to_" + endDate + ".pdf\"");
             return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(cert.toByteArray());
