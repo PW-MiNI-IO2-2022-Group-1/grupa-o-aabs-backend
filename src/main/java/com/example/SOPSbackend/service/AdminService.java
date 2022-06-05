@@ -135,6 +135,8 @@ public class AdminService {
             invArgs.put("doctorId", "doctor doesn't exist");
         if(patientId != null && !patientRepository.existsById(patientId))
             invArgs.put("patientId", "patient doesn't exist");
+        if(disease != null && vaccinationRepository.existsByDiseaseName(disease) == 0)
+            invArgs.put("disease", "disease doesn't exist");
         if(!invArgs.isEmpty())
             throw new InternalValidationException(invArgs);
         Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("vaccinationSlot.date"));

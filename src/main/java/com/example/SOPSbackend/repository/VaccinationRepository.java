@@ -46,4 +46,6 @@ public interface VaccinationRepository extends JpaRepository<VaccinationEntity, 
             @Param("patientId") Long patientId,
             Pageable pageable
     );
+    @Query("SELECT COUNT(v) FROM VaccinationEntity v WHERE v.vaccine.disease = :disease")
+    Long existsByDiseaseName(@Param("disease") String disease);
 }
