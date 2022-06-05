@@ -3,10 +3,7 @@ package com.example.SOPSbackend.service;
 import com.example.SOPSbackend.dto.*;
 import com.example.SOPSbackend.exception.InternalValidationException;
 import com.example.SOPSbackend.exception.UserAlreadyExistException;
-import com.example.SOPSbackend.model.AdminEntity;
-import com.example.SOPSbackend.model.BasicUserEntity;
-import com.example.SOPSbackend.model.DoctorEntity;
-import com.example.SOPSbackend.model.PatientEntity;
+import com.example.SOPSbackend.model.*;
 import com.example.SOPSbackend.repository.AdminRepository;
 import com.example.SOPSbackend.repository.DoctorRepository;
 import com.example.SOPSbackend.repository.PatientRepository;
@@ -16,7 +13,9 @@ import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.security.Role;
 import com.example.SOPSbackend.security.TokenService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -129,6 +128,19 @@ public class AdminService {
         // TODO: warning - we cannot delete patientId=3. Why? java.sql.SQLIntegrityConstraintViolationException
         // TODO: RE: this is actually OK, if the patient has some vaccinations planned we cannot delete them. Should think about that in the future. Solution: add "CASCADE" to constraints annotation in order to delete in cascade.
     }
+
+    public Page<VaccinationEntity> getVaccinations(String disease, Long doctorId, Long patientId, Integer page) {
+        HashMap<String, String> invArgs = new HashMap<>();
+        if(doctorId != null && !doctorRepository.existsById(doctorId))
+            invArgs.put("doctorId", "doctor doesn't exist");
+        if(patientId != null && !patientRepository.existsById(patientId))
+            invArgs.put("patientId", "patient doesn't exist");
+        if(!invArgs.isEmpty())
+            throw new InternalValidationException(invArgs);
+        Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("vaccinationSlot.date"));
+        return vaccinationRepository.getVaccinationsByParams(disease, doctorId, patientId, thisPage);
+    }
+
     public AdminVaccinationReportDto getReportData(String startDate, String endDate) {
         LocalDateTime sDate = null, eDate = null;
         HashMap<String, String> invArgs = new HashMap<>();
