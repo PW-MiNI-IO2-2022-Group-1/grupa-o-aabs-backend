@@ -137,7 +137,7 @@ public class AdminService {
             invArgs.put("patientId", "patient doesn't exist");
         if(!invArgs.isEmpty())
             throw new InternalValidationException(invArgs);
-        Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("date"));
+        Pageable thisPage = PageRequest.of(page - 1, ITEMS_PER_PAGE, Sort.by("vaccinationSlot.date"));
         return vaccinationRepository.getVaccinationsByParams(disease, doctorId, patientId, thisPage);
     }
 

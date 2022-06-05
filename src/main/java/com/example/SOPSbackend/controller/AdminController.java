@@ -140,8 +140,8 @@ public class AdminController extends AbstractController {
         try {
             var data = adminService.getVaccinations(
                     disease.orElse(null),
-                    patientId.orElse(null),
                     doctorId.orElse(null),
+                    patientId.orElse(null),
                     page.orElse(1)
             );
             return ResponseEntity.ok().body(Map.of(
