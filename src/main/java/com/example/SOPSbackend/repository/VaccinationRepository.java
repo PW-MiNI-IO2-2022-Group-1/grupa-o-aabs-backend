@@ -31,4 +31,19 @@ public interface VaccinationRepository extends JpaRepository<VaccinationEntity, 
     List<Object[]> getReportData(
             @Param("startDate")LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate);
+
+    @Query(value = "SELECT v FROM VaccinationEntity v WHERE " +
+            "(:patientId IS NULL OR v.patient.id = :patientId) AND " +
+            "(:doctorId IS NULL OR v.vaccinationSlot.doctor.id = :doctorId) AND " +
+            "(:disease IS NULL OR v.vaccine.disease = :disease)",
+            countQuery = "SELECT COUNT(v) FROM VaccinationEntity v WHERE " +
+                    "(:patientId IS NULL OR v.patient.id = :patientId) AND " +
+                    "(:doctorId IS NULL OR v.vaccinationSlot.doctor.id = :doctorId) AND " +
+                    "(:disease IS NULL OR v.vaccine.disease = :disease)")
+    Page<VaccinationEntity> getVaccinationsByParams(
+            @Param("disease") String disease,
+            @Param("doctorId") Long doctorId,
+            @Param("patientId") Long patientId,
+            Pageable pageable
+    );
 }

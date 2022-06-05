@@ -131,12 +131,40 @@ public class AdminController extends AbstractController {
         }
     }
 
+    @GetMapping("vaccinations")
+    @Secured({"ROLE_ADMIN"})
+    public ResponseEntity<Object> getVaccinations(@RequestParam Optional<String> disease,
+                                                 @RequestParam Optional<Long> patientId,
+                                                 @RequestParam Optional<Long> doctorId,
+                                                 @RequestParam Optional<Integer> page) {
+        try {
+            var data = adminService.getVaccinations(
+                    disease.orElse(null),
+                    patientId.orElse(null),
+                    doctorId.orElse(null),
+                    page.orElse(1)
+            );
+            return ResponseEntity.ok().body(Map.of(
+                    "pagination", Map.of(
+                            "currentPage", page.orElse(1),
+                            "totalPages", data.getTotalPages(),
+                            "currentRecords", data.getNumberOfElements(),
+                            "totalRecords", data.getTotalElements()
+                    ),
+                    "data", data.get().map(VaccinationDto::new).toArray()
+            ));
+        } catch (InternalValidationException e){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                    .body(Map.of("success", false, "data", e.getErrors()));
+        }
+    }
+
     @GetMapping("vaccinations/report")
     @Secured({"ROLE_ADMIN"})
-    public ResponseEntity<Object> generateReport(@RequestParam String startDate,
-                                                 @RequestParam String endDate) {
+    public ResponseEntity<Object> generateReport(@RequestParam Optional<String> startDate,
+                                                 @RequestParam Optional<String> endDate) {
         try {
-            var data = adminService.getReportData(startDate, endDate);
+            var data = adminService.getReportData(startDate.orElse(null), endDate.orElse(null));
             return ResponseEntity.ok().body(data);
         } catch (InternalValidationException e){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
