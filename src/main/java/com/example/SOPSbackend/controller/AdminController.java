@@ -151,7 +151,7 @@ public class AdminController extends AbstractController {
                             "currentRecords", data.getNumberOfElements(),
                             "totalRecords", data.getTotalElements()
                     ),
-                    "data", data.get().map(VaccinationDto::new).toArray()
+                    "data", data.get().map(AdminVaccinationDto::new).toArray()
             ));
         } catch (InternalValidationException e){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
