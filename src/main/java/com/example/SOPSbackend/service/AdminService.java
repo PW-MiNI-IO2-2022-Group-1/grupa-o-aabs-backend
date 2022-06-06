@@ -92,9 +92,9 @@ public class AdminService {
      */
     public DoctorEntity updateDoctor(String doctorId, EditDoctorDto editDoctor) {
         DoctorEntity doctor = doctorRepository.getById(Long.valueOf(doctorId));
-        doctor.setFirstName(editDoctor.getFirstName());
-        doctor.setLastName(editDoctor.getLastName());
-        doctor.setEmail(editDoctor.getEmail());
+        if (editDoctor.getFirstName() != null) doctor.setFirstName(editDoctor.getFirstName());
+        if (editDoctor.getLastName() != null) doctor.setLastName(editDoctor.getLastName());
+        if (editDoctor.getEmail() != null) doctor.setEmail(editDoctor.getEmail());
         return doctor;
     }
 
