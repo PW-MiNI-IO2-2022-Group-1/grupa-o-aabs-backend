@@ -20,10 +20,12 @@ import com.example.SOPSbackend.security.Credentials;
 import com.example.SOPSbackend.security.Role;
 import com.example.SOPSbackend.security.TokenService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Pair;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -118,7 +120,7 @@ public class PatientService {
     }
 
     public Page<VaccinationEntity> getAllVaccinationsForPatient(PatientEntity patient, int pageNumber) {
-        return vaccinationRepository.findByPatient(patient, Pageable.ofSize(ITEMS_PER_PAGE).withPage(pageNumber));
+        return vaccinationRepository.findByPatient(patient, PageRequest.of(pageNumber, 1, Sort.by("vaccinationSlot.date").descending()));
     }
 
     public Pair<ByteArrayOutputStream, String> downloadCertificate(long vaccinationId) throws DocumentException, InvalidVaccinationStateException {
