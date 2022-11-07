@@ -1,0 +1,40 @@
+\section{Wymagania niefunkcjonalne}
+Sekcja zawiera informacje na temat wymagań niefunkcjonalnych z modelu FURPS, gdzie 
+\begin{enumerate}
+    \item "F" (ang. functionality) - oznacza wymagania funkcjonalne.
+    \item "U" (ang. utility) - oznacza wymagania dotyczące użyteczności.
+    \item "R" (ang. reliability) - oznacza wymagania dotyczące niezawodności.
+    \item "P" (ang. performance) - oznacza wymagania dotyczące wydajności.
+    \item "S" (ang. supportability) - oznacza wymagania dotyczące utrzymania.
+\end{enumerate} 
+Poniżej znajdują się informacje na temat tych wymagań z wyłączeniem wymagań funkcjonalnych, które zostały opisane w poprzedniej sekcji.
+
+\begin{enumerate}
+    \item Użyteczność
+        \begin{enumerate}
+            \item Gra działa na systemie Windows 10 64-bitowym z procesorem Quad-core Intel lub AMD, 2.5 GHz lub szybszym, kartą graficzną kompatybilną z DirectX 11 lub 12 oraz  pamięcią RAM co najmniej 8GB.
+            \item Bliskie otoczenie gracza jest wyraźne i rozróżnialne na ekranie o rozdzielczości $800\times 600$.
+            \item Wszystkie opcje gry mieszczą się na ekranie o rozdzielczości $800\times 600$, a minimalny rozmiar użytej czcionki wynosi 12 pt.
+            \item Zmniejszenie rozdzielczości gry do $800\times 600$ nie wpływa na czytelność napisów lub grywalność aplikacji.
+        \end{enumerate}
+    
+    \item Niezawodność
+        \begin{enumerate}
+            \item Gra uruchomiona po awarii umożliwia wczytanie ostatniego zapisu.
+            \item Gra posiada system automatycznego zapisu.
+            \item Awaria gry w trakcie zapisu nie prowadzi do usunięcia poprzedniego zapisu.
+        \end{enumerate}
+        
+    \item Wydajność
+        \begin{enumerate}
+            \item Gra działa w średnio 30 klatkach na sekundę na niskich ustawieniach graficznych (brak cieni, niska jakość oświetlenia, mała odległość renderowania) na komputerze spełniającym minimalne wymagania sprzętowe.
+            \item Czas trwania pojedynczego zapisu nie przekracza jednej minuty.
+            \item Czas wczytania istniejącego zapisu nie przekracza dwóch minut.
+        \end{enumerate}
+        
+    \item Utrzymanie
+        \begin{enumerate}
+            \item Użytkownicy będą mogli wysyłać zgłoszenia o błędach na podany adres e-mail.
+            \item Wypuszczane łaty będą dostępne dla użytkowników do pobrania z repozytorium.
+        \end{enumerate}
+\end{enumerate}

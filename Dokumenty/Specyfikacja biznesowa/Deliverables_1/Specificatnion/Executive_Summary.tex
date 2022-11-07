@@ -1,0 +1,26 @@
+\section{Streszczenie}
+
+Tworzona aplikacja będzie trójwymiarową eksploracyjną grą z widokiem pierw\-szo\-oso\-bo\-wym z proceduralnie generowanym światem, na który złoży się teren, flora i fauna.
+Stworzony teren powinien pozwalać na tworzenie kolejnych jego fragmentów w trakcie trwania gry.
+Flora stworzona zostanie poprzez łączenie ze sobą brył i mieszanie ich w celu uzyskania różnorodnych kształtów.
+Fauna stworzona będzie modularnie z losowo dobranych, przygotowanych wcześniej obiektów kończyn, głów i tułowiów. Fauna będzie posiadać schematy zachowań pozwalające na interakcje z użytkownikiem. 
+Za tworzenie obiektów i terenu odpowiedzialne będą generatory.
+W grze gracz zapoznawać się będzie z mechanikami za pomocą wbudowanego systemu samouczkowego.
+Gra będzie zawierać parametry postaci, takie jak zdrowie, najedzenie, czy temperatura ciała postaci.
+Wartość parametru najedzenia będzie stale maleć w czasie.
+Wartość parametru temperatury zależeć będzie od wewnętrznego zegara w grze.
+Wartość parametru zdrowia maleć będzie jeżeli któryś ze wskaźników najedzenia lub temperatury spadnie poniżej ustalonej wartości.
+Gracze będą mogli zbierać surowce (na przykład drewno i jedzenie) z terenu, roślin i zwierząt.
+Gracze z zebranych surowców będą mogli tworzyć struktury, a jedzenie będą mogli jeść celem napełnienia paska najedzenia.
+Gra posiadać będzie cykl dnia i~nocy.
+W dzień gra będzie mniej wymagająca dla gracza. Zwierzęta będą miały mniej agresywne schematy zachowań, a temperatura nie będzie prowadziła do utraty życia.
+W nocy gracz zmuszony będzie do tworzenia schronienia przed agresywnymi zwierzętami i budowania źródeł ciepła, aby postać gracza nie zamarzła.
+Jeżeli zdrowie postaci gracza spadnie do zera przegra on i zostanie przeniesiony do ekranu początkowego gry.
+
+% https://docs.unrealengine.com/4.26/en-US/AnimatingObjects/SkeletalMeshAnimation/WorkingwithModularCharacters/
+
+%Do technicznej:
+%Generatory na podstawie podanego ziarna generował będzie teren, dostępne zwierzęta i~rośliny.
+
+%Surwiwalowe - rozwinąć i poprawić - usunięto słowo, rozpisano "mechaniki" jako wskaźniki
+%Ujednolicić czas (Wszystko do formy przyszłej - zrobione
