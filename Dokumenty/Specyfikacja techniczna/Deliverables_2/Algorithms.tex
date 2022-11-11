@@ -1,0 +1,7 @@
+\chapter{Wykorzystane algorytmy}
+
+Aplikacja zawierać będzie kilka algorytmów proceduralnego generowania. Do tworzenia obiektów terenu wykorzystany zostanie szum Perlina. W wersji algorytmu dla implementacji dwuwymiarowej dla każdego punktu przypisana jest wysokość w danym punkcie. Do wygenerowania początkowych wartości gradientu dla punktów kratowych zostanie wykorzystany algorytm generowania liczb losowych \texttt{\textit{normal\-\_distribution}} z biblioteki Random dla języka c++.
+
+Obiekty zwierząt tworzone będą z łączenia przygotowanych wcześniej elementów. Aby zapewnić losowy wybór spośród wszystkich dostępnych elementów z zachowaniem równego prawdopodobieństwa wybrania każdego z elementów wykorzystany zostanie algorytm generowania liczb losowych \texttt{\textit{uniform\_real\_ distribution}} z biblioteki Random dla języka c++.
+
+Obiekty roślin tworzone będą przez łączenie ze sobą brył i wygładzanie ich. W celu generowania różnorodnych typów brył (np. sfera, kula, stożek) wykorzystany zostanie algorytm \texttt{\textit{uniform\_real\_distribution}}, natomiast do ustalenia rozmiaru wykorzystanie algorytm \texttt{\textit{normal\-\_distribution}}.
