@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects_ue\\fps\\fpstest\\intermediate\\build\\win64\\unrealeditor\\inc\\fpstest\\fpstest.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\projects_ue\\fps\\fpstest\\intermediate\\build\\win64\\fpstesteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\projects_ue\\fps\\fpstest\\intermediate\\build\\win64\\unrealeditor\\development\\fpstest\\definitions.fpstest.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

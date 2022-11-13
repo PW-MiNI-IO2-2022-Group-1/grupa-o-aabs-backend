@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "FPSTest",
+			"Path": "D:\\Projects_UE\\FPS\\FPSTest\\Source\\FPSTest.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "FPSTestEditor",
+			"Path": "D:\\Projects_UE\\FPS\\FPSTest\\Source\\FPSTestEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

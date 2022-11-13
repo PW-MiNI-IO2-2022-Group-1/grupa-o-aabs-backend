@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Projects_UE\\FPS\\FPSTest\\Source\\FPSTest\\FPSTest.Build.cs",
+		"D:\\Projects_UE\\FPS\\FPSTest\\Source\\FPSTest.Target.cs",
+		"D:\\Projects_UE\\FPS\\FPSTest\\Source\\FPSTestEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.3"
+}
