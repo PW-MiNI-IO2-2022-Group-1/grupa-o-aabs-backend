@@ -26,8 +26,13 @@ void ATerrainMenager::Move(FVector2D NewCenter)
 	{
 		for (int x = 0; x < size; x++)
 		{
-			FVector pos = FVector((NewCenter.X + x - RenderDistance) * 10000, (NewCenter.Y + y - RenderDistance) * 10000, 0);
-			RenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(ATerrain::StaticClass(), &pos));
+			FVector pos = FVector(
+				(NewCenter.X + x - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
+				(NewCenter.Y + y - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
+				0);
+			RenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(
+				ATerrain::StaticClass(), 
+				&pos));
 		}
 	}
 	CenterRegion = NewCenter;
@@ -48,7 +53,10 @@ void ATerrainMenager::BeginPlay()
 	{
 		for (int x = 0; x < size; x++)
 		{
-			FVector pos = FVector((x - RenderDistance) * 10000, (y - RenderDistance) * 10000, 0);
+			FVector pos = FVector(
+				(x - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
+				(y - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
+				0);
 			FRotator rot = FRotator(0, 0, 0);
 			RenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(ATerrain::StaticClass(), &pos));
 		}
@@ -61,7 +69,9 @@ void ATerrainMenager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	FVector pos = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
-	FVector2D reg = FVector2D(floor(pos.X / 10000.0), floor(pos.Y / 10000.0));
+	FVector2D reg = FVector2D(
+		floor(pos.X / (ATerrain::Size * ATerrain::Scale)), 
+		floor(pos.Y / (ATerrain::Size * ATerrain::Scale)));
 	if (reg.X != CenterRegion.X || reg.Y != CenterRegion.Y)
 	{
 		Move(reg);

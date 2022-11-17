@@ -8,10 +8,6 @@
 #include <cmath>
 #include "PerlinNoise.h"
 
-const double Scale = 100.0;
-const double UVScale = 1.0;
-const double Size = 100.0;
-
 ATerrain::ATerrain()
 {
 	PrimaryActorTick.bCanEverTick = false;
