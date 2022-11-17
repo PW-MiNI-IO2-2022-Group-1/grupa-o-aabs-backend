@@ -1,5 +1,0 @@
-﻿  UnitTest_UE.cpp
-D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Source\FPSTest\Public\PerlinNoise.h(20,2): warning C4091: 'static ': ignored on left of 'PerlinNoise' when no variable is declared
-     Creating library D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\x64\Debug\UnitTest_UE.lib and object D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\x64\Debug\UnitTest_UE.exp
-UnitTest_UE.obj : error LNK2019: unresolved external symbol "public: static double __cdecl PerlinNoise::Noise(double,double)" (?Noise@PerlinNoise@@SANNN@Z) referenced in function "public: void __cdecl UnitTestUE::UnitTestUE::TestMethod1(void)" (?TestMethod1@UnitTestUE@1@QEAAXXZ)
-D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\x64\Debug\UnitTest_UE.dll : fatal error LNK1120: 1 unresolved externals
