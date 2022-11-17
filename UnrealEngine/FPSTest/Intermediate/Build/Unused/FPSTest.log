@@ -1,0 +1,19 @@
+﻿  Using bundled DotNet SDK
+  Log file: C:\Users\macie\AppData\Local\UnrealBuildTool\Log.txt
+  Invalidating makefile for FPSTestEditor (working set of source files changed)
+  Building FPSTestEditor...
+  Using Visual Studio 2022 14.34.31933 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933) and Windows 10.0.22000.0 SDK (D:\Windows Kits\10).
+  [Adaptive Build] Excluded from FPSTest unity file: Terrain.cpp, PerlinNoise.cpp, FPSTest.cpp, FPSTestCharacter.cpp, FPSTestGameMode.cpp, FPSTestProjectile.cpp, TP_PickUpComponent.cpp, TP_WeaponComponent.cpp
+  Determining max actions to execute in parallel (4 physical cores, 8 logical cores)
+    Executing up to 4 processes, one per physical core
+    Requested 1,5 GB free memory per action, 1,49 GB available: limiting max parallel actions to 1
+  Building 5 actions with 1 process...
+  [1/5] Compile Terrain.cpp
+  [2/5] Compile PerlinNoise.cpp
+  [3/5] Link UnrealEditor-FPSTest.lib
+     Creating library D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.lib and object D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.exp
+  [4/5] Link UnrealEditor-FPSTest.dll
+     Creating library D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.suppressed.lib and object D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.suppressed.exp
+  [5/5] WriteMetadata FPSTestEditor.target
+  Total time in Parallel executor: 61,36 seconds
+  Total execution time: 66,11 seconds

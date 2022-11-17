@@ -7,7 +7,9 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
+#include "Terrain.h"
 
+int terr;
 
 //////////////////////////////////////////////////////////////////////////
 // AFPSTestCharacter
@@ -41,6 +43,7 @@ void AFPSTestCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	terr = 0;
 
 }
 

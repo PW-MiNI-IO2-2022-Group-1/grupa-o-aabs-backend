@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 
-static class FPSTEST_API PerlinNoise
+static class PerlinNoise
 {
 public:
 
@@ -16,10 +16,9 @@ private:
 
 	static double Lerp(double a, double b, double t);
 
-	static double Fade(double t);
+	static double Fade(double t);	
 
 	static FVector2D ConstVector(int h);
-	
 };
 
 //https://mrl.cs.nyu.edu/~perlin/paper445.pdf <- Ken Perlin article

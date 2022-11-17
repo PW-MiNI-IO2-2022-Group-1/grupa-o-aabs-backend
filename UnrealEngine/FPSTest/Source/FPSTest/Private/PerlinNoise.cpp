@@ -4,6 +4,29 @@
 #include "PerlinNoise.h"
 #include <cmath>
 
+FVector2D PerlinNoise::ConstVector(int h)
+{
+	switch (h % 8)
+	{
+	case 0:
+		return FVector2D(1.0, 1.0);
+	case 1:
+		return FVector2D(-1.0, 1.0);
+	case 2:
+		return FVector2D(-1.0, -1.0);
+	case 3:
+		return FVector2D(1.0, -1.0);
+	case 4:
+		return FVector2D(1.0, 0.0);
+	case 5:
+		return FVector2D(-1.0, 0.0);
+	case 6:
+		return FVector2D(0.0, -1.0);
+	default:
+		return FVector2D(0.0, 1.0);
+	}
+}
+
 static const int permutation[256] = { 151,160,137,91,90,15,
    131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
    190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,
@@ -58,19 +81,4 @@ double PerlinNoise::Lerp(double a, double b, double t)
 double PerlinNoise::Fade(double x)
 {
 	return ((6.0 * x - 15.0) * x + 10.0) * x * x * x;
-}
-
-FVector2D PerlinNoise::ConstVector(int h)
-{
-	switch (h % 4)
-	{
-	case 0:
-		return FVector2D(1.0, 1.0);
-	case 1:
-		return FVector2D(-1.0, 1.0);
-	case 2:
-		return FVector2D(-1.0, -1.0);
-	default:
-		return FVector2D(1.0, -1.0);;
-	}
 }

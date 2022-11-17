@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\source\\fpstest\\fpstestprojectile.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\fpstesteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\unrealeditor\\development\\fpstest\\definitions.fpstest.h",
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\source\\fpstest\\fpstestprojectile.h",
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\unrealeditor\\inc\\fpstest\\fpstestprojectile.generated.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\projectilemovementcomponent.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\movementcomponent.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\movementcomponent.generated.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\projectilemovementcomponent.generated.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\spherecomponent.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\shapecomponent.generated.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\spherecomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

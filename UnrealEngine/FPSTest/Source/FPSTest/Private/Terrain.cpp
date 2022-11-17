@@ -45,7 +45,8 @@ void ATerrain::CreateVertices()
 	{
 		for (int Y = 0; Y <= Size; ++Y)
 		{
-			double n = PerlinNoise::Noise(GetActorLocation().X+(double)X / Size, GetActorLocation().Y+(double)Y / Size) * 500;
+			double n = PerlinNoise::Noise((GetActorLocation().X + (double)X * Scale) / (Size * Scale), 
+				(GetActorLocation().Y + (double)Y * Scale) / (Size * Scale)) * 500;
 			Vertices.Add(FVector(X * Scale, Y * Scale, n));
 			UV0.Add(FVector2D(X * UVScale, Y * UVScale));
 		}
