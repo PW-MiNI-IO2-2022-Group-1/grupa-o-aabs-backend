@@ -22,9 +22,10 @@ void ATerrain::BeginPlay()
 
 	CreateVertices();
 	CreateTriangles();
-	
+	UMaterial* mt = LoadObject<UMaterial>(nullptr, TEXT("/Game/StarterContent/Materials/M_Ground_Moss"));
+
 	ProceduralMesh->CreateMeshSection(0, Vertices, Triangles, TArray<FVector>(), UV0, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
-	ProceduralMesh->SetMaterial(0, Material);
+	ProceduralMesh->SetMaterial(0, mt);
 
 }
 
