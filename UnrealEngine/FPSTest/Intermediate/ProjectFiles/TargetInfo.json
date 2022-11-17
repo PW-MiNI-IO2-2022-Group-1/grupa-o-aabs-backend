@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "FPSTest",
+			"Path": "D:\\Git\\ME-test-repo\\gra--generowanie__proceduralne\\UnrealEngine\\FPSTest\\Source\\FPSTest.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "FPSTestEditor",
+			"Path": "D:\\Git\\ME-test-repo\\gra--generowanie__proceduralne\\UnrealEngine\\FPSTest\\Source\\FPSTestEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
