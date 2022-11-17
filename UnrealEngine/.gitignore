@@ -52,12 +52,12 @@
 /*/Build/*
 
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
-/*/!Build/*/
+!/*/Build/*/
 /*/Build/*/**
-/*/!Build/*/PakBlacklist*.txt
+!/*/Build/*/PakBlacklist*.txt
 
 # Don't ignore icon files in Build
-/*/!Build/**/*.ico
+!/*/Build/**/*.ico
 
 # Built data for maps
 *_BuiltData.uasset
@@ -67,7 +67,7 @@
 
 # Compiled source files for the engine to use
 /*/Intermediate/*
-!/*/Intermediate/ProjectFiles/**/*
+!/*/Intermediate/ProjectFiles
 /*/Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
