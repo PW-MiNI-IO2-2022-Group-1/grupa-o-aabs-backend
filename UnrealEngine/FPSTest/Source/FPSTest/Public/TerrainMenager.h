@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Terrain.h"
+#include <cmath>
+#include <random>
+#include <algorithm>
 #include "TerrainMenager.generated.h"
 
 UCLASS()
@@ -19,6 +22,9 @@ public:
 	UPROPERTY(EditAnywhere, meta=(ClampMin="1"))
 		int RenderDistance;
 
+	UPROPERTY(EditAnywhere)
+		int Seed;
+
 	void Move(FVector2D NewCenter);
 
 protected:
@@ -26,10 +32,13 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	ATerrain*** RenderedTerrain;
+	FVector2D CenterRegion;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	ATerrain*** RenderedTerrain;
+private:
 
-	FVector2D CenterRegion;
+	int Permutation[256];
+	int Size;
 };

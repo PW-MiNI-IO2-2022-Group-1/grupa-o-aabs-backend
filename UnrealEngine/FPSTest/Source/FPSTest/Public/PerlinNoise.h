@@ -8,7 +8,7 @@ static class PerlinNoise
 {
 public:
 
-	static double Noise(double x, double y);
+	static double Noise(double x, double y, int permutation[]);
 
 protected:
 

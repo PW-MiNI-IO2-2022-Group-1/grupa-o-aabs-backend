@@ -32,6 +32,10 @@ void EmptyLinkFunctionForGeneratedCodeTerrainMenager() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_RenderDistance_MetaData[];
 #endif
 		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_RenderDistance;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Seed_MetaData[];
+#endif
+		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_Seed;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -54,8 +58,16 @@ void EmptyLinkFunctionForGeneratedCodeTerrainMenager() {}
 	};
 #endif
 	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_ATerrainMenager_Statics::NewProp_RenderDistance = { "RenderDistance", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATerrainMenager, RenderDistance), METADATA_PARAMS(Z_Construct_UClass_ATerrainMenager_Statics::NewProp_RenderDistance_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATerrainMenager_Statics::NewProp_RenderDistance_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATerrainMenager_Statics::NewProp_Seed_MetaData[] = {
+		{ "Category", "TerrainMenager" },
+		{ "ModuleRelativePath", "Public/TerrainMenager.h" },
+	};
+#endif
+	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_ATerrainMenager_Statics::NewProp_Seed = { "Seed", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATerrainMenager, Seed), METADATA_PARAMS(Z_Construct_UClass_ATerrainMenager_Statics::NewProp_Seed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATerrainMenager_Statics::NewProp_Seed_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ATerrainMenager_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATerrainMenager_Statics::NewProp_RenderDistance,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATerrainMenager_Statics::NewProp_Seed,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ATerrainMenager_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ATerrainMenager>::IsAbstract,
@@ -93,9 +105,9 @@ void EmptyLinkFunctionForGeneratedCodeTerrainMenager() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_FPSTest_Source_FPSTest_Public_TerrainMenager_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATerrainMenager, ATerrainMenager::StaticClass, TEXT("ATerrainMenager"), &Z_Registration_Info_UClass_ATerrainMenager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATerrainMenager), 1353096811U) },
+		{ Z_Construct_UClass_ATerrainMenager, ATerrainMenager::StaticClass, TEXT("ATerrainMenager"), &Z_Registration_Info_UClass_ATerrainMenager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATerrainMenager), 92054752U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_FPSTest_Source_FPSTest_Public_TerrainMenager_h_3433187153(TEXT("/Script/FPSTest"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_FPSTest_Source_FPSTest_Public_TerrainMenager_h_330534400(TEXT("/Script/FPSTest"),
 		Z_CompiledInDeferFile_FID_FPSTest_Source_FPSTest_Public_TerrainMenager_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_FPSTest_Source_FPSTest_Public_TerrainMenager_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
