@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\unrealeditor\\inc\\fpstest\\fpstestgamemode.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\fpstesteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\unrealeditor\\development\\fpstest\\definitions.fpstest.h",
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\source\\fpstest\\fpstestgamemode.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "c:\\unreal engine 5.0.3\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "d:\\git\\me-test-repo\\gra--generowanie__proceduralne\\unrealengine\\fpstest\\intermediate\\build\\win64\\unrealeditor\\inc\\fpstest\\fpstestgamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

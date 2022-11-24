@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\FPSTest.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\FPSTest.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\FPSTestEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\FPSTest">
+      <UniqueIdentifier>{4E1F9ABF-A8D5-37B2-888C-53B7428808DF}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\FPSTest\FPSTest.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\FPSTest.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPSTest\FPSTestCharacter.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\FPSTestCharacter.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPSTest\FPSTestGameMode.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\FPSTestGameMode.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPSTest\FPSTestProjectile.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\FPSTestProjectile.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPSTest\TP_PickUpComponent.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\TP_PickUpComponent.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPSTest\TP_WeaponComponent.cpp">
+      <Filter>Source\FPSTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPSTest\TP_WeaponComponent.h">
+      <Filter>Source\FPSTest</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\FPSTest\FPSTest.Build.cs">
+      <Filter>Source\FPSTest</Filter>
+    </None>
+    <Filter Include="Source\FPSTest\Public">
+      <UniqueIdentifier>{37D9D157-5106-3C45-ADFB-C7D787FD581C}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\FPSTest\Public\Terrain.h">
+      <Filter>Source\FPSTest\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FPSTest\Public\PerlinNoise.h">
+      <Filter>Source\FPSTest\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\FPSTest\Private">
+      <UniqueIdentifier>{8EDE2DCE-0F4E-3AA1-9E11-018204DF3801}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\FPSTest\Private\Terrain.cpp">
+      <Filter>Source\FPSTest\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FPSTest\Private\PerlinNoise.cpp">
+      <Filter>Source\FPSTest\Private</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

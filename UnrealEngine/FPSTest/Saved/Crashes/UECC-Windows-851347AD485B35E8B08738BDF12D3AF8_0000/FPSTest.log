@@ -1,0 +1,1151 @@
+﻿Log file open, 11/17/22 00:46:04
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogWindows: Started CrashReportClient (pid=21780)
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: FPSTest
+LogCore: UnrealTraceServer: Trace store launch successful
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.0-CL-20979098"
+LogCsvProfiler: Display: Metadata set : engineversion="5.0.3-20979098+++UE5+Release-5.0"
+LogCsvProfiler: Display: Metadata set : commandline="" D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/FPSTest.uproject""
+LogCsvProfiler: Display: Metadata set : os="Windows 11 (22H2) [10.0.22621.819] "
+LogCsvProfiler: Display: Metadata set : cpu="GenuineIntel|Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : loginid="cbe33fcb475e66660ca1068c0b798aa8"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogPlatformFile: Not using cached read wrapper
+LogStats: Stats thread started at 0.718066
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-851347AD485B35E8B08738BDF12D3AF8
+         Session CrashGUID >====================================================
+LogConfig: Display: Loading HoloLens ini files took 0.10 seconds
+LogConfig: Display: Loading Android ini files took 0.10 seconds
+LogConfig: Display: Loading IOS ini files took 0.12 seconds
+LogConfig: Display: Loading Linux ini files took 0.19 seconds
+LogPluginManager: Mounting Engine plugin FastBuildController
+LogConfig: Display: Loading Mac ini files took 0.11 seconds
+LogConfig: Display: Loading TVOS ini files took 0.15 seconds
+LogPluginManager: Mounting Engine plugin MeshPainting
+LogPluginManager: Mounting Engine plugin XGEController
+LogPluginManager: Mounting Engine plugin Paper2D
+LogPluginManager: Mounting Engine plugin EnvironmentQueryEditor
+LogConfig: Display: Loading LinuxArm64 ini files took 0.22 seconds
+LogConfig: Display: Loading VulkanPC ini files took 0.11 seconds
+LogPluginManager: Mounting Engine plugin BlendSpaceMotionAnalysis
+LogPluginManager: Mounting Engine plugin AnimationModifierLibrary
+LogConfig: Display: Loading Unix ini files took 0.15 seconds
+LogPluginManager: Mounting Engine plugin ControlRig
+LogPluginManager: Mounting Engine plugin ControlRigSpline
+LogPluginManager: Mounting Engine plugin IKRig
+LogPluginManager: Mounting Engine plugin CameraShakePreviewer
+LogPluginManager: Mounting Engine plugin GameplayCameras
+LogPluginManager: Mounting Engine plugin OodleNetwork
+LogPluginManager: Mounting Engine plugin CLionSourceCodeAccess
+LogConfig: Display: Loading Windows ini files took 0.11 seconds
+LogPluginManager: Mounting Engine plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting Engine plugin GitSourceControl
+LogPluginManager: Mounting Engine plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting Engine plugin NullSourceCodeAccess
+LogPluginManager: Mounting Engine plugin AnimationSharing
+LogPluginManager: Mounting Engine plugin PluginUtils
+LogPluginManager: Mounting Engine plugin PerforceSourceControl
+LogPluginManager: Mounting Engine plugin PropertyAccessNode
+LogPluginManager: Mounting Engine plugin RiderSourceCodeAccess
+LogPluginManager: Mounting Engine plugin SubversionSourceControl
+LogPluginManager: Mounting Engine plugin TextureFormatOodle
+LogPluginManager: Mounting Engine plugin TraceDataFilters
+LogPluginManager: Mounting Engine plugin UObjectPlugin
+LogPluginManager: Mounting Engine plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting Engine plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin DatasmithContent
+LogPluginManager: Mounting Engine plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin PlasticSourceControl
+LogPluginManager: Mounting Engine plugin VariantManagerContent
+LogPluginManager: Mounting Engine plugin AutomationUtils
+LogPluginManager: Mounting Engine plugin BackChannel
+LogPluginManager: Mounting Engine plugin ChaosCloth
+LogPluginManager: Mounting Engine plugin ChaosClothEditor
+LogPluginManager: Mounting Engine plugin ChaosEditor
+LogPluginManager: Mounting Engine plugin ChaosSolverPlugin
+LogPluginManager: Mounting Engine plugin CharacterAI
+LogPluginManager: Mounting Engine plugin ChaosNiagara
+LogPluginManager: Mounting Engine plugin FullBodyIK
+LogPluginManager: Mounting Engine plugin AISupport
+LogPluginManager: Mounting Engine plugin GeometryFlow
+LogPluginManager: Mounting Engine plugin PixWinPlugin
+LogPluginManager: Mounting Engine plugin GeometryCollectionPlugin
+LogPluginManager: Mounting Engine plugin MeshModelingToolsetExp
+LogPluginManager: Mounting Engine plugin MeshLODToolset
+LogPluginManager: Mounting Engine plugin OpenImageDenoise
+LogPluginManager: Mounting Engine plugin PlanarCut
+LogPluginManager: Mounting Engine plugin PlatformCrypto
+LogPluginManager: Mounting Engine plugin ProxyLODPlugin
+LogPluginManager: Mounting Engine plugin PythonScriptPlugin
+LogPluginManager: Mounting Engine plugin SkeletalReduction
+LogPluginManager: Mounting Engine plugin Niagara
+LogPluginManager: Mounting Engine plugin AlembicImporter
+LogPluginManager: Mounting Engine plugin AssetManagerEditor
+LogPluginManager: Mounting Engine plugin CurveEditorTools
+LogPluginManager: Mounting Engine plugin EditorScriptingUtilities
+LogPluginManager: Mounting Engine plugin CryptoKeys
+LogPluginManager: Mounting Engine plugin DataValidation
+LogPluginManager: Mounting Engine plugin GameplayTagsEditor
+LogPluginManager: Mounting Engine plugin GeometryMode
+LogPluginManager: Mounting Engine plugin EditorDebugTools
+LogPluginManager: Mounting Engine plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting Engine plugin MaterialAnalyzer
+LogPluginManager: Mounting Engine plugin ModelingToolsEditorMode
+LogPluginManager: Mounting Engine plugin SequencerAnimTools
+LogPluginManager: Mounting Engine plugin PluginBrowser
+LogPluginManager: Mounting Engine plugin SpeedTreeImporter
+LogPluginManager: Mounting Engine plugin StylusInput
+LogPluginManager: Mounting Engine plugin MacGraphicsSwitching
+LogPluginManager: Mounting Engine plugin AndroidMedia
+LogPluginManager: Mounting Engine plugin WorldPartitionHLODUtilities
+LogPluginManager: Mounting Engine plugin FacialAnimation
+LogPluginManager: Mounting Engine plugin AvfMedia
+LogPluginManager: Mounting Engine plugin ImgMedia
+LogPluginManager: Mounting Engine plugin MediaCompositing
+LogPluginManager: Mounting Engine plugin MediaPlayerEditor
+LogPluginManager: Mounting Engine plugin WmfMedia
+LogPluginManager: Mounting Engine plugin WebMMedia
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin OnlineBase
+LogPluginManager: Mounting Engine plugin OnlineSubsystem
+LogPluginManager: Mounting Engine plugin OnlineSubsystemNull
+LogPluginManager: Mounting Engine plugin OnlineSubsystemUtils
+LogPluginManager: Mounting Engine plugin LauncherChunkInstaller
+LogPluginManager: Mounting Engine plugin ActorLayerUtilities
+LogPluginManager: Mounting Engine plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin AndroidFileServer
+LogPluginManager: Mounting Engine plugin AndroidMoviePlayer
+LogPluginManager: Mounting Engine plugin AppleImageUtils
+LogPluginManager: Mounting Engine plugin AppleMoviePlayer
+LogPluginManager: Mounting Engine plugin ArchVisCharacter
+LogPluginManager: Mounting Engine plugin AssetTags
+LogPluginManager: Mounting Engine plugin AudioCapture
+LogPluginManager: Mounting Engine plugin AudioSynesthesia
+LogPluginManager: Mounting Engine plugin ChunkDownloader
+LogPluginManager: Mounting Engine plugin CustomMeshComponent
+LogPluginManager: Mounting Engine plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin GeometryCache
+LogPluginManager: Mounting Engine plugin CableComponent
+LogPluginManager: Mounting Engine plugin GeometryProcessing
+LogPluginManager: Mounting Engine plugin GooglePAD
+LogPluginManager: Mounting Engine plugin GoogleCloudMessaging
+LogPluginManager: Mounting Engine plugin HairStrands
+LogPluginManager: Mounting Engine plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LocationServicesBPLibrary
+LogPluginManager: Mounting Engine plugin MeshModelingToolset
+LogPluginManager: Mounting Engine plugin AndroidPermission
+LogPluginManager: Mounting Engine plugin MobilePatchingUtils
+LogPluginManager: Mounting Engine plugin ActorSequence
+LogPluginManager: Mounting Engine plugin MatineeToLevelSequence
+LogPluginManager: Mounting Engine plugin LevelSequenceEditor
+LogPluginManager: Mounting Engine plugin SequencerScripting
+LogPluginManager: Mounting Engine plugin TemplateSequence
+LogPluginManager: Mounting Engine plugin ProceduralMeshComponent
+LogPluginManager: Mounting Engine plugin PropertyAccessEditor
+LogPluginManager: Mounting Engine plugin ResonanceAudio
+LogPluginManager: Mounting Engine plugin RuntimePhysXCooking
+LogPluginManager: Mounting Engine plugin SignificanceManager
+LogPluginManager: Mounting Engine plugin SoundFields
+LogPluginManager: Mounting Engine plugin Synthesis
+LogPluginManager: Mounting Engine plugin WebMMoviePlayer
+LogPluginManager: Mounting Engine plugin WindowsDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin WindowsMoviePlayer
+LogPluginManager: Mounting Engine plugin InterchangeEditor
+LogPluginManager: Mounting Engine plugin Interchange
+LogPluginManager: Mounting Engine plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserClassDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserFileDataSource
+LogPluginManager: Mounting Engine plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting Engine plugin OnlineServices
+LogPluginManager: Mounting Engine plugin OnlineSubsystemIOS
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/2D/Paper2D/Content/' mounted to '/Paper2D/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRig/Content/' mounted to '/ControlRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRigSpline/Content/' mounted to '/ControlRigSpline/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/IKRig/Content/' mounted to '/IKRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Developer/AnimationSharing/Content/' mounted to '/AnimationSharing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Enterprise/DatasmithContent/Content/' mounted to '/DatasmithContent/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosClothEditor/Content/' mounted to '/ChaosClothEditor/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosSolverPlugin/Content/' mounted to '/ChaosSolverPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosNiagara/Content/' mounted to '/ChaosNiagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/FullBodyIK/Content/' mounted to '/FullBodyIK/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryFlow/Content/' mounted to '/GeometryFlow/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryCollectionPlugin/Content/' mounted to '/GeometryCollectionPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshModelingToolsetExp/Content/' mounted to '/MeshModelingToolsetExp/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshLODToolset/Content/' mounted to '/MeshLODToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/PythonScriptPlugin/Content/' mounted to '/PythonScriptPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/FX/Niagara/Content/' mounted to '/Niagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/GeometryMode/Content/' mounted to '/GeometryMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/ModelingToolsEditorMode/Content/' mounted to '/ModelingToolsEditorMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/SpeedTreeImporter/Content/' mounted to '/SpeedTreeImporter/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Media/MediaCompositing/Content/' mounted to '/MediaCompositing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/AudioSynesthesia/Content/' mounted to '/AudioSynesthesia/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/GeometryProcessing/Content/' mounted to '/GeometryProcessing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/HairStrands/Content/' mounted to '/HairStrands/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/MeshModelingToolset/Content/' mounted to '/MeshModelingToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/MovieScene/SequencerScripting/Content/' mounted to '/SequencerScripting/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/ResonanceAudio/Content/' mounted to '/ResonanceAudio/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/Synthesis/Content/' mounted to '/Synthesis/'
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+PixWinPlugin: PIX capture plugin failed to initialize! Check that the process is launched from PIX.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.1.1
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: Created online subsystem instance for: NULL
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+LogInit: Build: ++UE5+Release-5.0-CL-20979098
+LogInit: Engine Version: 5.0.3-20979098+++UE5+Release-5.0
+LogInit: Compatible Engine Version: 5.0.0-19505902+++UE5+Release-5.0
+LogInit: Net CL: 19505902
+LogInit: OS: Windows 11 (22H2) [10.0.22621.819] (), CPU: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz, GPU: Intel(R) UHD Graphics 620
+LogInit: Compiled (64-bit): Jul  7 2022 02:16:06
+LogInit: Compiled with Visual C++: 19.29.30138.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.0
+LogInit: Command Line: 
+LogInit: Base Directory: C:/Unreal Engine 5.0.3/UE_5.0/Engine/Binaries/Win64/
+LogInit: Allocator: Mimalloc
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 34
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 45
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 59
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 3
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 59
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 36
+LogDevObjectVersion:   UE5-PrivateFrosty (59DA5D52-1232-4948-B878-597870B8E98B): 8
+LogDevObjectVersion:   UE5-Dev-Cooker (26075A32-730F-4708-88E9-8C32F1599D05): 0
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   UE5-Dev-LWCRendering (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+LogConfig: CVar [[r.DetectAndWarnOfBadDrivers:0]] deferred - dummy variable created
+LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [Engine]
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[VisualizeCalibrationColorMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationColor.PPM_DefaultCalibrationColor]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[VisualizeCalibrationGrayscaleMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationGrayscale.PPM_DefaultCalibrationGrayscale]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[MaxSkinBones:(Default=65536,PerPlatform=(("Mobile", 256)))]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [Engine]
+[2022.11.16-23.46.06:137][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [Engine]
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[s.MaxPackageSummarySize:16384]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__SoundBase]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__MaterialInterface]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__DeviceProfileManager]] deferred - dummy variable created
+[2022.11.16-23.46.06:137][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [Engine]
+[2022.11.16-23.46.06:138][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [Engine]
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Average",ToolTip="Simulates average internet conditions")]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Bad",ToolTip="Simulates laggy internet conditions")]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [Engine]
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[DefaultPVRTCQuality:1]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[DefaultASTCQualityBySpeed:1]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[DefaultASTCQualityBySize:3]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:WidgetBlueprint]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GroupActor]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MetaData]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ObjectRedirector]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NavMeshRenderingComponent]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ReflectionCaptureComponent]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:TextRenderComponent]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:Font]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:InterpCurveEdSetup]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MaterialExpression]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MatineeActorCameraAnim]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraEmitter]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraScript]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleEmitter]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleLODLevel]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleModule]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SubUVAnimation]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SoundNode]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GameplayEffectUIData]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:WidgetBlueprint]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:GroupActor]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MetaData]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:ObjectRedirector]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:InterpCurveEdSetup]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MatineeActorCameraAnim]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.AllowStaticLighting]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.GBuffer]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.VelocityOutputPass]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.SelectiveBasePassOutputs]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.DBuffer]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Symbols]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.GenerateSymbols]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.WriteSymbols]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.AllowUniqueSymbols]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.ExtraData]] deferred - dummy variable created
+[2022.11.16-23.46.06:138][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Optimize]] deferred - dummy variable created
+[2022.11.16-23.46.06:139][  0]LogConfig: CVar [[VersionedIntRValues:r.CompileShadersForDevelopment]] deferred - dummy variable created
+[2022.11.16-23.46.06:139][  0]LogConfig: CVar [[VersionedIntRValues:r.MobileHDR]] deferred - dummy variable created
+[2022.11.16-23.46.06:139][  0]LogConfig: CVar [[VersionedIntRValues:r.UsePreExposure]] deferred - dummy variable created
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [Scalability]
+[2022.11.16-23.46.06:146][  0]LogConfig: CVar [[r.HairStrands.Interpolation.UseSingleGuide:0]] deferred - dummy variable created
+[2022.11.16-23.46.06:195][  0]LogD3D12RHI: Aftermath initialized
+[2022.11.16-23.46.06:195][  0]LogD3D12RHI: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+[2022.11.16-23.46.06:666][  0]LogD3D12RHI: Found D3D12 adapter 0: NVIDIA GeForce MX150 (Max supported Feature Level 12_1, shader model 6.6)
+[2022.11.16-23.46.06:666][  0]LogD3D12RHI: Adapter has 1983MB of dedicated video memory, 0MB of dedicated system memory, and 4018MB of shared system memory, 2 output[s]
+[2022.11.16-23.46.06:834][  0]LogD3D12RHI: Found D3D12 adapter 1: Intel(R) UHD Graphics 620 (Max supported Feature Level 12_1, shader model 6.5)
+[2022.11.16-23.46.06:835][  0]LogD3D12RHI: Adapter has 128MB of dedicated video memory, 0MB of dedicated system memory, and 4018MB of shared system memory, 0 output[s]
+[2022.11.16-23.46.06:898][  0]LogD3D12RHI: Found D3D12 adapter 2: Microsoft Basic Render Driver (Max supported Feature Level 12_1, shader model 6.2)
+[2022.11.16-23.46.06:898][  0]LogD3D12RHI: Adapter has 0MB of dedicated video memory, 0MB of dedicated system memory, and 4018MB of shared system memory, 0 output[s]
+[2022.11.16-23.46.06:967][  0]LogD3D12RHI: Found D3D12 adapter 3: Intel(R) UHD Graphics 620 (Max supported Feature Level 12_1, shader model 6.5)
+[2022.11.16-23.46.06:967][  0]LogD3D12RHI: Adapter has 128MB of dedicated video memory, 0MB of dedicated system memory, and 4018MB of shared system memory, 0 output[s]
+[2022.11.16-23.46.06:968][  0]LogD3D12RHI: Chosen D3D12 Adapter Id = 0
+[2022.11.16-23.46.06:968][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2022.11.16-23.46.06:968][  0]LogDeviceProfileManager: Applying CVar settings loaded from the selected device profile: [WindowsEditor]
+[2022.11.16-23.46.06:968][  0]LogHAL: Display: Platform has ~ 8 GB [8428244992 / 8589934592 / 8], which maps to Default [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2022.11.16-23.46.06:968][  0]LogDeviceProfileManager: Going up to parent DeviceProfile [Windows]
+[2022.11.16-23.46.06:968][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2022.11.16-23.46.06:968][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@0] File [Scalability]
+[2022.11.16-23.46.06:968][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [TextureQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@0] File [Scalability]
+[2022.11.16-23.46.06:969][  0]LogConfig: CVar [[r.HairStrands.Interpolation.UseSingleGuide:1]] deferred - dummy variable created
+[2022.11.16-23.46.06:969][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2022.11.16-23.46.06:970][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+[2022.11.16-23.46.06:970][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Saved/Config/WindowsEditor/Editor.ini]
+[2022.11.16-23.46.06:970][  0]LogInit: Computer: SEEDO
+[2022.11.16-23.46.06:970][  0]LogInit: User: macie
+[2022.11.16-23.46.06:970][  0]LogInit: CPU Page size=4096, Cores=4
+[2022.11.16-23.46.06:970][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2022.11.16-23.46.06:970][  0]LogMemory: Memory total: Physical=7.8GB (8GB approx)
+[2022.11.16-23.46.06:970][  0]LogMemory: Platform Memory Stats for WindowsEditor
+[2022.11.16-23.46.06:970][  0]LogMemory: Process Physical Memory: 268.16 MB used, 271.35 MB peak
+[2022.11.16-23.46.06:970][  0]LogMemory: Process Virtual Memory: 224.79 MB used, 224.79 MB peak
+[2022.11.16-23.46.06:970][  0]LogMemory: Physical Memory: 5291.48 MB used,  2746.32 MB free, 8037.80 MB total
+[2022.11.16-23.46.06:970][  0]LogMemory: Virtual Memory: 10932.21 MB used,  13170.71 MB free, 24102.92 MB total
+[2022.11.16-23.46.06:970][  0]LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+[2022.11.16-23.46.06:987][  0]LogWindows: WindowsPlatformFeatures enabled
+[2022.11.16-23.46.07:037][  0]LogInit: Physics initialised using underlying interface: Chaos
+[2022.11.16-23.46.07:038][  0]LogInit: Using OS detected language (pl-PL).
+[2022.11.16-23.46.07:038][  0]LogInit: Using OS detected locale (pl-PL).
+[2022.11.16-23.46.07:050][  0]LogTextLocalizationManager: No specific localization for 'pl-PL' exists, so 'pl' will be used for the language.
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/Editor/pl/Editor.locres' could not be opened for reading!
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/EditorTutorials/pl/EditorTutorials.locres' could not be opened for reading!
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/Keywords/pl/Keywords.locres' could not be opened for reading!
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/Category/pl/Category.locres' could not be opened for reading!
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/ToolTips/pl/ToolTips.locres' could not be opened for reading!
+[2022.11.16-23.46.07:051][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/PropertyNames/pl/PropertyNames.locres' could not be opened for reading!
+[2022.11.16-23.46.07:052][  0]LogTextLocalizationResource: LocRes '../../../Engine/Content/Localization/Engine/pl/Engine.locres' could not be opened for reading!
+[2022.11.16-23.46.07:053][  0]LogInit: Setting process to per monitor DPI aware
+[2022.11.16-23.46.07:091][  0]LogWindowsTextInputMethodSystem: Available input methods:
+[2022.11.16-23.46.07:091][  0]LogWindowsTextInputMethodSystem:   - Polski (Polska) - (Keyboard).
+[2022.11.16-23.46.07:091][  0]LogWindowsTextInputMethodSystem:   - Angielski (Stany Zjednoczone) - (Keyboard).
+[2022.11.16-23.46.07:091][  0]LogWindowsTextInputMethodSystem:   - Angielski (Stany Zjednoczone) - (Keyboard).
+[2022.11.16-23.46.07:091][  0]LogWindowsTextInputMethodSystem: Activated input method: Polski (Polska) - (Keyboard).
+[2022.11.16-23.46.07:142][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2022.11.16-23.46.07:143][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2022.11.16-23.46.07:520][  0]LogD3D12RHI: InitD3DDevice: -D3DDebug = off -D3D12GPUValidation = off
+[2022.11.16-23.46.07:530][  0]LogD3D12RHI: [Aftermath] Aftermath crash dumping enabled
+[2022.11.16-23.46.07:530][  0]LogD3D12RHI: Emitting draw events for PIX profiling.
+[2022.11.16-23.46.07:658][  0]LogD3D12RHI: [Aftermath] Aftermath enabled and primed
+[2022.11.16-23.46.07:658][  0]LogD3D12RHI: [Aftermath] Aftermath resource tracking enabled
+[2022.11.16-23.46.07:658][  0]LogD3D12RHI: ID3D12Device1 is supported.
+[2022.11.16-23.46.07:658][  0]LogD3D12RHI: ID3D12Device2 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: ID3D12Device3 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: ID3D12Device4 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: ID3D12Device5 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: ID3D12Device6 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: ID3D12Device7 is supported.
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: AtomicInt64OnTypedResource is supported
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: AtomicInt64OnGroupShared is supported
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: AtomicInt64OnDescriptorHeapResource is supported
+[2022.11.16-23.46.07:659][  0]LogD3D12RHI: Shader Model 6.6 atomic64 is supported
+[2022.11.16-23.46.07:755][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for 3D Queue 0
+[2022.11.16-23.46.07:769][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for Copy Queue 0
+[2022.11.16-23.46.07:798][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for Compute Queue 0
+[2022.11.16-23.46.07:820][  0]LogD3D12RHI: Display: Not using pipeline state disk cache per r.D3D12.PSO.DiskCache=0
+[2022.11.16-23.46.07:820][  0]LogD3D12RHI: Display: Not using driver-optimized pipeline state disk cache per r.D3D12.PSO.DriverOptimizedDiskCache=0
+[2022.11.16-23.46.07:918][  0]LogD3D12RHI:     GPU DeviceId: 0x1d10 (for the marketing name, search the web for "GPU Device Id")
+[2022.11.16-23.46.07:918][  0]LogWindows: Attached monitors:
+[2022.11.16-23.46.07:918][  0]LogWindows:     resolution: 2160x1440, work area: (0, 0) -> (2160, 1380), device: '\\.\DISPLAY1' [PRIMARY]
+[2022.11.16-23.46.07:918][  0]LogWindows:     resolution: 1920x1080, work area: (-1920, -584) -> (0, 448), device: '\\.\DISPLAY2'
+[2022.11.16-23.46.07:918][  0]LogWindows: Found 2 attached monitors.
+[2022.11.16-23.46.07:918][  0]LogWindows: EnumDisplayDevices:
+[2022.11.16-23.46.07:918][  0]LogWindows:    0. 'Intel(R) UHD Graphics 620' (P:1 D:1), name: '\\.\DISPLAY1'
+[2022.11.16-23.46.07:919][  0]LogWindows:    1. 'Intel(R) UHD Graphics 620' (P:0 D:1), name: '\\.\DISPLAY2'
+[2022.11.16-23.46.07:919][  0]LogWindows:    2. 'Intel(R) UHD Graphics 620' (P:0 D:0), name: '\\.\DISPLAY3'
+[2022.11.16-23.46.07:920][  0]LogWindows:    3. 'Virtual Display Device' (P:0 D:0), name: '\\.\DISPLAY4'
+[2022.11.16-23.46.07:920][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter GetVideoDriverDetailsInvalid PrimaryIsNotTheChoosenAdapter FoundDriverCount:0 
+[2022.11.16-23.46.07:920][  0]LogD3D12RHI:     Adapter Name: NVIDIA GeForce MX150
+[2022.11.16-23.46.07:920][  0]LogD3D12RHI:   Driver Version: Unknown (internal:Unknown, unified:Unknown)
+[2022.11.16-23.46.07:920][  0]LogD3D12RHI:      Driver Date: Unknown
+[2022.11.16-23.46.07:920][  0]LogRHI: Texture pool is 1062 MB (70% of 1517 MB)
+[2022.11.16-23.46.07:920][  0]LogD3D12RHI: Async texture creation enabled
+[2022.11.16-23.46.07:920][  0]LogD3D12RHI: RHI has support for 64 bit atomics
+[2022.11.16-23.46.07:942][  0]LogRHI: GeForceNow SDK initialized: 0
+[2022.11.16-23.46.07:954][  0]LogTurnkeySupport: Running Turnkey SDK detection: ' -ScriptsForProject="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/FPSTest.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/TurnkeyReport_0.log" -log="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/TurnkeyLog_0.log" -project="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/FPSTest.uproject"  -platform=all'
+[2022.11.16-23.46.07:956][  0]LogMonitoredProcess: Running Serialized UAT: [ cmd.exe /c ""C:/Unreal Engine 5.0.3/UE_5.0/Engine/Build/BatchFiles/RunUAT.bat"  -ScriptsForProject="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/FPSTest.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/TurnkeyReport_0.log" -log="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/TurnkeyLog_0.log" -project="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/FPSTest.uproject"  -platform=all" ]
+[2022.11.16-23.46.08:011][  0]LogTextureFormatETC2: Display: ETC2 Texture loading DLL: TextureConverter.dll
+[2022.11.16-23.46.08:030][  0]LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.5
+[2022.11.16-23.46.08:030][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.5.dll
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+[2022.11.16-23.46.08:047][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+[2022.11.16-23.46.08:095][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLens'
+[2022.11.16-23.46.08:095][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLensClient'
+[2022.11.16-23.46.08:104][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+[2022.11.16-23.46.08:104][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+[2022.11.16-23.46.08:113][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+[2022.11.16-23.46.08:113][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxEditor'
+[2022.11.16-23.46.08:113][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+[2022.11.16-23.46.08:113][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+[2022.11.16-23.46.08:119][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64'
+[2022.11.16-23.46.08:119][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Server'
+[2022.11.16-23.46.08:119][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Client'
+[2022.11.16-23.46.08:126][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+[2022.11.16-23.46.08:126][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+[2022.11.16-23.46.08:138][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+[2022.11.16-23.46.08:138][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsEditor'
+[2022.11.16-23.46.08:138][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+[2022.11.16-23.46.08:138][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+[2022.11.16-23.46.08:138][  0]LogTargetPlatformManager: Display: Building Assets For WindowsEditor
+[2022.11.16-23.46.08:159][  0]LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+[2022.11.16-23.46.08:166][  0]LogTargetPlatformManager: Unable to find audio format BINKA from hinted modules, loading all potential format modules to find it
+[2022.11.16-23.46.08:166][  0]LogTargetPlatformManager: Loaded format module AudioFormatADPCM
+[2022.11.16-23.46.08:166][  0]LogTargetPlatformManager:   ADPCM
+[2022.11.16-23.46.08:166][  0]LogTargetPlatformManager:   PCM
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager: Loaded format module AudioFormatBink
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager:   BINKA
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager: Loaded format module AudioFormatOgg
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager:   OGG
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager: Loaded format module AudioFormatOpus
+[2022.11.16-23.46.08:172][  0]LogTargetPlatformManager:   OPUS
+[2022.11.16-23.46.08:264][  0]LogTargetPlatformManager: Unable to find shader format SF_METAL from hinted modules, loading all potential format modules to find it
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager: Loaded format module MetalShaderFormat
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_MRT
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_TVOS
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_MRT_TVOS
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_SM5
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_MACES3_1
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   SF_METAL_MRT_MAC
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager: Loaded format module ShaderFormatD3D
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   PCD3D_SM6
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   PCD3D_SM5
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   PCD3D_ES31
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   D3D_ES3_1_HOLOLENS
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager: Loaded format module ShaderFormatOpenGL
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   GLSL_150_ES31
+[2022.11.16-23.46.08:282][  0]LogTargetPlatformManager:   GLSL_ES3_1_ANDROID
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager: Loaded format module ShaderFormatVectorVM
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager:   VVM_1_0
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager: Loaded format module VulkanShaderFormat
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager:   SF_VULKAN_SM5
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager:   SF_VULKAN_ES31_ANDROID
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager:   SF_VULKAN_ES31
+[2022.11.16-23.46.08:292][  0]LogTargetPlatformManager:   SF_VULKAN_SM5_ANDROID
+[2022.11.16-23.46.08:292][  0]LogRendererCore: Ray tracing is disabled. Reason: r.RayTracing=0.
+[2022.11.16-23.46.08:293][  0]LogShaderCompilers: Display: Compiling shader autogen file: D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+[2022.11.16-23.46.08:301][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2022.11.16-23.46.08:301][  0]LogShaderCompilers: Display: Compiling shader autogen file: D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/ShaderAutogen/PCD3D_ES31/AutogenShaderHeaders.ush
+[2022.11.16-23.46.08:303][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2022.11.16-23.46.08:310][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2022.11.16-23.46.08:310][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchy Hierarchy.
+[2022.11.16-23.46.08:310][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2022.11.16-23.46.08:310][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchy Hierarchy.
+[2022.11.16-23.46.08:351][  0]LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (1230 MiB)
+[2022.11.16-23.46.08:351][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2022.11.16-23.46.08:351][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchy Hierarchy.
+[2022.11.16-23.46.08:370][  0]LogDerivedDataCache: Speed tests for C:/Users/macie/AppData/Local/UnrealEngine/Common/DerivedDataCache took 0.02 seconds
+[2022.11.16-23.46.08:370][  0]LogDerivedDataCache: Display: Performance to C:/Users/macie/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.05ms. RandomReadSpeed=536.40MBs, RandomWriteSpeed=58.00MBs. Assigned SpeedClass 'Local'
+[2022.11.16-23.46.08:372][  0]LogDerivedDataCache: Using Local data cache path C:/Users/macie/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2022.11.16-23.46.08:372][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2022.11.16-23.46.08:372][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchy Hierarchy.
+[2022.11.16-23.46.08:389][  0]LogVirtualization: VirtualizationSystem name found in ini file: None
+[2022.11.16-23.46.08:389][  0]LogVirtualization: FNullVirtualizationSystem mounted, virtualization will be disabled
+[2022.11.16-23.46.08:390][  0]LogShaderCompilers: Guid format shader working directory is -26 characters bigger than the processId version (D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Intermediate/Shaders/WorkingDirectory/25300/).
+[2022.11.16-23.46.08:390][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/macie/AppData/Local/Temp/UnrealShaderWorkingDir/23ABAB494BA7AC2EC6122E89B7127166/'.
+[2022.11.16-23.46.08:391][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2022.11.16-23.46.08:391][  0]LogShaderCompilers: Display: Using Local Shader Compiler with 5 workers.
+[2022.11.16-23.46.11:859][  0]LogTurnkeySupport: Completed SDK detection: ExitCode = 0
+[2022.11.16-23.46.11:859][  0]LogSlate: Using FreeType 2.10.0
+[2022.11.16-23.46.11:859][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2022.11.16-23.46.11:936][  0]LogAssetRegistry: FAssetRegistry took 0.0285 seconds to start up
+[2022.11.16-23.46.11:947][  0]LogEditorDomain: Display: EditorDomain is Disabled
+[2022.11.16-23.46.12:300][  0]LogSerialization: UsePackageTrailer: 'false'
+[2022.11.16-23.46.12:301][  0]LogTexture: Display: Texture Encode Speed: FinalIfAvailable (editor).
+[2022.11.16-23.46.12:939][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2022.11.16-23.46.12:939][  0]LogDeviceProfileManager: Active device profile: [000004DD12C1F880][000004DD0A455000 50] WindowsEditor
+[2022.11.16-23.46.12:939][  0]LogDeviceProfileManager: Profiles: [000004DD12C1F340][000004DD0A45A000 50] Windows, [000004DD12C1F880][000004DD0A455000 50] WindowsEditor, [000004DD12C1B7C0][000004DD0A452800 50] WindowsServer, [000004DD12C1CB00][000004DD0A35A000 50] WindowsClient, [000004DD12C1FA40][000004DD0A457800 50] IOS, [000004DD12C1CCC0][000004DD141B0000 50] iPadAir2, [000004DD12C1E540][000004DD141B7800 50] IPadPro, [000004DD12C1E380][000004DD141B5000 50] iPadAir3, [000004DD12C1EC40][000004DD141BA000 50] iPadAir4, [000004DD12C1DE40][000004DD141BC800 50] iPadMini4, [000004DD12C1BD00][000004DCF8F25000 50] iPadMini5, [000004DD12C1EFC0][000004DD141C0000 50] iPadMini6, [000004DD141D2680][000004DD141CA000 50] iPhone6S, [000004DD141D2A00][000004DD141C7800 50] iPhone7, [000004DD141D2D80][000004DD141C5000 50] iPodTouch7, [000004DD141D2300][000004DD141CC800 50] iPhone6SPlus, [000004DD141D01C0][000004DD141B2800 50] iPhone7Plus, [000004DD141D0A80][000004DD141E0000 50] iPhoneSE, [000004DD141D0700][000004DD141E5000 50] iPhone8, [000004DD141D1A40][000004DD141E7800 50] iPhone8Plus, [000004DD141D1180][000004DD141EA000 50] iPhoneX, [000004DD141D32C0][000004DD141EC800 50] iPhoneXS, [000004DD141D0E00][000004DD141C2800 50] iPhoneXSMax, [000004DD141D16C0][000004DD141F0000 50] iPhoneXR, [000004DD141D0380][000004DD141F5000 50] iPhone11, [000004DD141D39C0][000004DD141F7800 50] iPhone11Pro, [000004DD141D2F40][000004DD141FA000 50] iPhone11ProMax, [000004DD141D2BC0][000004DD141FC800 50] iPhoneSE2, [000004DD141D3B80][000004DD141E2800 50] iPhone12Mini, [000004DD141D1500][000004DD14200000 50] iPhone12, [000004DD141D24C0][000004DD14205000 50] iPhone12Pro, [000004DD141D3640][000004DD14207800 50] iPhone12ProMax, [000004DD141D1F80][000004DD1420A000 50] iPhone13Mini, [000004DD141D3800][000004DD1420C800 50] iPhone13, [000004DD141D3D40][000004DD141F2800 50] iPhone13Pro, [000004DD141D3F00][000004DD14210000 50] iPhone13ProMax, [000004DD141D4EC0][000004DD14215000 50] iPadPro105, [000004DD141D5080][000004DD14217800 50] iPadPro129, [000004DD141D5240][000004DD1421A000 50] iPadPro97, [000004DD141D0000][000004DD1421C800 50] iPadPro2_129, [000004DD141D55C0][000004DD14202800 50] iPad5, [000004DD141D0FC0][000004DD14220000 50] iPad6, [000004DD141D5940][000004DD14225000 50] iPad7, [000004DD141D47C0][000004DD14227800 50] iPad8, [000004DD141D5CC0][000004DD1422A000 50] iPad9, [000004DD141D40C0][000004DD1422C800 50] iPadPro11, [000004DD141D4D00][000004DD14212800 50] iPadPro2_11, [000004DD141D5780][000004DD12FD0000 50] iPadPro3_11, [000004DD141D0C40][000004DD12FD5000 50] iPadPro3_129, [000004DD141D4440][000004DD12FD7800 50] iPadPro4_129, [000004DD141D4980][000004DD12FDA000 50] iPadPro5_129, [000004DD141D0540][000004DD12FDC800 50] AppleTV, [000004DD141D3480][000004DD14222800 50] AppleTV4K, [000004DD141D5E80][000004DD14250000 50] TVOS, [000004DD141D8DC0][000004DD14257800 50] Mac, [000004DD141D9140][000004DD14255000 50] MacEditor, [000004DD141D86C0][000004DD1425A000 50] MacClient, [000004DD141D1340][000004DD1425C800 50] MacServer, [000004DD141D9300][000004DD14260000 50] Linux, [000004DD141D2140][000004DD14262800 50] LinuxEditor, [000004DD141D1DC0][000004DD14267800 50] LinuxArm64Editor, [000004DD141D94C0][000004DD1426A000 50] LinuxArm64, [000004DD141D8180][000004DD1426C800 50] LinuxClient, [000004DD141D5400][000004DD12FD2800 50] LinuxArm64Client, [000004DD141D9BC0][000004DD14265000 50] LinuxServer, [000004DD141D8C00][000004DD14270000 50] LinuxArm64Server, [000004DD141D7700][000004DD14275000 50] Android, [000004DD141D6AC0][000004DD14277800 50] Android_Preview_OpenGL, [000004DD141D71C0][000004DD1427A000 50] Android_Preview_Vulkan, [000004DD141D8500][000004DD1427C800 50] Android_Low, [000004DD141D4B40][000004DD14252800 50] Android_Mid, [000004DD141D7C40][000004DD14280000 50] Android_High, [000004DD141D63C0][000004DD14285000 50] Android_Default, [000004DD141D7A80][000004DD14287800 50] Android_Adreno4xx, [000004DD141D08C0][000004DD1428A000 50] Android_Adreno5xx_Low, [000004DD141D1C00][000004DD1428C800 50] Android_Adreno5xx, [000004DD141D7380][000004DD14272800 50] Android_Adreno6xx, [000004DD141D5B00][000004DD14290000 50] Android_Adreno6xx_Vulkan, [000004DD141D8880][000004DD14295000 50] Android_Adreno7xx, [000004DD141D78C0][000004DD14297800 50] Android_Adreno7xx_Vulkan, [000004DD141D1880][000004DD1429A000 50] Android_Mali_T6xx, [000004DD141D3100][000004DD1429C800 50] Android_Mali_T7xx, [000004DD141D9840][000004DD14282800 50] Android_Mali_T8xx, [000004DD141D6E40][000004DD142A0000 50] Android_Mali_G71, [000004DD141D4600][000004DD142A5000 50] Android_Mali_G72, [000004DD141D4280][000004DD142A7800 50] Android_Mali_G72_Vulkan, [000004DD141D9A00][000004DD142AA000 50] Android_Mali_G76, [000004DD141D2840][000004DD142AC800 50] Android_Mali_G76_Vulkan, [000004DD141D7000][000004DD14292800 50] Android_Mali_G77, [000004DD141D6200][000004DD142B0000 50] Android_Mali_G77_Vulkan, [000004DD141D9D80][000004DD142B5000 50] Android_Mali_G78, [000004DD141DAD40][000004DD142B7800 50] Android_Mali_G78_Vulkan, [000004DD141DAF00][000004DD142BA000 50] Android_Mali_G710, [000004DD141DB0C0][000004DD142BC800 50] Android_Mali_G710_Vulkan, [000004DD141D6040][000004DD142A2800 50] Android_Xclipse_920, [000004DD141DB440][000004DD142C0000 50] Android_Xclipse_920_Vulkan, [000004DD141D9680][000004DD142C5000 50] Android_Vulkan_SM5, [000004DD141DB980][000004DD142C7800 50] Android_PowerVR_G6xxx, [000004DD141DA640][000004DD142CA000 50] Android_PowerVR_GT7xxx, [000004DD141DBD00][000004DD142CC800 50] Android_PowerVR_GE8xxx, [000004DD141DBEC0][000004DD142B2800 50] Android_PowerVR_GM9xxx, [000004DD141DC080][000004DD142D0000 50] Android_PowerVR_GM9xxx_Vulkan, [000004DD141DB280][000004DD142D5000 50] Android_TegraK1, [000004DD141DC400][000004DD142D7800 50] Android_Unknown_Vulkan, [000004DD141D8340][000004DD142DA000 50] Oculus_Quest, [000004DD141DC780][000004DD142DC800 50] Oculus_Quest2, [000004DD141D9F40][000004DD142C2800 50] HoloLens, 
+[2022.11.16-23.46.12:939][  0]LogCsvProfiler: Display: Metadata set : deviceprofile="WindowsEditor"
+[2022.11.16-23.46.12:944][  0]LogTurnkeySupport: Turnkey Platform: Android: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=r21a, MaxAllowed=r23a, Flags="Platform_InvalidHostPrerequisites", Error="Android Studio is not installed correctly.")
+[2022.11.16-23.46.12:944][  0]LogTurnkeySupport: Turnkey Platform: IOS: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=1100.0.0.0, MaxAllowed=1399.0, Flags="Platform_ValidHostPrerequisites")
+[2022.11.16-23.46.12:944][  0]LogTurnkeySupport: Turnkey Platform: Linux: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=v20_clang-13.0.1-centos7, MaxAllowed=v20_clang-13.0.1-centos7, Flags="Platform_ValidHostPrerequisites")
+[2022.11.16-23.46.12:944][  0]LogTurnkeySupport: Turnkey Platform: LinuxArm64: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=v20_clang-13.0.1-centos7, MaxAllowed=v20_clang-13.0.1-centos7, Flags="Platform_ValidHostPrerequisites")
+[2022.11.16-23.46.12:944][  0]LogTurnkeySupport: Turnkey Platform: Win64: (Status=Valid, Installed=10.0.22000.0, AutoSDK=, MinAllowed=10.0.00000.0, MaxAllowed=10.9.99999.0, Flags="InstalledSdk_ValidVersionExists")
+[2022.11.16-23.46.12:996][  0]LogTexture: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+[2022.11.16-23.46.13:338][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2022.11.16-23.46.13:338][  0]LogMeshReduction: Using SimplygonMeshReduction for automatic skeletal mesh reduction
+[2022.11.16-23.46.13:338][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2022.11.16-23.46.13:338][  0]LogMeshReduction: No distributed automatic mesh merging module available
+[2022.11.16-23.46.13:338][  0]LogMeshMerging: No distributed automatic mesh merging module available
+[2022.11.16-23.46.13:367][  0]LogNetVersion: FPSTest 1.0.0, NetCL: 19505902, EngineNetVer: 23, GameNetVer: 0 (Checksum: 1478273929)
+[2022.11.16-23.46.13:583][  0]LogSlate: Border
+[2022.11.16-23.46.13:583][  0]LogSlate: BreadcrumbButton
+[2022.11.16-23.46.13:583][  0]LogSlate: Default
+[2022.11.16-23.46.13:583][  0]LogSlate: Icons.Save
+[2022.11.16-23.46.13:583][  0]LogSlate: Icons.Toolbar.Settings
+[2022.11.16-23.46.13:583][  0]LogSlate: ListView
+[2022.11.16-23.46.13:583][  0]LogSlate: SoftwareCursor_CardinalCross
+[2022.11.16-23.46.13:583][  0]LogSlate: SoftwareCursor_Grab
+[2022.11.16-23.46.13:583][  0]LogSlate: TableView.DarkRow
+[2022.11.16-23.46.13:583][  0]LogSlate: TableView.Row
+[2022.11.16-23.46.13:583][  0]LogSlate: TreeView
+[2022.11.16-23.46.13:893][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.13:945][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.13:945][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.14:151][  0]LogUObjectArray: 20557 objects as part of root set at end of initial load.
+[2022.11.16-23.46.14:151][  0]LogUObjectAllocator: 5584256 out of 0 bytes used by permanent object pool.
+[2022.11.16-23.46.14:151][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2022.11.16-23.46.14:588][  0]LogPython: Using Python 3.9.7
+[2022.11.16-23.46.15:815][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: 8E3B42A643AE5AA4443566983B528E0D | Instance: 61BDE2974091DF37C866F69DFDFC2978 (SEEDO-25300).
+[2022.11.16-23.46.16:092][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2022.11.16-23.46.16:100][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2022.11.16-23.46.16:929][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.16:952][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.16:966][  0]LogUProjectInfo: Found projects:
+[2022.11.16-23.46.16:984][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.17:252][  0]LogOpenImageDenoise: OIDN starting up
+[2022.11.16-23.46.17:599][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2022.11.16-23.46.17:599][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2022.11.16-23.46.17:674][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2022.11.16-23.46.17:865][  0]LogCollectionManager: Loaded 0 collections in 0.003491 seconds
+[2022.11.16-23.46.18:024][  0]LogFileCache: Scanning file cache for directory 'D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Saved/Collections/' took 0.00s
+[2022.11.16-23.46.18:024][  0]LogFileCache: Scanning file cache for directory 'D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Content/Developers/macie/Collections/' took 0.00s
+[2022.11.16-23.46.18:024][  0]LogFileCache: Scanning file cache for directory 'D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Content/Collections/' took 0.00s
+[2022.11.16-23.46.18:024][  0]LogEngine: Initializing Engine...
+[2022.11.16-23.46.18:044][  0]LogStylusInput: Initializing StylusInput subsystem.
+[2022.11.16-23.46.18:059][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+[2022.11.16-23.46.18:468][  0]LogInit: Initializing FReadOnlyCVARCache
+[2022.11.16-23.46.18:469][  0]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.11.16-23.46.18:490][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.11.16-23.46.18:542][  0]LogAIModule: Creating AISystem for world Untitled
+[2022.11.16-23.46.18:543][  0]LogAudio: Display: Initializing Audio Device Manager...
+[2022.11.16-23.46.18:581][  0]LogAudio: Display: Loading Default Audio Settings Objects...
+[2022.11.16-23.46.18:582][  0]LogAudio: Display: No default SoundConcurrencyObject specified (or failed to load).
+[2022.11.16-23.46.18:582][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: Audio Device Manager Initialized
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: Creating Audio Device:                 Id: 1, Scope: Shared, Realtime: True
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.11.16-23.46.18:583][  0]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.11.16-23.46.18:583][  0]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.11.16-23.46.18:596][  0]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.11.16-23.46.18:702][  0]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.11.16-23.46.18:703][  0]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.11.16-23.46.18:705][  0]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.11.16-23.46.18:705][  0]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.11.16-23.46.18:706][  0]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=1
+[2022.11.16-23.46.18:706][  0]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=1
+[2022.11.16-23.46.18:708][  0]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=1
+[2022.11.16-23.46.18:708][  0]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=1
+[2022.11.16-23.46.18:708][  0]LogInit: FAudioDevice initialized.
+[2022.11.16-23.46.18:709][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2022.11.16-23.46.18:709][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2022.11.16-23.46.18:709][  0]LogInit: Texture streaming: Enabled
+[2022.11.16-23.46.18:767][  0]LogAnalytics: Display: [UEEditor.Rocket.Release] APIServer = https://datarouter.ol.epicgames.com/. AppVersion = 5.0.3-20979098+++UE5+Release-5.0
+[2022.11.16-23.46.18:784][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2022.11.16-23.46.18:823][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2022.11.16-23.46.18:835][  0]LogLiveCoding: Display: Starting LiveCoding
+[2022.11.16-23.46.18:835][  0]LogLiveCoding: Display: LiveCodingConsole Arguments: FPSTestEditor Win64 Development
+[2022.11.16-23.46.23:555][  0]LogLiveCoding: Display: First instance in process group "UE_FPSTest_0x950352a5", spawning console
+[2022.11.16-23.46.23:555][  0]LogLiveCoding: Display: Waiting for server
+[2022.11.16-23.46.23:555][  0]LogLiveCoding: Display: Successfully initialized, removing startup thread
+[2022.11.16-23.46.23:720][  0]LogInit: Transaction tracking system initialized
+[2022.11.16-23.46.23:855][  0]BlueprintLog: New page: Editor Load
+[2022.11.16-23.46.24:204][  0]LocalizationService: Localization service is disabled
+[2022.11.16-23.46.24:294][  0]TimingProfiler: Initialize
+[2022.11.16-23.46.24:294][  0]TimingProfiler: OnSessionChanged
+[2022.11.16-23.46.24:294][  0]LoadingProfiler: Initialize
+[2022.11.16-23.46.24:294][  0]LoadingProfiler: OnSessionChanged
+[2022.11.16-23.46.24:294][  0]NetworkingProfiler: Initialize
+[2022.11.16-23.46.24:294][  0]NetworkingProfiler: OnSessionChanged
+[2022.11.16-23.46.24:294][  0]MemoryProfiler: Initialize
+[2022.11.16-23.46.24:294][  0]MemoryProfiler: OnSessionChanged
+[2022.11.16-23.46.25:670][  0]LogFileCache: Scanning file cache for directory 'D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Content/' took 0.03s
+[2022.11.16-23.46.25:671][  0]LogLevelSequenceEditor: LevelSequenceEditor subsystem initialized.
+[2022.11.16-23.46.25:748][  0]LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[2022.11.16-23.46.25:752][  0]SourceControl: Source control is disabled
+[2022.11.16-23.46.25:752][  0]LogUnrealEdMisc: Loading editor; pre map load, took 24.150
+[2022.11.16-23.46.25:752][  0]Cmd: MAP LOAD FILE="D:/Git/ME-test-repo/gra--generowanie__proceduralne/UnrealEngine/FPSTest/Content/FirstPerson/Maps/FirstPersonMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2022.11.16-23.46.25:769][  0]LightingResults: New page: Lighting Build
+[2022.11.16-23.46.25:781][  0]LogWorld: UWorld::CleanupWorld for Untitled, bSessionEnded=true, bCleanupResources=true
+[2022.11.16-23.46.25:781][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.11.16-23.46.25:781][  0]MapCheck: New page: Map Check
+[2022.11.16-23.46.25:781][  0]LightingResults: New page: Lighting Build
+[2022.11.16-23.46.25:793][  0]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.11.16-23.46.25:798][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.62ms
+[2022.11.16-23.46.25:939][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'FirstPersonMap'.
+[2022.11.16-23.46.25:949][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.11.16-23.46.25:950][  0]LogAIModule: Creating AISystem for world FirstPersonMap
+[2022.11.16-23.46.25:951][  0]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.11.16-23.46.25:951][  0]LogWorldPartition: UWorldPartition::Initialize(IsEditor=1, IsGame=0, IsCooking=0)
+[2022.11.16-23.46.25:953][  0]LogWorldPartition: Warning: Invalid class `/Script/FPSTest.TerrainMenager` for actor guid `E4725E3D4637BAB1222BEBB9EB98DB4C` ('TerrainMenager_UAID_48F17F6BFE53544A01_1792509087') from package '/Game/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/0/01/E19JIJKW8H5843CCOCS3XL'
+[2022.11.16-23.46.25:953][  0]LogWorldPartition: Warning: Invalid class `/Script/FPSTest.TerrainMenager` for actor guid `95E0E4434F962550EB5601968DCD934D` ('TerrainMenager_UAID_48F17F6BFE53594A01_1706898967') from package '/Game/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/3X/N4QUXWO6WPDSI9RNV2S4SA'
+[2022.11.16-23.46.26:856][  0]LogWorldPartition: Display: WorldPartition initialize took 905 ms
+[2022.11.16-23.46.26:872][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2022.11.16-23.46.26:884][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.74ms
+[2022.11.16-23.46.26:885][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2022.11.16-23.46.26:885][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,284ms to complete.
+[2022.11.16-23.46.26:885][  0]LogFileHelpers: Loading map 'FirstPersonMap' took 1.132
+[2022.11.16-23.46.26:904][  0]LogUnrealEdMisc: Total Editor Startup Time, took 25.302
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: ================================================
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: Total job queries 0, among them cache hits 0 (0.00%)
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: Tracking 0 distinct input hashes that result in 0 distinct outputs (0.00%)
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: RAM used: 0.00 MB (0.00 GB) of 409.60 MB (0.40 GB) budget. Usage: 0.00%
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: Shaders Compiled: 0
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2022.11.16-23.46.26:904][  0]LogShaderCompilers: Display: ================================================
+[2022.11.16-23.46.27:112][  0]LogSlate: The tab "TopLeftModeTab" attempted to spawn in layout 'LevelEditor_Layout_v1.8' but failed for some reason. It will not be displayed.
+[2022.11.16-23.46.27:165][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.46.27:178][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.46.27:185][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.46.27:193][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.46.27:281][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/StarterContent.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:281][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:299][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_FirstPerson.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:299][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:311][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_FirstPersonBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:311][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:319][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_HandheldARBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:319][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:343][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_ThirdPerson.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:343][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:352][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_ThirdPersonBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:352][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:363][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_TopDown.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:363][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:373][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_TopDownBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:373][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:381][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_VehicleAdvBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:381][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:392][  0]LogPakFile: Display: Mounted Pak file 'C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_VirtualRealityBP.upack', mount point: 'root:/'
+[2022.11.16-23.46.27:392][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.11.16-23.46.27:393][  0]LogFeaturePack: Error: Error in Feature pack C:/Unreal Engine 5.0.3/UE_5.0/FeaturePacks/TP_VirtualRealityBP.upack. Failed to parse manifest: Invalid Json Token. Line: 43 Ch: 4
+[2022.11.16-23.46.28:224][  0]LogSlate: Took 0.000623 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2022.11.16-23.46.28:237][  0]LogSlate: Took 0.000256 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2022.11.16-23.46.28:251][  0]LogSlate: Took 0.011325 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2022.11.16-23.46.28:264][  0]LogSlate: Took 0.010538 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2022.11.16-23.46.28:267][  0]LogSlate: Took 0.001156 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansMono.ttf' (77K)
+[2022.11.16-23.46.28:316][  0]LogViewport: Scene viewport resized to 1715x784, mode Windowed.
+[2022.11.16-23.46.28:401][  0]LogSlate: Took 0.010721 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2022.11.16-23.46.29:387][  0]LogStall: Startup...
+[2022.11.16-23.46.29:389][  0]LogStall: Startup complete.
+[2022.11.16-23.46.29:462][  0]LogLoad: (Engine Initialization) Total time: 27.86 seconds
+[2022.11.16-23.46.29:462][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2022.11.16-23.46.29:586][  0]LogAssetRegistry: Asset discovery search completed in 17.6543 seconds
+[2022.11.16-23.46.29:595][  0]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000004 seconds (updated 0 objects)
+[2022.11.16-23.46.29:600][  0]LogContentStreaming: Texture pool size now 400 MB
+[2022.11.16-23.47.00:658][619]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: GenerateStreaming started...
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: GetPartitionedActors started...
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: ValidateSingleActorReferer started...
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: ValidateSingleActorReferer took 0 us
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: GetPartitionedActors took 111 us
+[2022.11.16-23.47.00:711][619]LogWorldPartition: Display: GenerateStreaming took 553 us
+[2022.11.16-23.47.00:712][619]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.11.16-23.47.00:717][619]PIE: New page: PIE session: FirstPersonMap (17 lis 2022, 01:47:00)
+[2022.11.16-23.47.00:724][619]LogOnline: OSS: Created online subsystem instance for: NULL
+[2022.11.16-23.47.00:724][619]LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+[2022.11.16-23.47.00:724][619]LogPlayLevel: Creating play world package: /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap
+[2022.11.16-23.47.00:734][619]LogWorldPartition: Initial Data Layer Effective States Activated() Loaded()
+[2022.11.16-23.47.00:734][619]LogPlayLevel: PIE: StaticDuplicateObject took: (0.010163s)
+[2022.11.16-23.47.00:734][619]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/FirstPerson/Maps/FirstPersonMap.FirstPersonMap to /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap (0.010367s)
+[2022.11.16-23.47.00:735][619]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.11.16-23.47.00:736][619]LogAIModule: Creating AISystem for world FirstPersonMap
+[2022.11.16-23.47.00:737][619]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.11.16-23.47.00:737][619]LogWorldPartition: UWorldPartition::Initialize(IsEditor=0, IsGame=0, IsCooking=0)
+[2022.11.16-23.47.00:740][619]LogWorldPartition: Display: WorldPartition initialize took 3 ms
+[2022.11.16-23.47.00:742][619]LogPlayLevel: PIE: World Init took: (0.007379s)
+[2022.11.16-23.47.00:763][619]LogUObjectHash: Compacting FUObjectHashTables data took   1.02ms
+[2022.11.16-23.47.00:764][619]LogAudio: Display: Creating Audio Device:                 Id: 2, Scope: Unique, Realtime: True
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.11.16-23.47.00:764][619]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.11.16-23.47.00:764][619]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.11.16-23.47.00:766][619]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.11.16-23.47.00:766][619]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.11.16-23.47.00:766][619]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.11.16-23.47.00:770][619]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.11.16-23.47.00:831][619]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.11.16-23.47.00:832][619]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.11.16-23.47.00:832][619]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.11.16-23.47.00:832][619]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.11.16-23.47.00:835][619]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=2
+[2022.11.16-23.47.00:835][619]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=2
+[2022.11.16-23.47.00:838][619]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=2
+[2022.11.16-23.47.00:838][619]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=2
+[2022.11.16-23.47.00:838][619]LogInit: FAudioDevice initialized.
+[2022.11.16-23.47.00:838][619]LogAudio: Display: Audio Device (ID: 2) registered with world 'FirstPersonMap'.
+[2022.11.16-23.47.00:860][619]LogLoad: Game class is 'FPSTestGameMode'
+[2022.11.16-23.47.00:863][619]LogWorld: Bringing World /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap up for play (max tick rate 60) at 2022.11.17-00.47.00
+[2022.11.16-23.47.00:863][619]LogWorld: Bringing up level for play took: 0.003169
+[2022.11.16-23.47.00:867][619]LogOnline: OSS: Created online subsystem instance for: :Context_1
+[2022.11.16-23.47.00:904][619]LogWorldPartition: New Streaming Source: PlayerController_0 -> Position: X=0.000 Y=0.000 Z=100.000
+[2022.11.16-23.47.00:904][619]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.47.00:906][619]PIE: Server logged in
+[2022.11.16-23.47.00:908][619]PIE: Play in editor total start time 0,215 seconds.
+[2022.11.16-23.47.03:528][738]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.47.03:528][738]LogWorld: BeginTearingDown for /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap
+[2022.11.16-23.47.03:529][738]LogWorld: UWorld::CleanupWorld for FirstPersonMap, bSessionEnded=true, bCleanupResources=true
+[2022.11.16-23.47.03:529][738]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.11.16-23.47.03:561][738]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.11.16-23.47.03:564][738]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.11.16-23.47.03:582][738]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.11.16-23.47.03:582][738]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2022.11.16-23.47.03:584][738]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2022.11.16-23.47.03:595][738]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.47.03:598][738]LogUObjectHash: Compacting FUObjectHashTables data took   0.97ms
+[2022.11.16-23.47.03:670][739]LogPlayLevel: Display: Destroying online subsystem :Context_1
+[2022.11.16-23.47.41:398][909]LogLiveCoding: Display: Starting Live Coding compile.
+[2022.11.16-23.48.09:023][ 84]LogDerivedDataCache: C:/Users/macie/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.648 and deleted 0 file(s) with total size 0 MiB.
+[2022.11.16-23.48.18:251][379]LogLiveCoding: Display:    Trwa tworzenie biblioteki D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Binaries\Win64\UnrealEditor-FPSTest.patch_0.lib i obiektu D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Binaries\Win64\UnrealEditor-FPSTest.patch_0.exp
+[2022.11.16-23.48.18:764][389]LogClass: /Script/FPSTest Reload.
+[2022.11.16-23.48.18:784][389]LogClass: Could not find existing class TerrainMenager in package /Script/FPSTest for reload, assuming new or modified class
+[2022.11.16-23.48.19:310][389]LogUObjectHash: Compacting FUObjectHashTables data took   1.35ms
+[2022.11.16-23.48.19:445][390]Display: Reload/Re-instancing Complete: 1 package changed, 1 class new, 2 classes unchanged, 1 function remapped
+[2022.11.16-23.48.19:445][390]LogLiveCoding: Warning: Live coding succeeded, data type changes may cause packaging to fail if assets reference the new or updated data types
+[2022.11.16-23.49.16:411][344]LogViewport: Scene viewport resized to 1287x487, mode Windowed.
+[2022.11.16-23.49.18:342][404]LogViewport: Scene viewport resized to 1715x784, mode Windowed.
+[2022.11.16-23.49.19:529][432]LogEditor: Attempting to add actor of class 'TerrainMenager' to level at 700.00,-180.00,-850.00
+[2022.11.16-23.49.19:560][432]LogEditor: Attempting to add actor of class 'TerrainMenager' to level at 700.00,-180.00,-850.00
+[2022.11.16-23.49.37:226][948]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Display: GenerateStreaming started...
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Display: GetPartitionedActors started...
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Display: ValidateSingleActorReferer started...
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Display: ValidateSingleActorReferer took 0 us
+[2022.11.16-23.49.37:291][948]LogWorldPartition: Display: GetPartitionedActors took 96 us
+[2022.11.16-23.49.37:292][948]LogWorldPartition: Display: GenerateStreaming took 480 us
+[2022.11.16-23.49.37:305][948]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.11.16-23.49.37:307][948]PIE: New page: PIE session: FirstPersonMap (17 lis 2022, 01:49:37)
+[2022.11.16-23.49.37:307][948]LogPlayLevel: Creating play world package: /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap
+[2022.11.16-23.49.37:320][948]LogWorldPartition: Initial Data Layer Effective States Activated() Loaded()
+[2022.11.16-23.49.37:320][948]LogPlayLevel: PIE: StaticDuplicateObject took: (0.013204s)
+[2022.11.16-23.49.37:320][948]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/FirstPerson/Maps/FirstPersonMap.FirstPersonMap to /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap (0.013570s)
+[2022.11.16-23.49.37:323][948]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.11.16-23.49.37:326][948]LogAIModule: Creating AISystem for world FirstPersonMap
+[2022.11.16-23.49.37:330][948]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.11.16-23.49.37:330][948]LogWorldPartition: UWorldPartition::Initialize(IsEditor=0, IsGame=0, IsCooking=0)
+[2022.11.16-23.49.37:332][948]LogWorldPartition: Display: WorldPartition initialize took 1 ms
+[2022.11.16-23.49.37:332][948]LogPlayLevel: PIE: World Init took: (0.010720s)
+[2022.11.16-23.49.37:351][948]LogUObjectHash: Compacting FUObjectHashTables data took   2.29ms
+[2022.11.16-23.49.37:353][948]LogAudio: Display: Creating Audio Device:                 Id: 3, Scope: Unique, Realtime: True
+[2022.11.16-23.49.37:353][948]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.11.16-23.49.37:353][948]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.11.16-23.49.37:354][948]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.11.16-23.49.37:354][948]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.11.16-23.49.37:354][948]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.11.16-23.49.37:354][948]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.11.16-23.49.37:354][948]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.11.16-23.49.37:354][948]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.11.16-23.49.37:355][948]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.11.16-23.49.37:355][948]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.11.16-23.49.37:355][948]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.11.16-23.49.37:359][948]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.11.16-23.49.37:431][948]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.11.16-23.49.37:433][948]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.11.16-23.49.37:433][948]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.11.16-23.49.37:433][948]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.11.16-23.49.37:439][948]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=3
+[2022.11.16-23.49.37:439][948]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=3
+[2022.11.16-23.49.37:442][948]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=3
+[2022.11.16-23.49.37:442][948]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=3
+[2022.11.16-23.49.37:442][948]LogInit: FAudioDevice initialized.
+[2022.11.16-23.49.37:442][948]LogAudio: Display: Audio Device (ID: 3) registered with world 'FirstPersonMap'.
+[2022.11.16-23.49.37:475][948]LogLoad: Game class is 'FPSTestGameMode'
+[2022.11.16-23.49.37:480][948]LogWorld: Bringing World /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap up for play (max tick rate 60) at 2022.11.17-00.49.37
+[2022.11.16-23.49.37:481][948]LogWorld: Bringing up level for play took: 0.006207
+[2022.11.16-23.49.37:487][948]LogOnline: OSS: Created online subsystem instance for: :Context_2
+[2022.11.16-23.49.37:490][948]LogWorldPartition: New Streaming Source: PlayerController_0 -> Position: X=0.000 Y=0.000 Z=100.000
+[2022.11.16-23.49.37:490][948]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.49.37:492][948]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_0 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:513][948]PIE: Server logged in
+[2022.11.16-23.49.37:515][948]PIE: Play in editor total start time 0,244 seconds.
+[2022.11.16-23.49.37:522][948]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_1 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:585][949]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_2 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:667][950]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_3 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:685][951]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_4 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:701][952]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_5 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:717][953]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_6 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:739][954]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_7 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:759][955]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_8 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:777][956]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_9 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:801][957]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_10 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:833][958]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_11 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:859][959]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_12 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:880][960]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_13 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:901][961]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_14 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:926][962]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_15 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:952][963]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_16 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:969][964]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_17 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.37:992][965]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_18 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:013][966]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_19 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:033][967]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_20 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:050][968]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_21 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:075][969]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_22 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:103][970]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_23 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:131][971]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_24 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:153][972]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_25 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:171][973]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_26 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:192][974]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_27 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:208][975]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_28 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:229][976]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_29 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:251][977]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_30 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:271][978]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_31 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:291][979]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_32 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:311][980]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_33 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:335][981]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_34 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:353][982]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_35 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:377][983]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_36 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:397][984]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_37 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:417][985]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_38 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:437][986]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_39 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:460][987]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_40 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:495][988]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_41 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:533][989]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_42 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:565][990]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_43 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:606][991]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_44 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:643][992]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_45 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:689][993]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_46 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:730][994]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_47 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:767][995]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_48 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:799][996]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_49 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:827][997]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_50 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:852][998]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_51 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:873][999]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_52 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:898][  0]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_53 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:925][  1]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_54 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:961][  2]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_55 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.38:991][  3]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_56 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:019][  4]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_57 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:048][  5]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_58 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:075][  6]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_59 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:105][  7]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_60 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:132][  8]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_61 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:159][  9]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_62 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:187][ 10]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_63 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:216][ 11]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_64 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:235][ 12]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_65 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:254][ 13]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_66 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:273][ 14]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_67 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:296][ 15]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_68 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:317][ 16]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_69 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:336][ 17]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_70 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:356][ 18]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_71 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:374][ 19]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_72 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:399][ 20]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_73 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:417][ 21]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_74 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:440][ 22]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_75 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:466][ 23]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_76 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:485][ 24]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_77 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:503][ 25]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_78 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:523][ 26]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_79 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:543][ 27]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_80 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:569][ 28]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_81 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:605][ 29]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_82 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:637][ 30]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_83 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:661][ 31]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_84 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:693][ 32]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_85 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:723][ 33]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_86 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:752][ 34]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_87 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:777][ 35]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_88 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:797][ 36]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_89 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:823][ 37]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_90 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:846][ 38]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_91 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:868][ 39]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_92 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:916][ 40]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_93 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:936][ 41]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_94 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:960][ 42]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_95 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.39:981][ 43]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_96 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:003][ 44]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_97 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:029][ 45]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_98 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:067][ 46]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_99 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:105][ 47]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_100 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:137][ 48]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_101 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:176][ 49]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_102 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:214][ 50]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_103 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:252][ 51]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_104 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:285][ 52]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_105 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:306][ 53]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_106 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:332][ 54]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_107 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:359][ 55]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_108 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:385][ 56]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_109 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:418][ 57]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_110 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:455][ 58]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_111 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:495][ 59]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_112 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:533][ 60]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_113 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:569][ 61]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_114 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:612][ 62]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_115 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:645][ 63]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_116 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:671][ 64]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_117 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:708][ 65]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_118 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:745][ 66]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_119 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:776][ 67]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_120 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:815][ 68]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_121 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:857][ 69]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_122 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:893][ 70]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_123 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:925][ 71]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_124 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:953][ 72]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_125 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.40:976][ 73]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_126 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:000][ 74]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_127 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:027][ 75]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_128 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:049][ 76]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_129 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:078][ 77]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_130 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:206][ 78]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_131 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:270][ 79]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_132 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:303][ 80]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_133 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:325][ 81]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_134 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:351][ 82]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_135 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:377][ 83]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_136 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:399][ 84]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_137 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:423][ 85]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_138 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:443][ 86]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_139 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:465][ 87]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_140 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:487][ 88]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_141 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:509][ 89]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_142 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:530][ 90]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_143 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:549][ 91]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_144 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:567][ 92]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_145 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:591][ 93]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_146 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:615][ 94]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_147 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:639][ 95]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_148 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:666][ 96]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_149 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:691][ 97]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_150 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:719][ 98]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_151 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:753][ 99]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_152 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:781][100]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_153 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:819][101]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_154 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:851][102]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_155 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:887][103]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_156 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:927][104]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_157 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.41:975][105]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_158 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:003][106]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_159 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:030][107]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_160 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:053][108]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_161 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:078][109]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_162 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:102][110]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_163 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:133][111]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_164 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:160][112]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_165 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:185][113]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_166 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:210][114]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_167 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:236][115]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_168 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:269][116]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_169 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:293][117]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_170 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:320][118]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_171 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:343][119]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_172 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:366][120]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_173 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:392][121]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_174 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:412][122]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_175 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:438][123]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_176 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:463][124]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_177 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:489][125]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_178 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:509][126]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_179 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:530][127]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_180 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:554][128]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_181 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:573][129]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_182 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:592][130]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_183 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:610][131]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_184 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:633][132]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_185 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:655][133]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_186 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:676][134]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_187 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:699][135]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_188 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:725][136]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_189 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:747][137]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_190 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:777][138]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_191 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:809][139]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_192 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:841][140]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_193 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:874][141]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_194 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:903][142]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_195 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:935][143]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_196 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:964][144]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_197 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.42:987][145]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_198 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:006][146]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_199 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:026][147]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_200 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:045][148]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_201 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:064][149]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_202 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:089][150]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_203 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:109][151]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_204 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:129][152]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_205 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:148][153]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_206 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:169][154]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_207 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:191][155]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_208 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:212][156]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_209 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:235][157]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_210 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:256][158]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_211 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:275][159]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_212 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:293][160]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_213 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:316][161]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_214 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.49.43:379][161]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.49.43:379][161]LogWorld: BeginTearingDown for /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap
+[2022.11.16-23.49.43:380][161]LogWorld: UWorld::CleanupWorld for FirstPersonMap, bSessionEnded=true, bCleanupResources=true
+[2022.11.16-23.49.43:380][161]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.11.16-23.49.43:417][161]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.11.16-23.49.43:422][161]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.11.16-23.49.43:441][161]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.11.16-23.49.43:441][161]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=3
+[2022.11.16-23.49.43:443][161]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=3
+[2022.11.16-23.49.43:460][161]LogUObjectHash: Compacting FUObjectHashTables data took   0.98ms
+[2022.11.16-23.49.43:559][162]LogPlayLevel: Display: Destroying online subsystem :Context_2
+[2022.11.16-23.51.11:393][528]LogLiveCoding: Display: Starting Live Coding compile.
+[2022.11.16-23.52.21:133][595]Display: Reload/Re-instancing Complete: No object changes detected
+[2022.11.16-23.52.21:134][595]LogLiveCoding: Error: Live coding failed, please see Live console for more information
+[2022.11.16-23.52.45:058][992]LogLiveCoding: Display: Starting Live Coding compile.
+[2022.11.16-23.53.54:677][331]LogLiveCoding: Display:    Trwa tworzenie biblioteki D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Binaries\Win64\UnrealEditor-FPSTest.patch_1.lib i obiektu D:\Git\ME-test-repo\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Binaries\Win64\UnrealEditor-FPSTest.patch_1.exp
+[2022.11.16-23.53.55:686][331]LogUObjectHash: Compacting FUObjectHashTables data took   4.53ms
+[2022.11.16-23.53.55:806][332]Display: Reload/Re-instancing Complete: No object changes detected
+[2022.11.16-23.53.55:806][332]LogLiveCoding: Display: Live coding succeeded
+[2022.11.16-23.54.11:500][ 97]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.11.16-23.54.11:701][ 97]LogWorldPartition: Display: GenerateStreaming started...
+[2022.11.16-23.54.11:703][ 97]LogWorldPartition: Display: GetPartitionedActors started...
+[2022.11.16-23.54.11:703][ 97]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.54.11:704][ 97]LogWorldPartition: Display: ValidateSingleActorReferer started...
+[2022.11.16-23.54.11:704][ 97]LogWorldPartition: Display: ValidateSingleActorReferer took 0 us
+[2022.11.16-23.54.11:704][ 97]LogWorldPartition: Display: GetPartitionedActors took 144 us
+[2022.11.16-23.54.11:704][ 97]LogWorldPartition: Display: GenerateStreaming took 3 ms
+[2022.11.16-23.54.11:744][ 97]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.11.16-23.54.11:765][ 97]PIE: New page: PIE session: FirstPersonMap (17 lis 2022, 01:54:11)
+[2022.11.16-23.54.11:789][ 97]LogPlayLevel: Creating play world package: /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap
+[2022.11.16-23.54.12:037][ 97]LogWorldPartition: Initial Data Layer Effective States Activated() Loaded()
+[2022.11.16-23.54.12:043][ 97]LogPlayLevel: PIE: StaticDuplicateObject took: (0.252165s)
+[2022.11.16-23.54.12:043][ 97]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/FirstPerson/Maps/FirstPersonMap.FirstPersonMap to /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap (0.254453s)
+[2022.11.16-23.54.12:078][ 97]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.11.16-23.54.12:138][ 97]LogAIModule: Creating AISystem for world FirstPersonMap
+[2022.11.16-23.54.12:203][ 97]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.11.16-23.54.12:203][ 97]LogWorldPartition: UWorldPartition::Initialize(IsEditor=0, IsGame=0, IsCooking=0)
+[2022.11.16-23.54.12:209][ 97]LogWorldPartition: Display: WorldPartition initialize took 5 ms
+[2022.11.16-23.54.12:213][ 97]LogPlayLevel: PIE: World Init took: (0.169096s)
+[2022.11.16-23.54.12:239][ 97]LogUObjectHash: Compacting FUObjectHashTables data took   2.89ms
+[2022.11.16-23.54.12:256][ 97]LogAudio: Display: Creating Audio Device:                 Id: 4, Scope: Unique, Realtime: True
+[2022.11.16-23.54.12:262][ 97]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.11.16-23.54.12:262][ 97]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.11.16-23.54.12:264][ 97]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.11.16-23.54.12:264][ 97]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.11.16-23.54.12:264][ 97]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.11.16-23.54.12:264][ 97]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.11.16-23.54.12:265][ 97]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.11.16-23.54.12:266][ 97]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.11.16-23.54.12:274][ 97]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.11.16-23.54.12:274][ 97]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.11.16-23.54.12:274][ 97]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.11.16-23.54.12:296][ 97]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.11.16-23.54.12:426][ 97]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.11.16-23.54.12:456][ 97]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.11.16-23.54.12:456][ 97]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.11.16-23.54.12:458][ 97]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.11.16-23.54.12:487][ 97]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=4
+[2022.11.16-23.54.12:487][ 97]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=4
+[2022.11.16-23.54.12:495][ 97]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=4
+[2022.11.16-23.54.12:496][ 97]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=4
+[2022.11.16-23.54.12:496][ 97]LogInit: FAudioDevice initialized.
+[2022.11.16-23.54.12:496][ 97]LogAudio: Display: Audio Device (ID: 4) registered with world 'FirstPersonMap'.
+[2022.11.16-23.54.12:663][ 97]LogLoad: Game class is 'FPSTestGameMode'
+[2022.11.16-23.54.12:798][ 97]LogWorld: Bringing World /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap up for play (max tick rate 60) at 2022.11.17-00.54.12
+[2022.11.16-23.54.12:811][ 97]LogWorld: Bringing up level for play took: 0.143484
+[2022.11.16-23.54.12:852][ 97]LogOnline: OSS: Created online subsystem instance for: :Context_3
+[2022.11.16-23.54.13:017][ 97]LogWorldPartition: New Streaming Source: PlayerController_0 -> Position: X=0.000 Y=0.000 Z=100.000
+[2022.11.16-23.54.13:017][ 97]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.11.16-23.54.13:021][ 97]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_0 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.54.13:071][ 97]PIE: Server logged in
+[2022.11.16-23.54.13:078][ 97]PIE: Play in editor total start time 1,437 seconds.
+[2022.11.16-23.54.17:612][317]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_1 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.54.17:691][321]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_2 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.54.18:466][356]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_3 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2022.11.16-23.54.18:579][360]LogActor: Warning: Terrain /Game/FirstPerson/Maps/UEDPIE_0_FirstPersonMap.FirstPersonMap:PersistentLevel.Terrain_4 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
