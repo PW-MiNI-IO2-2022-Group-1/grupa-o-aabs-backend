@@ -16,7 +16,6 @@ ATerrain::ATerrain()
 
 	ProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>("ProceduralMesh");
 	ProceduralMesh->SetupAttachment(GetRootComponent());
-
 }
 
 void ATerrain::Initialize(int p[], int seed)

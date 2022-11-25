@@ -11,12 +11,8 @@ AGenericTree::AGenericTree()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
-}
-
-void AGenericTree::Initialize(int seed, UStaticMeshComponent* trunkStaticMesh, UStaticMeshComponent* treeStaticMesh, int minTrunkHeight, int maxTrunkHeight, int minTreetopHeight, int maxTreetopHeight)
-{
-	FRandomStream stream = FRandomStream(seed + GetActorLocation().X + GetActorLocation().Y + GetActorLocation().Z);
-	UStaticMeshComponent* cubeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
+	FRandomStream stream = FRandomStream(GetActorLocation().X + GetActorLocation().Y + GetActorLocation().Z);
+	cubeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
 
 	// Load the Cube mesh
 	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
@@ -25,6 +21,21 @@ void AGenericTree::Initialize(int seed, UStaticMeshComponent* trunkStaticMesh, U
 	cubeMeshComponent->SetStaticMesh(cubeMesh);
 	cubeMeshComponent->SetMaterial(0, mt);
 
+	TrunkHeight = stream.RandRange(20.0, 30.0);
+	TreetopHeight = stream.RandRange(20.0, 30.0);
+	TrunkStaticMesh = DuplicateObject<UStaticMeshComponent>(cubeMeshComponent, this);
+	TrunkStaticMesh->SetMobility(EComponentMobility::Static);
+	TreeStaticMesh = DuplicateObject<UStaticMeshComponent>(cubeMeshComponent, this);
+	TreeStaticMesh->SetMobility(EComponentMobility::Static);
+	//RenderTrunk();
+	//RenderTreetop();
+}
+
+void AGenericTree::Initialize(int seed,/* UStaticMeshComponent* trunkStaticMesh, UStaticMeshComponent* treeStaticMesh,*/ int minTrunkHeight, int maxTrunkHeight, int minTreetopHeight, int maxTreetopHeight)
+{
+	FRandomStream stream = FRandomStream(seed + GetActorLocation().X + GetActorLocation().Y + GetActorLocation().Z);
+
+	// Load the Cube mesh
 	TrunkHeight = stream.RandRange(minTrunkHeight, maxTrunkHeight);
 	TreetopHeight = stream.RandRange(minTreetopHeight, maxTreetopHeight);
 	TrunkStaticMesh = DuplicateObject<UStaticMeshComponent>(cubeMeshComponent, this);

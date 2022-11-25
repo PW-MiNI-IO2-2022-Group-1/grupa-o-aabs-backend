@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Terrain.h"
+#include "GenericTree.h"
 #include <cmath>
 #include <random>
 #include <algorithm>
@@ -33,6 +34,7 @@ protected:
 
 public:	
 	ATerrain*** RenderedTerrain;
+	AGenericTree* Tree;
 	FVector2D CenterRegion;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

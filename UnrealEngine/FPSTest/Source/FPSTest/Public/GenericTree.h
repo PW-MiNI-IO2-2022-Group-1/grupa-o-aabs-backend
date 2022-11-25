@@ -6,9 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "GenericTree.generated.h"
 
-class UStaticMeshComponent;
-class UMaterialInterface;
-
 UCLASS()
 class FPSTEST_API AGenericTree : public AActor
 {
@@ -21,8 +18,8 @@ public:
 	AGenericTree();
 	virtual void Initialize(
 		int seed,
-		UStaticMeshComponent* trunkStaticMesh,
-		UStaticMeshComponent* treeStaticMesh,
+		//UStaticMeshComponent* trunkStaticMesh,
+		//UStaticMeshComponent* treeStaticMesh,
 		int minTrunkHeight = 20,
 		int maxTrunkHeight = 300,
 		int minTreetopHeight = 40,
@@ -41,6 +38,7 @@ private:
 	unsigned int TreetopHeight;
 	UStaticMeshComponent* TrunkStaticMesh;
 	UStaticMeshComponent* TreeStaticMesh;
+	UStaticMeshComponent* cubeMeshComponent;
 	TArray<UStaticMeshComponent*> Trunk;
 	TArray<UStaticMeshComponent*> Treetop;
 	FVector Position;
