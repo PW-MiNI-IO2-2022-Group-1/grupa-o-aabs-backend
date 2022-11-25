@@ -20,13 +20,6 @@ AGenericTree::AGenericTree()
 	// Set the component's mesh
 	cubeMeshComponent->SetStaticMesh(cubeMesh);
 	cubeMeshComponent->SetMaterial(0, mt);
-
-	TrunkHeight = stream.RandRange(20.0, 30.0);
-	TreetopHeight = stream.RandRange(20.0, 30.0);
-	TrunkStaticMesh = DuplicateObject<UStaticMeshComponent>(cubeMeshComponent, this);
-	TrunkStaticMesh->SetMobility(EComponentMobility::Static);
-	TreeStaticMesh = DuplicateObject<UStaticMeshComponent>(cubeMeshComponent, this);
-	TreeStaticMesh->SetMobility(EComponentMobility::Static);
 	//RenderTrunk();
 	//RenderTreetop();
 }
