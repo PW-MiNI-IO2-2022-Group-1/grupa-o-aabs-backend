@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "GenericTree.generated.h"
 
+class UStaticMeshComponent;
+class UMaterialInterface;
+
 UCLASS()
 class FPSTEST_API AGenericTree : public AActor
 {
