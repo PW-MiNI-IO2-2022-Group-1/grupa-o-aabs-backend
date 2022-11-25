@@ -37,7 +37,7 @@ void ATerrainMenager::Move(FVector2D NewCenter)
 				NewRenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(
 					ATerrain::StaticClass(),
 					&pos));
-				NewRenderedTerrain[y][x]->Initialize(Permutation);
+				NewRenderedTerrain[y][x]->Initialize(Permutation, Seed);
 			}
 		}
 	}
@@ -83,9 +83,10 @@ void ATerrainMenager::BeginPlay()
 				0);
 			FRotator rot = FRotator(0, 0, 0);
 			RenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(ATerrain::StaticClass(), &pos));
-			RenderedTerrain[y][x]->Initialize(Permutation);
+			RenderedTerrain[y][x]->Initialize(Permutation, Seed);
 		}
 	}
+
 }
 
 // Called every frame
@@ -95,7 +96,9 @@ void ATerrainMenager::Tick(float DeltaTime)
 	FVector pos = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
 	FVector2D reg = FVector2D(
 		floor(pos.X / (ATerrain::Size * ATerrain::Scale)), 
-		floor(pos.Y / (ATerrain::Size * ATerrain::Scale)));
+		floor(pos.Y / (ATerrain::Size * ATerrain::Scale))
+	);
+
 	if (reg.X != CenterRegion.X || reg.Y != CenterRegion.Y)
 	{
 		Move(reg);

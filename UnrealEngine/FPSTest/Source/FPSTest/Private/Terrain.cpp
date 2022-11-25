@@ -8,6 +8,7 @@
 #include <cmath>
 #include "TerrainMenager.h"
 #include "PerlinNoise.h"
+#include "GenericTree.h"
 
 ATerrain::ATerrain()
 {
@@ -18,7 +19,7 @@ ATerrain::ATerrain()
 
 }
 
-void ATerrain::Initialize(int p[])
+void ATerrain::Initialize(int p[], int seed)
 {
 	for (int i = 0; i < 256; i++)
 	{
@@ -30,6 +31,7 @@ void ATerrain::Initialize(int p[])
 	UMaterial* mt = LoadObject<UMaterial>(nullptr, TEXT("/Game/StarterContent/Materials/M_Ground_Moss"));
 
 	ProceduralMesh->CreateMeshSection(0, Vertices, Triangles, TArray<FVector>(), UV0, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+
 	ProceduralMesh->SetMaterial(0, mt);
 }
 

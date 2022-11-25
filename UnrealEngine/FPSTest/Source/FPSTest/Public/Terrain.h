@@ -22,7 +22,7 @@ public:
 	int Permutation[256];
 
 	ATerrain();
-	void Initialize(int p[]);
+	void Initialize(int p[], int seed);
 
 protected:
 	virtual void BeginPlay() override;
