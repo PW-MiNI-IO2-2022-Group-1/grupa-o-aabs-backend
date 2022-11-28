@@ -13,13 +13,16 @@ class FPSTEST_API AGenericTree : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
-	static const inline double TrunkScale = 100.0;
-	static const inline double TreetopScale = 100.0;
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "1"))
+		double TrunkSegmentSize;
+
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "1"))
+		double TreetopSegmentSize;
 	AGenericTree();
 	virtual void Initialize(
 		int seed,
-		//UStaticMeshComponent* trunkStaticMesh,
-		//UStaticMeshComponent* treeStaticMesh,
+		// UStaticMeshComponent* trunkStaticMesh,
+		// UStaticMeshComponent* treeStaticMesh,
 		int minTrunkHeight = 20,
 		int maxTrunkHeight = 300,
 		int minTreetopHeight = 40,
@@ -38,9 +41,8 @@ private:
 	unsigned int TreetopHeight;
 	UStaticMeshComponent* TrunkStaticMesh;
 	UStaticMeshComponent* TreeStaticMesh;
-	UStaticMeshComponent* cubeMeshComponent;
+	UStaticMeshComponent* Root;
 	TArray<UStaticMeshComponent*> Trunk;
 	TArray<UStaticMeshComponent*> Treetop;
-	FVector Position;
 
 };
