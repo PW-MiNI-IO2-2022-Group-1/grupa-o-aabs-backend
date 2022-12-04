@@ -86,13 +86,17 @@ void ATerrainMenager::BeginPlay()
 			RenderedTerrain[y][x]->Initialize(Permutation, Seed);
 		}
 	}
-	auto transform = FVector(
+	auto transform = FTransform(FVector(
 		500,
 		200,
-		100);
-	Tree = Cast<AGenericTree>(GetWorld()->SpawnActor(AGenericTree::StaticClass(), &transform));
-	Tree->Initialize(Seed, 20, 300, 40, 400);
-	// Tree->FinishSpawning(transform);
+		100));
+	FTreetopRenderVariables treetopRender;
+	treetopRender.HorizontalStretch = 3;
+	Tree = Cast<AGenericTree>(GetWorld()->SpawnActorDeferred<AGenericTree>(AGenericTree::StaticClass(), transform));
+	Tree->Initialize(
+		treetopRender
+	);
+	Tree->FinishSpawning(transform);
 }
 
 // Called every frame

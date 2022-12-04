@@ -4,44 +4,57 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/InstancedStaticMeshComponent.h"
 #include "GenericTree.generated.h"
 
 USTRUCT(BlueprintType)
-struct FTreeComponentStruct
+struct FTreeComponentInit
 {
 	GENERATED_BODY()
 public:
-	FTreeComponentStruct();
+	double InitialSegmentSize = 20;
+	FVector2D VerticalOffsetPercentClamp = { 1, 1 };
+	FVector2D HeightBounds = { 150, 350 };
+	UStaticMesh* StaticMesh = nullptr;
+	UMaterial* Material = nullptr;
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double Height;
+USTRUCT(BlueprintType)
+struct FTreetopInit : public FTreeComponentInit {
+	GENERATED_BODY()
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double InitialSegmentSize;
+USTRUCT(BlueprintType)
+struct FTrunkInit : public FTreeComponentInit {
+	GENERATED_BODY()
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double HorizontalStretch;
+USTRUCT(BlueprintType)
+struct FTreeComponentRenderVariables {
+	GENERATED_BODY()
+public:
+	double HorizontalStretch = 1;
+	double RotationDegreesVariance = 0;
+	double HorizontalScalingVariance = 0;
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double SegmentSize;
+USTRUCT(BlueprintType)
+struct FTreeComponentRender : public FTreeComponentRenderVariables {
+	GENERATED_BODY()
+public:
+	double Height;
+	double SegmentSize;
+	UInstancedStaticMeshComponent* Instanced;
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct", meta = (ClampMin = "1"))
-		FVector2D Offset;
+USTRUCT(BlueprintType)
+struct FTreetopRenderVariables : public FTreeComponentRenderVariables {
+	GENERATED_BODY()
+};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double RotationFactor;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct", meta = (ClampMin = "1"))
-		double ScalingFactor;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct")
-		FVector2D Bounds;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct")
-		UStaticMesh* StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree Struct")
-		UMaterial* Material;
+USTRUCT(BlueprintType)
+struct FTrunkRenderVariables : public FTreeComponentRenderVariables {
+	GENERATED_BODY()
 };
 
 UCLASS()
@@ -53,32 +66,42 @@ public:
 	// Sets default values for this actor's properties
 
 	AGenericTree();
+	void Initialize(
+		FTrunkInit trunkInit,
+		FTreetopInit treetopInit = FTreetopInit(),
+		FTreetopRenderVariables treetopRender = FTreetopRenderVariables(),
+		FTrunkRenderVariables trunkRender = FTrunkRenderVariables()
+	);
 	virtual void Initialize(
-		int seed,
-		// UStaticMeshComponent* trunkStaticMesh,
-		// UStaticMeshComponent* treeStaticMesh,
-		int minTrunkHeight = 20,
-		int maxTrunkHeight = 300,
-		int minTreetopHeight = 40,
-		int maxTreetopHeight = 400
+		FTreetopInit treetopInit = FTreetopInit(),
+		FTrunkInit trunkInit = FTrunkInit()
+	);
+	virtual void Initialize(
+		FTreetopRenderVariables treetopRender = FTreetopRenderVariables(),
+		FTrunkRenderVariables trunkRender = FTrunkRenderVariables()
+	);
+	void Initialize(
+		FTrunkRenderVariables trunkRender = FTrunkRenderVariables(),
+		FTreetopRenderVariables treetopRender = FTreetopRenderVariables()
 	);
 protected:
+	double GetRandomFromVector(FVector2D& bounds);
+
+	double GetMeshOffset(UStaticMesh* staticMesh, double size);
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	virtual void RenderUp(FTreeComponentRender &generatedStruct, FVector from = FVector(0,0,0), double Offset = 1);
 	virtual void RenderTrunk();
 	virtual void RenderTreetop();
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree variables")
-		FTreeComponentStruct Trunk;
+	virtual void OnConstruction(const FTransform& transform) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree variables", meta = (ClampMin = "1"))
-		FTreeComponentStruct Treetop;
+	FTreeComponentInit TrunkInit;
+	FTreeComponentInit TreetopInit;
+	FTreeComponentRender TrunkRender;
+	FTreeComponentRender TreetopRender;
+	FRandomStream Stream;
+	int Seed;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tree variables")
-		FRandomStream Stream;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tree variables")
-		int Seed;
 private:
-
+	void InitStruct(FTreeComponentInit& init, FTreeComponentRender& render);
 };
