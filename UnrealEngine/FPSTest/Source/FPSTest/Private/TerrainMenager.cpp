@@ -90,12 +90,7 @@ void ATerrainMenager::BeginPlay()
 		500,
 		200,
 		100));
-	FTreetopRenderVariables treetopRender;
-	treetopRender.HorizontalStretch = 3;
-	Tree = Cast<AGenericTree>(GetWorld()->SpawnActorDeferred<AGenericTree>(AGenericTree::StaticClass(), transform));
-	Tree->Initialize(
-		treetopRender
-	);
+	Tree = Cast<ASpruceLikeTree>(GetWorld()->SpawnActorDeferred<ASpruceLikeTree>(ASpruceLikeTree::StaticClass(), transform));
 	Tree->FinishSpawning(transform);
 }
 

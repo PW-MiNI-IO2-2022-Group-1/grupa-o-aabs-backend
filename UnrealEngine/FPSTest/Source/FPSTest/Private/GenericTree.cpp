@@ -4,6 +4,7 @@
 #include "GenericTree.h"
 #include <cmath>
 #include "Math/RandomStream.h"
+#include "Engine/StaticMeshActor.h"
 #include "UObject/UObjectGlobals.h"
 
 class UInstancedStaticMeshComponent;
@@ -13,7 +14,7 @@ AGenericTree::AGenericTree()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	Seed = 0;
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	TrunkInit.InitialSegmentSize = 20.0;
 	TrunkRender.RotationDegreesVariance = 15;
 	TrunkRender.HorizontalScalingVariance = 0.05;
@@ -31,7 +32,7 @@ AGenericTree::AGenericTree()
 
 	auto treetopStaticMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cone.Cone'"));
 	if (treetopStaticMesh.Succeeded())  TreetopInit.StaticMesh = treetopStaticMesh.Object;
-	TreetopInit.Material = LoadObject<UMaterial>(nullptr, TEXT("Game/StarterContent/Materials/M_Tech_Hex_Tile"));
+	TreetopInit.Material = LoadObject<UMaterial>(nullptr, TEXT("/Game/StarterContent/Materials/M_Tech_Hex_Tile"));
 
 
 
@@ -42,6 +43,7 @@ AGenericTree::AGenericTree()
 
 	TrunkRender.Instanced->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 	TreetopRender.Instanced->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 }
 
 void AGenericTree::Initialize(FTreetopInit treetopInit, FTrunkInit trunkInit) {
@@ -160,6 +162,7 @@ void AGenericTree::OnConstruction(const FTransform& transform)
 	InitStruct(TreetopInit, TreetopRender);
 	RenderTrunk();
 	RenderTreetop();
+	RootComponent->SetMobility(EComponentMobility::Movable);
 }
 
 void AGenericTree::InitStruct(FTreeComponentInit& init, FTreeComponentRender& render)

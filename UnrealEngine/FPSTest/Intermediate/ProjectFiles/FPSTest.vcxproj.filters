@@ -86,10 +86,16 @@
     <ClCompile Include="..\..\Source\FPSTest\Private\PerlinNoise.cpp">
       <Filter>Source\FPSTest\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSTest\Private\SpruceLikeTree.cpp">
+      <Filter>Source\FPSTest\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSTest\Private\Terrain.cpp">
       <Filter>Source\FPSTest\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FPSTest\Private\TerrainMenager.cpp">
+      <Filter>Source\FPSTest\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FPSTest\Private\TreeManager.cpp">
       <Filter>Source\FPSTest\Private</Filter>
     </ClCompile>
     <Filter Include="Source\FPSTest\Public">
@@ -101,10 +107,16 @@
     <ClInclude Include="..\..\Source\FPSTest\Public\PerlinNoise.h">
       <Filter>Source\FPSTest\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\FPSTest\Public\SpruceLikeTree.h">
+      <Filter>Source\FPSTest\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FPSTest\Public\Terrain.h">
       <Filter>Source\FPSTest\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSTest\Public\TerrainMenager.h">
+      <Filter>Source\FPSTest\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FPSTest\Public\TreeManager.h">
       <Filter>Source\FPSTest\Public</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "TreeManager.h"
 #include "GameFramework/Actor.h"
 #include "Terrain.generated.h"
 
@@ -32,6 +33,7 @@ private:
 	TArray<FVector> Vertices;
 	TArray<int> Triangles;
 	TArray<FVector2D> UV0;
+	ATreeManager* TreeManager;
 	
 	void CreateVertices();
 

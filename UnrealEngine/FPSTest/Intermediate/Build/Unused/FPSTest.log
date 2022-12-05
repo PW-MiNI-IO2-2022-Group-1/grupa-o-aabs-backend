@@ -4,38 +4,42 @@
   Creating makefile for FPSTestEditor (no existing makefile)
   Parsing headers for FPSTestEditor
     Running UnrealHeaderTool "D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\FPSTest.uproject" "D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\FPSTestEditor\Development\FPSTestEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\Mati\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
-  Reflection code generated for FPSTestEditor in 3.3651167 seconds
+  Reflection code generated for FPSTestEditor in 3.6512402 seconds
   Building FPSTestEditor...
   Using Visual Studio 2022 14.34.31933 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  [Adaptive Build] Excluded from FPSTest unity file: GenericTree.cpp, PerlinNoise.cpp, Terrain.cpp, TerrainMenager.cpp, FPSTest.cpp, FPSTestCharacter.cpp, FPSTestGameMode.cpp, FPSTestProjectile.cpp, TP_PickUpComponent.cpp, TP_WeaponComponent.cpp
+  [Adaptive Build] Excluded from FPSTest unity file: GenericTree.cpp, PerlinNoise.cpp, SpruceLikeTree.cpp, Terrain.cpp, TerrainMenager.cpp, TreeManager.cpp, FPSTest.cpp, FPSTestCharacter.cpp, FPSTestGameMode.cpp, FPSTestProjectile.cpp, TP_PickUpComponent.cpp, TP_WeaponComponent.cpp
   Determining max actions to execute in parallel (6 physical cores, 12 logical cores)
     Executing up to 6 processes, one per physical core
-  Building 24 actions with 6 processes...
-  [1/24] Resource Default.rc2
-  [2/24] Compile SharedPCH.Engine.ShadowErrors.cpp
-  [3/24] Compile TP_PickUpComponent.gen.cpp
-  [4/24] Compile FPSTestGameMode.gen.cpp
-  [5/24] Compile FPSTestProjectile.cpp
-  [6/24] Compile TP_PickUpComponent.cpp
-  [7/24] Compile GenericTree.gen.cpp
-  [8/24] Compile FPSTestCharacter.gen.cpp
-  [9/24] Compile Terrain.cpp
-  [10/24] Compile FPSTest.init.gen.cpp
-  [11/24] Compile PerlinNoise.cpp
-  [12/24] Compile TP_WeaponComponent.cpp
-  [13/24] Compile FPSTestProjectile.gen.cpp
-  [14/24] Compile TerrainMenager.cpp
-  [15/24] Compile TP_WeaponComponent.gen.cpp
-  [16/24] Compile Terrain.gen.cpp
-  [17/24] Compile FPSTestGameMode.cpp
-  [18/24] Compile FPSTestCharacter.cpp
-  [19/24] Compile FPSTest.cpp
-  [20/24] Compile GenericTree.cpp
-  [21/24] Compile TerrainMenager.gen.cpp
-  [22/24] Link UnrealEditor-FPSTest.lib
+  Building 28 actions with 6 processes...
+  [1/28] Resource Default.rc2
+  [2/28] Compile SharedPCH.Engine.ShadowErrors.cpp
+  [3/28] Compile FPSTestGameMode.gen.cpp
+  [4/28] Compile Terrain.gen.cpp
+  [5/28] Compile TP_WeaponComponent.gen.cpp
+  [6/28] Compile FPSTestCharacter.gen.cpp
+  [7/28] Compile PerlinNoise.cpp
+  [8/28] Compile TerrainMenager.gen.cpp
+  [9/28] Compile FPSTestProjectile.gen.cpp
+  [10/28] Compile SpruceLikeTree.gen.cpp
+  [11/28] Compile FPSTestProjectile.cpp
+  [12/28] Compile TP_WeaponComponent.cpp
+  [13/28] Compile SpruceLikeTree.cpp
+  [14/28] Compile FPSTestCharacter.cpp
+  [15/28] Compile TP_PickUpComponent.gen.cpp
+  [16/28] Compile Terrain.cpp
+  [17/28] Compile FPSTest.init.gen.cpp
+  [18/28] Compile TreeManager.gen.cpp
+  [19/28] Compile TP_PickUpComponent.cpp
+  [20/28] Compile TreeManager.cpp
+  [21/28] Compile FPSTest.cpp
+  [22/28] Compile FPSTestGameMode.cpp
+  [23/28] Compile GenericTree.cpp
+  [24/28] Compile TerrainMenager.cpp
+  [25/28] Compile GenericTree.gen.cpp
+  [26/28] Link UnrealEditor-FPSTest.lib
      Creating library D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.lib and object D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.exp
-  [23/24] Link UnrealEditor-FPSTest.dll
+  [27/28] Link UnrealEditor-FPSTest.dll
      Creating library D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.suppressed.lib and object D:\GitHub\gra--generowanie__proceduralne\UnrealEngine\FPSTest\Intermediate\Build\Win64\UnrealEditor\Development\FPSTest\UnrealEditor-FPSTest.suppressed.exp
-  [24/24] WriteMetadata FPSTestEditor.target
-  Total time in Parallel executor: 47.97 seconds
-  Total execution time: 54.00 seconds
+  [28/28] WriteMetadata FPSTestEditor.target
+  Total time in Parallel executor: 50.09 seconds
+  Total execution time: 56.43 seconds

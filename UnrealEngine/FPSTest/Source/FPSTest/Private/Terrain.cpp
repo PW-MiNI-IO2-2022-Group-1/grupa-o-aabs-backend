@@ -8,7 +8,6 @@
 #include <cmath>
 #include "TerrainMenager.h"
 #include "PerlinNoise.h"
-#include "GenericTree.h"
 
 ATerrain::ATerrain()
 {
@@ -16,6 +15,7 @@ ATerrain::ATerrain()
 
 	ProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>("ProceduralMesh");
 	ProceduralMesh->SetupAttachment(GetRootComponent());
+	TreeManager = CreateDefaultSubobject<ATreeManager>(TEXT("TreeManager"));
 }
 
 void ATerrain::Initialize(int p[], int seed)
