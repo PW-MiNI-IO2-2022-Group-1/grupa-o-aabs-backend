@@ -12,10 +12,15 @@ struct FTreeComponentInit
 {
 	GENERATED_BODY()
 public:
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "0.5"))
 	double InitialSegmentSize = 20;
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "0.001", ClampMax = "1"))
 	FVector2D VerticalOffsetPercentClamp = { 1, 1 };
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "100", ClampMax = "1000"))
 	FVector2D HeightBounds = { 150, 350 };
+	UPROPERTY(EditAnywhere)
 	UStaticMesh* StaticMesh = nullptr;
+	UPROPERTY(EditAnywhere)
 	UMaterial* Material = nullptr;
 };
 
@@ -33,8 +38,11 @@ USTRUCT(BlueprintType)
 struct FTreeComponentRenderVariables {
 	GENERATED_BODY()
 public:
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "0", ClampMax = "100"))
 	double HorizontalStretch = 1;
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "0", ClampMax = "180"))
 	double RotationDegreesVariance = 0;
+	UPROPERTY(EditAnywhere, meta = (ClampMin = "0.0001", ClampMax = "0.9999"))
 	double HorizontalScalingVariance = 0;
 };
 
@@ -91,17 +99,21 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	virtual void RenderUp(FTreeComponentRender &generatedStruct, FVector from = FVector(0,0,0), double Offset = 1);
-	virtual void RenderTrunk();
-	virtual void RenderTreetop();
+	virtual void RenderTrunk(double offset);
+	virtual void RenderTreetop(double offset);
 	virtual void OnConstruction(const FTransform& transform) override;
 
+	UPROPERTY(EditAnywhere, Category = "Trunk")
 	FTreeComponentInit TrunkInit;
+	UPROPERTY(EditAnywhere, Category = "Treetop")
 	FTreeComponentInit TreetopInit;
+	UPROPERTY(EditAnywhere, Category = "Trunk")
 	FTreeComponentRender TrunkRender;
+	UPROPERTY(EditAnywhere, Category = "Treetop")
 	FTreeComponentRender TreetopRender;
 	FRandomStream Stream;
 	int Seed;
 
 private:
-	void InitStruct(FTreeComponentInit& init, FTreeComponentRender& render);
+	double InitStruct(FTreeComponentInit& init, FTreeComponentRender& render);
 };

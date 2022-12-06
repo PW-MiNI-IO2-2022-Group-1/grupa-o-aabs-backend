@@ -30,14 +30,15 @@ void ATerrainMenager::Move(FVector2D NewCenter)
 			}
 			else
 			{
-				FVector pos = FVector(
+				FTransform pos = FTransform(FVector(
 					(NewCenter.X + x - RenderDistance) * (ATerrain::Size * ATerrain::Scale),
 					(NewCenter.Y + y - RenderDistance) * (ATerrain::Size * ATerrain::Scale),
-					0);
-				NewRenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(
+					0));
+				NewRenderedTerrain[y][x] = GetWorld()->SpawnActorDeferred<ATerrain>(
 					ATerrain::StaticClass(),
-					&pos));
+					pos);
 				NewRenderedTerrain[y][x]->Initialize(Permutation, Seed);
+				NewRenderedTerrain[y][x]->FinishSpawning(pos);
 			}
 		}
 	}
@@ -77,21 +78,18 @@ void ATerrainMenager::BeginPlay()
 		RenderedTerrain[y] = new ATerrain * [Size];
 		for (int x = 0; x < Size; x++)
 		{
-			FVector pos = FVector(
-				(x - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
-				(y - RenderDistance) * (ATerrain::Size * ATerrain::Scale), 
-				0);
-			FRotator rot = FRotator(0, 0, 0);
-			RenderedTerrain[y][x] = (ATerrain*)(GetWorld()->SpawnActor(ATerrain::StaticClass(), &pos));
+			FTransform pos = FTransform(FVector(
+				(x - RenderDistance) * (ATerrain::Size * ATerrain::Scale),
+				(y - RenderDistance) * (ATerrain::Size * ATerrain::Scale),
+				0)
+			);
+			RenderedTerrain[y][x] = GetWorld()->SpawnActorDeferred<ATerrain>(
+				ATerrain::StaticClass(),
+				pos);
 			RenderedTerrain[y][x]->Initialize(Permutation, Seed);
+			RenderedTerrain[y][x]->FinishSpawning(pos);
 		}
 	}
-	auto transform = FTransform(FVector(
-		500,
-		200,
-		100));
-	Tree = Cast<ASpruceLikeTree>(GetWorld()->SpawnActorDeferred<ASpruceLikeTree>(ASpruceLikeTree::StaticClass(), transform));
-	Tree->FinishSpawning(transform);
 }
 
 // Called every frame

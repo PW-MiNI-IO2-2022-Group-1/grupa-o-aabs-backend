@@ -34,7 +34,6 @@ protected:
 
 public:	
 	ATerrain*** RenderedTerrain;
-	ASpruceLikeTree* Tree;
 	FVector2D CenterRegion;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

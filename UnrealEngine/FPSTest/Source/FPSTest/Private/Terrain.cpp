@@ -15,7 +15,7 @@ ATerrain::ATerrain()
 
 	ProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>("ProceduralMesh");
 	ProceduralMesh->SetupAttachment(GetRootComponent());
-	TreeManager = CreateDefaultSubobject<ATreeManager>(TEXT("TreeManager"));
+	TreeManager = CreateDefaultSubobject<UTreeManager>(TEXT("Tree manager"));
 }
 
 void ATerrain::Initialize(int p[], int seed)
@@ -26,17 +26,33 @@ void ATerrain::Initialize(int p[], int seed)
 	}
 	CreateVertices();
 	CreateTriangles();
-
-	UMaterial* mt = LoadObject<UMaterial>(nullptr, TEXT("/Game/StarterContent/Materials/M_Ground_Moss"));
-
-	ProceduralMesh->CreateMeshSection(0, Vertices, Triangles, TArray<FVector>(), UV0, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
-
-	ProceduralMesh->SetMaterial(0, mt);
 }
 
 void ATerrain::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void ATerrain::OnConstruction(const FTransform& transform) {
+	Super::OnConstruction(transform);
+
+	ProceduralMesh->CreateMeshSection(0, Vertices, Triangles, TArray<FVector>(), UV0, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+	UMaterial* mt = LoadObject<UMaterial>(nullptr, TEXT("/Game/StarterContent/Materials/M_Ground_Moss"));
+
+	ProceduralMesh->SetMaterial(0, mt);
+	TreeManager->Initialize(
+		Permutation,
+		GetActorLocation(),
+		FVector2D(Size * Scale, Size * Scale)
+	);
+}
+
+void ATerrain::Destroyed()
+{
+	if (TreeManager) {
+		TreeManager->DestroyTrees();
+	}
+	Super::Destroyed();
 }
 
 void ATerrain::CreateVertices()

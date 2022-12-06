@@ -130,13 +130,17 @@ void AGenericTree::RenderUp(FTreeComponentRender& generatedStruct, FVector from,
 	
 }
 
-void AGenericTree::RenderTrunk()
+void AGenericTree::RenderTrunk(double offset)
 {
 	auto spawnOffset = FVector(0, 0, GetMeshOffset(TrunkInit.StaticMesh, TrunkRender.SegmentSize));
-	RenderUp(TrunkRender, spawnOffset, GetRandomFromVector(TrunkInit.VerticalOffsetPercentClamp));
+	RenderUp(
+		TrunkRender,
+		spawnOffset,
+		offset
+	);
 }
 
-void AGenericTree::RenderTreetop()
+void AGenericTree::RenderTreetop(double offset)
 {
 	auto spawnOffset = FVector(
 		0, 
@@ -146,7 +150,7 @@ void AGenericTree::RenderTreetop()
 	RenderUp(
 		TreetopRender,
 		spawnOffset,
-		GetRandomFromVector(TreetopInit.VerticalOffsetPercentClamp)
+		offset
 	);
 }
 
@@ -158,23 +162,27 @@ void AGenericTree::OnConstruction(const FTransform& transform)
 		+ GetActorLocation().Y
 		+ GetActorLocation().Z
 	);
-	InitStruct(TrunkInit, TrunkRender);
-	InitStruct(TreetopInit, TreetopRender);
-	RenderTrunk();
-	RenderTreetop();
+	RenderTrunk(InitStruct(TrunkInit, TrunkRender));
+	RenderTreetop(InitStruct(TreetopInit, TreetopRender));
 	RootComponent->SetMobility(EComponentMobility::Movable);
 }
 
-void AGenericTree::InitStruct(FTreeComponentInit& init, FTreeComponentRender& render)
+double AGenericTree::InitStruct(FTreeComponentInit& init, FTreeComponentRender& render)
 {
+	if (init.VerticalOffsetPercentClamp.X < 0) init.VerticalOffsetPercentClamp.X = 0;
+	if (init.VerticalOffsetPercentClamp.Y > 1) init.VerticalOffsetPercentClamp.Y = 1;
 	render.Height = GetRandomFromVector(init.HeightBounds);
-	render.SegmentSize = render.Height / round(render.Height / init.InitialSegmentSize);
+	auto offset = GetRandomFromVector(init.VerticalOffsetPercentClamp);
+	int desiredSegmentNumber = round((render.Height - init.InitialSegmentSize) / (offset * init.InitialSegmentSize));
+	render.SegmentSize = render.Height / (offset * desiredSegmentNumber + 1);
 	if (init.StaticMesh) {
 		render.Instanced->SetStaticMesh(init.StaticMesh);
 	}
 	if (init.Material) {
 		render.Instanced->SetMaterial(0, init.Material);
 	}
+
+	return offset;
 }
 
 

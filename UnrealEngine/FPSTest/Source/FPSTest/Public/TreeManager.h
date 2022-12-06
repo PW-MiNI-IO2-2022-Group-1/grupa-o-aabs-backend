@@ -4,23 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GenericTree.h"
 #include "TreeManager.generated.h"
 
 UCLASS()
-class FPSTEST_API ATreeManager : public AActor
+class FPSTEST_API UTreeManager : public UObject
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ATreeManager();
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	UTreeManager();
+	void Initialize(int(&permutation)[256], FVector position, FVector2D terrainSize);
+	void DestroyTrees();
+private:	
+	TArray<AGenericTree*> Trees;
+	static UClass* treeClasses[];
 };
